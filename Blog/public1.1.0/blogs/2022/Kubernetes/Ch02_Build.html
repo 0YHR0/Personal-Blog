@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ch02 kubernetes集群环境搭建 虚拟机 | Blog of YHR</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/head.ico">
+    <meta name="description" content="Blog of YHR">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.d59960e4.css" as="style"><link rel="preload" href="/assets/js/app.16e62a1e.js" as="script"><link rel="preload" href="/assets/js/3.f7fab766.js" as="script"><link rel="preload" href="/assets/js/1.2b4836f4.js" as="script"><link rel="preload" href="/assets/js/78.64615b1e.js" as="script"><link rel="prefetch" href="/assets/js/10.62bc4096.js"><link rel="prefetch" href="/assets/js/100.33ef7509.js"><link rel="prefetch" href="/assets/js/101.419c44c1.js"><link rel="prefetch" href="/assets/js/102.922755e1.js"><link rel="prefetch" href="/assets/js/103.a47c852e.js"><link rel="prefetch" href="/assets/js/104.96462a62.js"><link rel="prefetch" href="/assets/js/105.62e4133f.js"><link rel="prefetch" href="/assets/js/106.3cddfc61.js"><link rel="prefetch" href="/assets/js/107.9f3d32e8.js"><link rel="prefetch" href="/assets/js/108.22a3f665.js"><link rel="prefetch" href="/assets/js/109.4ea1d6c9.js"><link rel="prefetch" href="/assets/js/11.130817a7.js"><link rel="prefetch" href="/assets/js/110.49d506ff.js"><link rel="prefetch" href="/assets/js/111.0174b5ec.js"><link rel="prefetch" href="/assets/js/112.54a7e6f0.js"><link rel="prefetch" href="/assets/js/113.0ca614f3.js"><link rel="prefetch" href="/assets/js/114.ea2c1a18.js"><link rel="prefetch" href="/assets/js/115.fec9fc26.js"><link rel="prefetch" href="/assets/js/116.c64774a5.js"><link rel="prefetch" href="/assets/js/117.4deb59cb.js"><link rel="prefetch" href="/assets/js/118.907403a6.js"><link rel="prefetch" href="/assets/js/119.4c0a4bb6.js"><link rel="prefetch" href="/assets/js/12.24bd718c.js"><link rel="prefetch" href="/assets/js/120.27412c3f.js"><link rel="prefetch" href="/assets/js/121.df0e1279.js"><link rel="prefetch" href="/assets/js/122.3c9e250c.js"><link rel="prefetch" href="/assets/js/123.6f55b7e8.js"><link rel="prefetch" href="/assets/js/124.16f632e6.js"><link rel="prefetch" href="/assets/js/125.f749d8eb.js"><link rel="prefetch" href="/assets/js/126.51da1623.js"><link rel="prefetch" href="/assets/js/127.1ee33951.js"><link rel="prefetch" href="/assets/js/128.ae8c0e1e.js"><link rel="prefetch" href="/assets/js/129.c0c572cf.js"><link rel="prefetch" href="/assets/js/13.fbb7a095.js"><link rel="prefetch" href="/assets/js/130.eb05cf11.js"><link rel="prefetch" href="/assets/js/131.f19ab208.js"><link rel="prefetch" href="/assets/js/132.392fbcc1.js"><link rel="prefetch" href="/assets/js/133.c06eb5fd.js"><link rel="prefetch" href="/assets/js/134.48365cf1.js"><link rel="prefetch" href="/assets/js/135.39ac2996.js"><link rel="prefetch" href="/assets/js/136.166e8908.js"><link rel="prefetch" href="/assets/js/137.26cfba85.js"><link rel="prefetch" href="/assets/js/138.b39c0b4f.js"><link rel="prefetch" href="/assets/js/139.17c7b032.js"><link rel="prefetch" href="/assets/js/14.a25764bd.js"><link rel="prefetch" href="/assets/js/140.e468387b.js"><link rel="prefetch" href="/assets/js/141.0b9c01ea.js"><link rel="prefetch" href="/assets/js/142.2e5f2bd2.js"><link rel="prefetch" href="/assets/js/143.736eeef4.js"><link rel="prefetch" href="/assets/js/144.c2d117c7.js"><link rel="prefetch" href="/assets/js/145.4d6ed98a.js"><link rel="prefetch" href="/assets/js/146.b808a027.js"><link rel="prefetch" href="/assets/js/147.973d4ef8.js"><link rel="prefetch" href="/assets/js/148.d45071eb.js"><link rel="prefetch" href="/assets/js/149.7017165f.js"><link rel="prefetch" href="/assets/js/15.6cf718cf.js"><link rel="prefetch" href="/assets/js/150.7b061830.js"><link rel="prefetch" href="/assets/js/151.885b2073.js"><link rel="prefetch" href="/assets/js/152.47a0bb77.js"><link rel="prefetch" href="/assets/js/153.e2421cf8.js"><link rel="prefetch" href="/assets/js/154.a300ac19.js"><link rel="prefetch" href="/assets/js/155.9902c652.js"><link rel="prefetch" href="/assets/js/156.5550793c.js"><link rel="prefetch" href="/assets/js/157.23eea347.js"><link rel="prefetch" href="/assets/js/158.2d902b1e.js"><link rel="prefetch" href="/assets/js/159.ab288f97.js"><link rel="prefetch" href="/assets/js/16.b15903f1.js"><link rel="prefetch" href="/assets/js/160.7d92d460.js"><link rel="prefetch" href="/assets/js/161.27ca688a.js"><link rel="prefetch" href="/assets/js/162.cfb1e499.js"><link rel="prefetch" href="/assets/js/163.1593b5b4.js"><link rel="prefetch" href="/assets/js/164.ae6559d5.js"><link rel="prefetch" href="/assets/js/165.76303240.js"><link rel="prefetch" href="/assets/js/166.8c2d8d91.js"><link rel="prefetch" href="/assets/js/167.94299f76.js"><link rel="prefetch" href="/assets/js/168.8b2787a7.js"><link rel="prefetch" href="/assets/js/169.b12ebad7.js"><link rel="prefetch" href="/assets/js/17.cc348de5.js"><link rel="prefetch" href="/assets/js/170.95a6e737.js"><link rel="prefetch" href="/assets/js/171.af4dd23e.js"><link rel="prefetch" href="/assets/js/172.a61b39a5.js"><link rel="prefetch" href="/assets/js/173.2595fee1.js"><link rel="prefetch" href="/assets/js/174.d3eb2121.js"><link rel="prefetch" href="/assets/js/175.39d51942.js"><link rel="prefetch" href="/assets/js/176.d30a171e.js"><link rel="prefetch" href="/assets/js/177.0aea5380.js"><link rel="prefetch" href="/assets/js/178.bb8f2d6a.js"><link rel="prefetch" href="/assets/js/179.6b7a9fa5.js"><link rel="prefetch" href="/assets/js/18.4dcc5060.js"><link rel="prefetch" href="/assets/js/180.bd756777.js"><link rel="prefetch" href="/assets/js/181.2d63b01c.js"><link rel="prefetch" href="/assets/js/182.d1ec5d42.js"><link rel="prefetch" href="/assets/js/183.b194a49b.js"><link rel="prefetch" href="/assets/js/184.3461c05b.js"><link rel="prefetch" href="/assets/js/185.3aeef8a5.js"><link rel="prefetch" href="/assets/js/186.1ad0a08c.js"><link rel="prefetch" href="/assets/js/187.b02d9649.js"><link rel="prefetch" href="/assets/js/19.d3303b39.js"><link rel="prefetch" href="/assets/js/20.48a565ed.js"><link rel="prefetch" href="/assets/js/21.ad358693.js"><link rel="prefetch" href="/assets/js/22.af306ccf.js"><link rel="prefetch" href="/assets/js/23.e0362658.js"><link rel="prefetch" href="/assets/js/24.6653ac7e.js"><link rel="prefetch" href="/assets/js/25.dc7570f8.js"><link rel="prefetch" href="/assets/js/26.0fcebc62.js"><link rel="prefetch" href="/assets/js/27.f659024e.js"><link rel="prefetch" href="/assets/js/28.74cae363.js"><link rel="prefetch" href="/assets/js/29.ad31318f.js"><link rel="prefetch" href="/assets/js/30.dfafb7d7.js"><link rel="prefetch" href="/assets/js/31.1b2a0d00.js"><link rel="prefetch" href="/assets/js/32.76ae4ec8.js"><link rel="prefetch" href="/assets/js/33.af3f8f26.js"><link rel="prefetch" href="/assets/js/34.24379e9f.js"><link rel="prefetch" href="/assets/js/35.f786d97f.js"><link rel="prefetch" href="/assets/js/36.2f47f285.js"><link rel="prefetch" href="/assets/js/37.a9817fe5.js"><link rel="prefetch" href="/assets/js/38.a7401e08.js"><link rel="prefetch" href="/assets/js/39.56c9d6ec.js"><link rel="prefetch" href="/assets/js/4.bb98ad1b.js"><link rel="prefetch" href="/assets/js/40.bce88960.js"><link rel="prefetch" href="/assets/js/41.4b6acc7d.js"><link rel="prefetch" href="/assets/js/42.27724809.js"><link rel="prefetch" href="/assets/js/43.3733dcf6.js"><link rel="prefetch" href="/assets/js/44.0f215aff.js"><link rel="prefetch" href="/assets/js/45.229a34f2.js"><link rel="prefetch" href="/assets/js/46.b79d0d94.js"><link rel="prefetch" href="/assets/js/47.e5995a28.js"><link rel="prefetch" href="/assets/js/48.2688355d.js"><link rel="prefetch" href="/assets/js/49.ca67ae90.js"><link rel="prefetch" href="/assets/js/5.cf61d0dc.js"><link rel="prefetch" href="/assets/js/50.ec3d5a34.js"><link rel="prefetch" href="/assets/js/51.c3d3f38c.js"><link rel="prefetch" href="/assets/js/52.c6cd86fd.js"><link rel="prefetch" href="/assets/js/53.8b2d0232.js"><link rel="prefetch" href="/assets/js/54.fbf1c554.js"><link rel="prefetch" href="/assets/js/55.76d57768.js"><link rel="prefetch" href="/assets/js/56.1cf52a13.js"><link rel="prefetch" href="/assets/js/57.1e553623.js"><link rel="prefetch" href="/assets/js/58.7fce5dd6.js"><link rel="prefetch" href="/assets/js/59.c10b5db5.js"><link rel="prefetch" href="/assets/js/6.c2517fa8.js"><link rel="prefetch" href="/assets/js/60.f59a8084.js"><link rel="prefetch" href="/assets/js/61.a80b132d.js"><link rel="prefetch" href="/assets/js/62.f0c93854.js"><link rel="prefetch" href="/assets/js/63.ead7ff84.js"><link rel="prefetch" href="/assets/js/64.b2c8ec27.js"><link rel="prefetch" href="/assets/js/65.83c390e6.js"><link rel="prefetch" href="/assets/js/66.4c1d38b4.js"><link rel="prefetch" href="/assets/js/67.c25329b8.js"><link rel="prefetch" href="/assets/js/68.4e96cb5e.js"><link rel="prefetch" href="/assets/js/69.2fc55249.js"><link rel="prefetch" href="/assets/js/7.b414af1c.js"><link rel="prefetch" href="/assets/js/70.252178bd.js"><link rel="prefetch" href="/assets/js/71.a83df8f5.js"><link rel="prefetch" href="/assets/js/72.b449071a.js"><link rel="prefetch" href="/assets/js/73.acd7402b.js"><link rel="prefetch" href="/assets/js/74.09b0dede.js"><link rel="prefetch" href="/assets/js/75.c5c0e01d.js"><link rel="prefetch" href="/assets/js/76.3c34bb03.js"><link rel="prefetch" href="/assets/js/77.a6fd78e3.js"><link rel="prefetch" href="/assets/js/79.23656ca0.js"><link rel="prefetch" href="/assets/js/8.698f90d4.js"><link rel="prefetch" href="/assets/js/80.7e2ecb3f.js"><link rel="prefetch" href="/assets/js/81.9cf6aa60.js"><link rel="prefetch" href="/assets/js/82.25f11624.js"><link rel="prefetch" href="/assets/js/83.80f3d293.js"><link rel="prefetch" href="/assets/js/84.f13207a4.js"><link rel="prefetch" href="/assets/js/85.8d9d653b.js"><link rel="prefetch" href="/assets/js/86.2562618d.js"><link rel="prefetch" href="/assets/js/87.02217e39.js"><link rel="prefetch" href="/assets/js/88.4068694f.js"><link rel="prefetch" href="/assets/js/89.60f7ba20.js"><link rel="prefetch" href="/assets/js/9.91408e8e.js"><link rel="prefetch" href="/assets/js/90.3c059814.js"><link rel="prefetch" href="/assets/js/91.7bec922c.js"><link rel="prefetch" href="/assets/js/92.6925b1e5.js"><link rel="prefetch" href="/assets/js/93.a70c8c29.js"><link rel="prefetch" href="/assets/js/94.64f62a4a.js"><link rel="prefetch" href="/assets/js/95.3c02a0f7.js"><link rel="prefetch" href="/assets/js/96.a4acb480.js"><link rel="prefetch" href="/assets/js/97.2191b75a.js"><link rel="prefetch" href="/assets/js/98.052a9504.js"><link rel="prefetch" href="/assets/js/99.1cef4cff.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d59960e4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-5bb33761><div data-v-5bb33761><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-5bb33761 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Blog of YHR</h3> <p class="description" data-v-59e6cb88>Blog of YHR</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2022
+      </a></span></div></div> <div class="hide" data-v-5bb33761><header class="navbar" data-v-5bb33761><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.jpg" alt="Blog of YHR" class="logo"> <span class="site-name">Blog of YHR</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-5bb33761></div> <aside class="sidebar" data-v-5bb33761><div class="personal-info-wrapper" data-v-1fad0c41 data-v-5bb33761><img src="/head.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Yang Haoran
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>177</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>73</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Ch02 kubernetes集群环境搭建 虚拟机</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2022
+      </a></span></div></div> <div data-v-5bb33761><div data-v-5bb33761><main class="page" style="padding-right:0;"><section style="display:;"><div class="page-title"><h1 class="title">Ch02 kubernetes集群环境搭建 虚拟机</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Yang Haoran</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>4/23/2022</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>K8s</span><span class="tag-item" data-v-8a445198>Kubernetes</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="kubernetes集群环境搭建-虚拟机"><a href="#kubernetes集群环境搭建-虚拟机" class="header-anchor">#</a> Kubernetes集群环境搭建 虚拟机</h1> <h4 id="前置知识点"><a href="#前置知识点" class="header-anchor">#</a> 前置知识点</h4> <p>目前生产部署Kubernetes 集群主要有两种方式：</p> <p><strong>kubeadm</strong></p> <p>Kubeadm 是一个K8s 部署工具，提供kubeadm init 和kubeadm join，用于快速部署Kubernetes 集群。</p> <p>官方地址：<a href="https://gitee.com/link?target=https%3A%2F%2Fkubernetes.io%2Fdocs%2Freference%2Fsetup-tools%2Fkubeadm%2Fkubeadm%2F" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><strong>二进制包</strong></p> <p>从github 下载发行版的二进制包，手动部署每个组件，组成Kubernetes 集群。</p> <p>Kubeadm 降低部署门槛，但屏蔽了很多细节，遇到问题很难排查。如果想更容易可控，推荐使用二进制包部署Kubernetes 集群，虽然手动部署麻烦点，期间可以学习很多工作原理，也利于后期维护。</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20200404094800622.png" alt="image-20200404094800622"></p> <h4 id="_2-kubeadm-部署方式介绍"><a href="#_2-kubeadm-部署方式介绍" class="header-anchor">#</a> 2 kubeadm 部署方式介绍</h4> <p>kubeadm 是官方社区推出的一个用于快速部署kubernetes 集群的工具，这个工具能通过两条指令完成一个kubernetes 集群的部署：</p> <ul><li>创建一个Master 节点kubeadm init</li> <li>将Node 节点加入到当前集群中$ kubeadm join &lt;Master 节点的IP 和端口&gt;</li></ul> <h4 id="_3-安装要求"><a href="#_3-安装要求" class="header-anchor">#</a> 3 安装要求</h4> <p>在开始之前，部署Kubernetes 集群机器需要满足以下几个条件：</p> <ul><li>一台或多台机器，操作系统CentOS7.x-86_x64</li> <li>硬件配置：2GB 或更多RAM，2 个CPU 或更多CPU，硬盘30GB 或更多</li> <li>集群中所有机器之间网络互通</li> <li>可以访问外网，需要拉取镜像</li> <li>禁止swap 分区</li></ul> <h4 id="_4-最终目标"><a href="#_4-最终目标" class="header-anchor">#</a> 4 最终目标</h4> <ul><li>在所有节点上安装Docker 和kubeadm</li> <li>部署Kubernetes Master</li> <li>部署容器网络插件</li> <li>部署Kubernetes Node，将节点加入Kubernetes 集群中</li> <li>部署Dashboard Web 页面，可视化查看Kubernetes 资源</li></ul> <h4 id="_5-准备环境"><a href="#_5-准备环境" class="header-anchor">#</a> 5 准备环境</h4> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20210609000002940.png" alt="image-20210609000002940"></p> <table><thead><tr><th>角色</th> <th>IP地址</th> <th>组件</th></tr></thead> <tbody><tr><td>master01</td> <td>192.168.5.3</td> <td>docker，kubectl，kubeadm，kubelet</td></tr> <tr><td>node01</td> <td>192.168.5.4</td> <td>docker，kubectl，kubeadm，kubelet</td></tr> <tr><td>node02</td> <td>192.168.5.5</td> <td>docker，kubectl，kubeadm，kubelet</td></tr></tbody></table> <h4 id="_6-环境初始化"><a href="#_6-环境初始化" class="header-anchor">#</a> 6 环境初始化</h4> <h5 id="_6-1-检查操作系统的版本"><a href="#_6-1-检查操作系统的版本" class="header-anchor">#</a> 6.1 检查操作系统的版本</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 此方式下安装kubernetes集群要求Centos版本要在7.5或之上
+[root@master ~]# cat /etc/redhat-release
+Centos Linux 7.5.1804 (Core)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h5 id="_6-2-主机名解析"><a href="#_6-2-主机名解析" class="header-anchor">#</a> 6.2 主机名解析</h5> <p>为了方便集群节点间的直接调用，在这个配置一下主机名解析，企业中推荐使用内部DNS服务器</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 主机名成解析 编辑三台服务器的/etc/hosts文件，添加下面内容
+192.168.90.100 master
+192.168.90.106 node1
+192.168.90.107 node2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h5 id="_6-3-时间同步"><a href="#_6-3-时间同步" class="header-anchor">#</a> 6.3 时间同步</h5> <p>kubernetes要求集群中的节点时间必须精确一直，这里使用chronyd服务从网络同步时间</p> <p>企业中建议配置内部的会见同步服务器</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 启动chronyd服务
+[root@master ~]# systemctl start chronyd
+[root@master ~]# systemctl enable chronyd
+[root@master ~]# date
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h5 id="_6-4-禁用iptable和firewalld服务"><a href="#_6-4-禁用iptable和firewalld服务" class="header-anchor">#</a> 6.4 禁用iptable和firewalld服务</h5> <p>kubernetes和docker 在运行的中会产生大量的iptables规则，为了不让系统规则跟它们混淆，直接关闭系统的规则</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 1 关闭firewalld服务
+[root@master ~]# systemctl stop firewalld
+[root@master ~]# systemctl disable firewalld
+# 2 关闭iptables服务
+[root@master ~]# systemctl stop iptables
+[root@master ~]# systemctl disable iptables
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h5 id="_6-5-禁用selinux"><a href="#_6-5-禁用selinux" class="header-anchor">#</a> 6.5 禁用selinux</h5> <p>selinux是linux系统下的一个安全服务，如果不关闭它，在安装集群中会产生各种各样的奇葩问题</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 编辑 /etc/selinux/config 文件，修改SELINUX的值为disable
+# 注意修改完毕之后需要重启linux服务
+SELINUX=disabled
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h5 id="_6-6-禁用swap分区"><a href="#_6-6-禁用swap分区" class="header-anchor">#</a> 6.6 禁用swap分区</h5> <p>swap分区指的是虚拟内存分区，它的作用是物理内存使用完，之后将磁盘空间虚拟成内存来使用，启用swap设备会对系统的性能产生非常负面的影响，因此kubernetes要求每个节点都要禁用swap设备，但是如果因为某些原因确实不能关闭swap分区，就需要在集群安装过程中通过明确的参数进行配置说明</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 编辑分区配置文件/etc/fstab，注释掉swap分区一行
+# 注意修改完毕之后需要重启linux服务
+vim /etc/fstab
+注释掉 /dev/mapper/centos-swap swap
+# /dev/mapper/centos-swap swap
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="_6-7-修改linux的内核参数"><a href="#_6-7-修改linux的内核参数" class="header-anchor">#</a> 6.7 修改linux的内核参数</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 修改linux的内核采纳数，添加网桥过滤和地址转发功能
+# 编辑/etc/sysctl.d/kubernetes.conf文件，添加如下配置：
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+
+# 重新加载配置
+[root@master ~]# sysctl -p
+# 加载网桥过滤模块
+[root@master ~]# modprobe br_netfilter
+# 查看网桥过滤模块是否加载成功
+[root@master ~]# lsmod | grep br_netfilter
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><h5 id="_6-8-配置ipvs功能"><a href="#_6-8-配置ipvs功能" class="header-anchor">#</a> 6.8 配置ipvs功能</h5> <p>在Kubernetes中Service有两种带来模型，一种是基于iptables的，一种是基于ipvs的两者比较的话，ipvs的性能明显要高一些，但是如果要使用它，需要手动载入ipvs模块</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 1.安装ipset和ipvsadm</span>
+<span class="token punctuation">[</span>root@master ~<span class="token punctuation">]</span><span class="token comment"># yum install ipset ipvsadm -y</span>
+<span class="token comment"># 2.添加需要加载的模块写入脚本文件</span>
+<span class="token punctuation">[</span>root@master ~<span class="token punctuation">]</span><span class="token comment"># cat &lt;&lt;EOF&gt; /etc/sysconfig/modules/ipvs.modules</span>
+<span class="token comment">#!/bin/bash</span>
+modprobe -- ip_vs
+modprobe -- ip_vs_rr
+modprobe -- ip_vs_wrr
+modprobe -- ip_vs_sh
+modprobe -- nf_conntrack_ipv4
+EOF
+<span class="token comment"># 3.为脚本添加执行权限</span>
+<span class="token punctuation">[</span>root@master ~<span class="token punctuation">]</span><span class="token comment"># chmod +x /etc/sysconfig/modules/ipvs.modules</span>
+<span class="token comment"># 4.执行脚本文件</span>
+<span class="token punctuation">[</span>root@master ~<span class="token punctuation">]</span><span class="token comment"># /bin/bash /etc/sysconfig/modules/ipvs.modules</span>
+<span class="token comment"># 5.查看对应的模块是否加载成功</span>
+<span class="token punctuation">[</span>root@master ~<span class="token punctuation">]</span><span class="token comment"># lsmod | grep -e ip_vs -e nf_conntrack_ipv4</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h5 id="_6-9-安装docker"><a href="#_6-9-安装docker" class="header-anchor">#</a> 6.9 安装docker</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 1、切换镜像源
+[root@master ~]# wget https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+
+# 2、查看当前镜像源中支持的docker版本
+[root@master ~]# yum list docker-ce --showduplicates
+
+# 3、安装特定版本的docker-ce
+# 必须制定--setopt=obsoletes=0，否则yum会自动安装更高版本
+[root@master ~]# yum install --setopt=obsoletes=0 docker-ce-18.06.3.ce-3.el7 -y
+
+# 4、添加一个配置文件
+#Docker 在默认情况下使用Vgroup Driver为cgroupfs，而Kubernetes推荐使用systemd来替代cgroupfs
+[root@master ~]# mkdir /etc/docker
+[root@master ~]# cat &lt;&lt;EOF&gt; /etc/docker/daemon.json
+{
+	&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],
+	&quot;registry-mirrors&quot;: [&quot;https://kn0t2bca.mirror.aliyuncs.com&quot;]
+}
+EOF
+
+# 5、启动dokcer
+[root@master ~]# systemctl restart docker
+[root@master ~]# systemctl enable docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h5 id="_6-10-安装kubernetes组件"><a href="#_6-10-安装kubernetes组件" class="header-anchor">#</a> 6.10 安装Kubernetes组件</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 1、由于kubernetes的镜像在国外，速度比较慢，这里切换成国内的镜像源
+# 2、编辑/etc/yum.repos.d/kubernetes.repo,添加下面的配置
+[kubernetes]
+name=Kubernetes
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgchech=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+			http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+
+# 3、安装kubeadm、kubelet和kubectl
+[root@master ~]# yum install --setopt=obsoletes=0 kubeadm-1.17.4-0 kubelet-1.17.4-0 kubectl-1.17.4-0 -y
+
+# 4、配置kubelet的cgroup
+#编辑/etc/sysconfig/kubelet, 添加下面的配置
+KUBELET_CGROUP_ARGS=&quot;--cgroup-driver=systemd&quot;
+KUBE_PROXY_MODE=&quot;ipvs&quot;
+
+# 5、设置kubelet开机自启
+[root@master ~]# systemctl enable kubelet
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h5 id="_6-11-准备集群镜像"><a href="#_6-11-准备集群镜像" class="header-anchor">#</a> 6.11 准备集群镜像</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 在安装kubernetes集群之前，必须要提前准备好集群需要的镜像，所需镜像可以通过下面命令查看
+[root@master ~]# kubeadm config images list
+
+# 下载镜像
+# 此镜像kubernetes的仓库中，由于网络原因，无法连接，下面提供了一种替换方案
+images=(
+	kube-apiserver:v1.17.4
+	kube-controller-manager:v1.17.4
+	kube-scheduler:v1.17.4
+	kube-proxy:v1.17.4
+	pause:3.1
+	etcd:3.4.3-0
+	coredns:1.6.5
+)
+
+for imageName in ${images[@]};do
+	docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/$imageName
+	docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/$imageName k8s.gcr.io/$imageName
+	docker rmi registry.cn-hangzhou.aliyuncs.com/google_containers/$imageName 
+done
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h5 id="_6-11-集群初始化"><a href="#_6-11-集群初始化" class="header-anchor">#</a> 6.11 集群初始化</h5> <blockquote><p>下面的操作只需要在master节点上执行即可</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code># 创建集群
+[root@master ~]# kubeadm init \
+	--apiserver-advertise-address=81.68.160.217 \   自己服务器的ip
+	--image-repository registry.aliyuncs.com/google_containers \
+	--kubernetes-version=v1.17.4 \
+	--service-cidr=10.96.0.0/12 \
+	--pod-network-cidr=10.244.0.0/16
+# 创建必要文件
+[root@master ~]# mkdir -p $HOME/.kube
+[root@master ~]# sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+[root@master ~]# sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><blockquote><p>下面的操作只需要在node节点上执行即可</p></blockquote> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubeadm join 192.168.0.100:6443 --token awk15p.t6bamck54w69u4s8 \
+    --discovery-token-ca-cert-hash sha256:a94fa09562466d32d29523ab6cff122186f1127599fa4dcd5fa0152694f17117 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>在master上查看节点信息</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@master ~]# kubectl get nodes
+NAME    STATUS   ROLES     AGE   VERSION
+master  NotReady  master   6m    v1.17.4
+node1   NotReady   &lt;none&gt;  22s   v1.17.4
+node2   NotReady   &lt;none&gt;  19s   v1.17.4
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="_6-13-安装网络插件-只在master节点操作即可"><a href="#_6-13-安装网络插件-只在master节点操作即可" class="header-anchor">#</a> 6.13 安装网络插件，只在master节点操作即可</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>由于外网不好访问，如果出现无法访问的情况，可以直接用下面的 记得文件名是kube-flannel.yml，位置：/root/kube-flannel.yml内容：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>https://github.com/flannel-io/flannel/tree/master/Documentation/kube-flannel.yml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>也可手动拉取指定版本 docker pull quay.io/coreos/flannel:v0.14.0 #拉取flannel网络，三台主机 docker images #查看仓库是否拉去下来</p> <p><code>个人笔记</code> 若是集群状态一直是 notready,用下面语句查看原因， journalctl -f -u kubelet.service 若原因是： cni.go:237] Unable to update cni config: no networks found in /etc/cni/net.d mkdir -p /etc/cni/net.d #创建目录给flannel做配置文件 vim /etc/cni/net.d/10-flannel.conf #编写配置文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+ &quot;name&quot;:&quot;cbr0&quot;,
+ &quot;cniVersion&quot;:&quot;0.3.1&quot;,
+ &quot;type&quot;:&quot;flannel&quot;,
+ &quot;deledate&quot;:{
+    &quot;hairpinMode&quot;:true,
+    &quot;isDefaultGateway&quot;:true
+  }
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h5 id="_6-14-使用kubeadm-reset重置集群"><a href="#_6-14-使用kubeadm-reset重置集群" class="header-anchor">#</a> 6.14 使用kubeadm reset重置集群</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>#在master节点之外的节点进行操作
+kubeadm reset
+systemctl stop kubelet
+systemctl stop docker
+rm -rf /var/lib/cni/
+rm -rf /var/lib/kubelet/*
+rm -rf /etc/cni/
+ifconfig cni0 down
+ifconfig flannel.1 down
+ifconfig docker0 down
+ip link delete cni0
+ip link delete flannel.1
+##重启kubelet
+systemctl restart kubelet
+##重启docker
+systemctl restart docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h5 id="_6-15-重启kubelet和docker"><a href="#_6-15-重启kubelet和docker" class="header-anchor">#</a> 6.15 重启kubelet和docker</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 重启kubelet
+systemctl restart kubelet
+# 重启docker
+systemctl restart docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>使用配置文件启动fannel</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl apply -f kube-flannel.yml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>等待它安装完毕 发现已经是 集群的状态已经是Ready</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/2232696-20210621233106024-1676033717.png" alt="img"></p> <h5 id="_6-16-kubeadm中的命令"><a href="#_6-16-kubeadm中的命令" class="header-anchor">#</a> 6.16 kubeadm中的命令</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code># 生成 新的token
+[root@master ~]# kubeadm token create --print-join-command
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="_7-集群测试"><a href="#_7-集群测试" class="header-anchor">#</a> 7 集群测试</h4> <h5 id="_7-1-创建一个nginx服务"><a href="#_7-1-创建一个nginx服务" class="header-anchor">#</a> 7.1 创建一个nginx服务</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl create deployment nginx  --image=nginx:1.14-alpine
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h5 id="_7-2-暴露端口"><a href="#_7-2-暴露端口" class="header-anchor">#</a> 7.2 暴露端口</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl expose deploy nginx  --port=80 --target-port=80  --type=NodePort
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h5 id="_7-3-查看服务"><a href="#_7-3-查看服务" class="header-anchor">#</a> 7.3 查看服务</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl get pod,svc
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h5 id="_7-4-查看pod"><a href="#_7-4-查看pod" class="header-anchor">#</a> 7.4 查看pod</h5> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/2232696-20210621233130477-111035427.png" alt="img"></p> <p>浏览器测试结果：</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/2232696-20210621233157075-1117518703.png" alt="img"></p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:0;" data-v-ac050c62></ul></main></div> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/周杰伦 - .烟花易冷.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/note.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/note.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>烟花易冷</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>Jay Zhou</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.16e62a1e.js" defer></script><script src="/assets/js/3.f7fab766.js" defer></script><script src="/assets/js/1.2b4836f4.js" defer></script><script src="/assets/js/78.64615b1e.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ch05 Mongodb Replica Sets | Blog of YHR</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/head.ico">
+    <meta name="description" content="Blog of YHR">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.d59960e4.css" as="style"><link rel="preload" href="/assets/js/app.16e62a1e.js" as="script"><link rel="preload" href="/assets/js/3.f7fab766.js" as="script"><link rel="preload" href="/assets/js/1.2b4836f4.js" as="script"><link rel="preload" href="/assets/js/109.4ea1d6c9.js" as="script"><link rel="prefetch" href="/assets/js/10.62bc4096.js"><link rel="prefetch" href="/assets/js/100.33ef7509.js"><link rel="prefetch" href="/assets/js/101.419c44c1.js"><link rel="prefetch" href="/assets/js/102.922755e1.js"><link rel="prefetch" href="/assets/js/103.a47c852e.js"><link rel="prefetch" href="/assets/js/104.96462a62.js"><link rel="prefetch" href="/assets/js/105.62e4133f.js"><link rel="prefetch" href="/assets/js/106.3cddfc61.js"><link rel="prefetch" href="/assets/js/107.9f3d32e8.js"><link rel="prefetch" href="/assets/js/108.22a3f665.js"><link rel="prefetch" href="/assets/js/11.130817a7.js"><link rel="prefetch" href="/assets/js/110.49d506ff.js"><link rel="prefetch" href="/assets/js/111.0174b5ec.js"><link rel="prefetch" href="/assets/js/112.54a7e6f0.js"><link rel="prefetch" href="/assets/js/113.0ca614f3.js"><link rel="prefetch" href="/assets/js/114.ea2c1a18.js"><link rel="prefetch" href="/assets/js/115.fec9fc26.js"><link rel="prefetch" href="/assets/js/116.c64774a5.js"><link rel="prefetch" href="/assets/js/117.4deb59cb.js"><link rel="prefetch" href="/assets/js/118.907403a6.js"><link rel="prefetch" href="/assets/js/119.4c0a4bb6.js"><link rel="prefetch" href="/assets/js/12.24bd718c.js"><link rel="prefetch" href="/assets/js/120.27412c3f.js"><link rel="prefetch" href="/assets/js/121.df0e1279.js"><link rel="prefetch" href="/assets/js/122.3c9e250c.js"><link rel="prefetch" href="/assets/js/123.6f55b7e8.js"><link rel="prefetch" href="/assets/js/124.16f632e6.js"><link rel="prefetch" href="/assets/js/125.f749d8eb.js"><link rel="prefetch" href="/assets/js/126.51da1623.js"><link rel="prefetch" href="/assets/js/127.1ee33951.js"><link rel="prefetch" href="/assets/js/128.ae8c0e1e.js"><link rel="prefetch" href="/assets/js/129.c0c572cf.js"><link rel="prefetch" href="/assets/js/13.fbb7a095.js"><link rel="prefetch" href="/assets/js/130.eb05cf11.js"><link rel="prefetch" href="/assets/js/131.f19ab208.js"><link rel="prefetch" href="/assets/js/132.392fbcc1.js"><link rel="prefetch" href="/assets/js/133.c06eb5fd.js"><link rel="prefetch" href="/assets/js/134.48365cf1.js"><link rel="prefetch" href="/assets/js/135.39ac2996.js"><link rel="prefetch" href="/assets/js/136.166e8908.js"><link rel="prefetch" href="/assets/js/137.26cfba85.js"><link rel="prefetch" href="/assets/js/138.b39c0b4f.js"><link rel="prefetch" href="/assets/js/139.17c7b032.js"><link rel="prefetch" href="/assets/js/14.a25764bd.js"><link rel="prefetch" href="/assets/js/140.e468387b.js"><link rel="prefetch" href="/assets/js/141.0b9c01ea.js"><link rel="prefetch" href="/assets/js/142.2e5f2bd2.js"><link rel="prefetch" href="/assets/js/143.736eeef4.js"><link rel="prefetch" href="/assets/js/144.c2d117c7.js"><link rel="prefetch" href="/assets/js/145.4d6ed98a.js"><link rel="prefetch" href="/assets/js/146.b808a027.js"><link rel="prefetch" href="/assets/js/147.973d4ef8.js"><link rel="prefetch" href="/assets/js/148.d45071eb.js"><link rel="prefetch" href="/assets/js/149.7017165f.js"><link rel="prefetch" href="/assets/js/15.6cf718cf.js"><link rel="prefetch" href="/assets/js/150.7b061830.js"><link rel="prefetch" href="/assets/js/151.885b2073.js"><link rel="prefetch" href="/assets/js/152.47a0bb77.js"><link rel="prefetch" href="/assets/js/153.e2421cf8.js"><link rel="prefetch" href="/assets/js/154.a300ac19.js"><link rel="prefetch" href="/assets/js/155.9902c652.js"><link rel="prefetch" href="/assets/js/156.5550793c.js"><link rel="prefetch" href="/assets/js/157.23eea347.js"><link rel="prefetch" href="/assets/js/158.2d902b1e.js"><link rel="prefetch" href="/assets/js/159.ab288f97.js"><link rel="prefetch" href="/assets/js/16.b15903f1.js"><link rel="prefetch" href="/assets/js/160.7d92d460.js"><link rel="prefetch" href="/assets/js/161.27ca688a.js"><link rel="prefetch" href="/assets/js/162.cfb1e499.js"><link rel="prefetch" href="/assets/js/163.1593b5b4.js"><link rel="prefetch" href="/assets/js/164.ae6559d5.js"><link rel="prefetch" href="/assets/js/165.76303240.js"><link rel="prefetch" href="/assets/js/166.8c2d8d91.js"><link rel="prefetch" href="/assets/js/167.94299f76.js"><link rel="prefetch" href="/assets/js/168.8b2787a7.js"><link rel="prefetch" href="/assets/js/169.b12ebad7.js"><link rel="prefetch" href="/assets/js/17.cc348de5.js"><link rel="prefetch" href="/assets/js/170.95a6e737.js"><link rel="prefetch" href="/assets/js/171.af4dd23e.js"><link rel="prefetch" href="/assets/js/172.a61b39a5.js"><link rel="prefetch" href="/assets/js/173.2595fee1.js"><link rel="prefetch" href="/assets/js/174.d3eb2121.js"><link rel="prefetch" href="/assets/js/175.39d51942.js"><link rel="prefetch" href="/assets/js/176.d30a171e.js"><link rel="prefetch" href="/assets/js/177.0aea5380.js"><link rel="prefetch" href="/assets/js/178.bb8f2d6a.js"><link rel="prefetch" href="/assets/js/179.6b7a9fa5.js"><link rel="prefetch" href="/assets/js/18.4dcc5060.js"><link rel="prefetch" href="/assets/js/180.bd756777.js"><link rel="prefetch" href="/assets/js/181.2d63b01c.js"><link rel="prefetch" href="/assets/js/182.d1ec5d42.js"><link rel="prefetch" href="/assets/js/183.b194a49b.js"><link rel="prefetch" href="/assets/js/184.3461c05b.js"><link rel="prefetch" href="/assets/js/185.3aeef8a5.js"><link rel="prefetch" href="/assets/js/186.1ad0a08c.js"><link rel="prefetch" href="/assets/js/187.b02d9649.js"><link rel="prefetch" href="/assets/js/19.d3303b39.js"><link rel="prefetch" href="/assets/js/20.48a565ed.js"><link rel="prefetch" href="/assets/js/21.ad358693.js"><link rel="prefetch" href="/assets/js/22.af306ccf.js"><link rel="prefetch" href="/assets/js/23.e0362658.js"><link rel="prefetch" href="/assets/js/24.6653ac7e.js"><link rel="prefetch" href="/assets/js/25.dc7570f8.js"><link rel="prefetch" href="/assets/js/26.0fcebc62.js"><link rel="prefetch" href="/assets/js/27.f659024e.js"><link rel="prefetch" href="/assets/js/28.74cae363.js"><link rel="prefetch" href="/assets/js/29.ad31318f.js"><link rel="prefetch" href="/assets/js/30.dfafb7d7.js"><link rel="prefetch" href="/assets/js/31.1b2a0d00.js"><link rel="prefetch" href="/assets/js/32.76ae4ec8.js"><link rel="prefetch" href="/assets/js/33.af3f8f26.js"><link rel="prefetch" href="/assets/js/34.24379e9f.js"><link rel="prefetch" href="/assets/js/35.f786d97f.js"><link rel="prefetch" href="/assets/js/36.2f47f285.js"><link rel="prefetch" href="/assets/js/37.a9817fe5.js"><link rel="prefetch" href="/assets/js/38.a7401e08.js"><link rel="prefetch" href="/assets/js/39.56c9d6ec.js"><link rel="prefetch" href="/assets/js/4.bb98ad1b.js"><link rel="prefetch" href="/assets/js/40.bce88960.js"><link rel="prefetch" href="/assets/js/41.4b6acc7d.js"><link rel="prefetch" href="/assets/js/42.27724809.js"><link rel="prefetch" href="/assets/js/43.3733dcf6.js"><link rel="prefetch" href="/assets/js/44.0f215aff.js"><link rel="prefetch" href="/assets/js/45.229a34f2.js"><link rel="prefetch" href="/assets/js/46.b79d0d94.js"><link rel="prefetch" href="/assets/js/47.e5995a28.js"><link rel="prefetch" href="/assets/js/48.2688355d.js"><link rel="prefetch" href="/assets/js/49.ca67ae90.js"><link rel="prefetch" href="/assets/js/5.cf61d0dc.js"><link rel="prefetch" href="/assets/js/50.ec3d5a34.js"><link rel="prefetch" href="/assets/js/51.c3d3f38c.js"><link rel="prefetch" href="/assets/js/52.c6cd86fd.js"><link rel="prefetch" href="/assets/js/53.8b2d0232.js"><link rel="prefetch" href="/assets/js/54.fbf1c554.js"><link rel="prefetch" href="/assets/js/55.76d57768.js"><link rel="prefetch" href="/assets/js/56.1cf52a13.js"><link rel="prefetch" href="/assets/js/57.1e553623.js"><link rel="prefetch" href="/assets/js/58.7fce5dd6.js"><link rel="prefetch" href="/assets/js/59.c10b5db5.js"><link rel="prefetch" href="/assets/js/6.c2517fa8.js"><link rel="prefetch" href="/assets/js/60.f59a8084.js"><link rel="prefetch" href="/assets/js/61.a80b132d.js"><link rel="prefetch" href="/assets/js/62.f0c93854.js"><link rel="prefetch" href="/assets/js/63.ead7ff84.js"><link rel="prefetch" href="/assets/js/64.b2c8ec27.js"><link rel="prefetch" href="/assets/js/65.83c390e6.js"><link rel="prefetch" href="/assets/js/66.4c1d38b4.js"><link rel="prefetch" href="/assets/js/67.c25329b8.js"><link rel="prefetch" href="/assets/js/68.4e96cb5e.js"><link rel="prefetch" href="/assets/js/69.2fc55249.js"><link rel="prefetch" href="/assets/js/7.b414af1c.js"><link rel="prefetch" href="/assets/js/70.252178bd.js"><link rel="prefetch" href="/assets/js/71.a83df8f5.js"><link rel="prefetch" href="/assets/js/72.b449071a.js"><link rel="prefetch" href="/assets/js/73.acd7402b.js"><link rel="prefetch" href="/assets/js/74.09b0dede.js"><link rel="prefetch" href="/assets/js/75.c5c0e01d.js"><link rel="prefetch" href="/assets/js/76.3c34bb03.js"><link rel="prefetch" href="/assets/js/77.a6fd78e3.js"><link rel="prefetch" href="/assets/js/78.64615b1e.js"><link rel="prefetch" href="/assets/js/79.23656ca0.js"><link rel="prefetch" href="/assets/js/8.698f90d4.js"><link rel="prefetch" href="/assets/js/80.7e2ecb3f.js"><link rel="prefetch" href="/assets/js/81.9cf6aa60.js"><link rel="prefetch" href="/assets/js/82.25f11624.js"><link rel="prefetch" href="/assets/js/83.80f3d293.js"><link rel="prefetch" href="/assets/js/84.f13207a4.js"><link rel="prefetch" href="/assets/js/85.8d9d653b.js"><link rel="prefetch" href="/assets/js/86.2562618d.js"><link rel="prefetch" href="/assets/js/87.02217e39.js"><link rel="prefetch" href="/assets/js/88.4068694f.js"><link rel="prefetch" href="/assets/js/89.60f7ba20.js"><link rel="prefetch" href="/assets/js/9.91408e8e.js"><link rel="prefetch" href="/assets/js/90.3c059814.js"><link rel="prefetch" href="/assets/js/91.7bec922c.js"><link rel="prefetch" href="/assets/js/92.6925b1e5.js"><link rel="prefetch" href="/assets/js/93.a70c8c29.js"><link rel="prefetch" href="/assets/js/94.64f62a4a.js"><link rel="prefetch" href="/assets/js/95.3c02a0f7.js"><link rel="prefetch" href="/assets/js/96.a4acb480.js"><link rel="prefetch" href="/assets/js/97.2191b75a.js"><link rel="prefetch" href="/assets/js/98.052a9504.js"><link rel="prefetch" href="/assets/js/99.1cef4cff.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d59960e4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-5bb33761><div data-v-5bb33761><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-5bb33761 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Blog of YHR</h3> <p class="description" data-v-59e6cb88>Blog of YHR</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2022
+      </a></span></div></div> <div class="hide" data-v-5bb33761><header class="navbar" data-v-5bb33761><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.jpg" alt="Blog of YHR" class="logo"> <span class="site-name">Blog of YHR</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-5bb33761></div> <aside class="sidebar" data-v-5bb33761><div class="personal-info-wrapper" data-v-1fad0c41 data-v-5bb33761><img src="/head.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Yang Haoran
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>177</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>73</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Ch05 Mongodb Replica Sets</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2022
+      </a></span></div></div> <div data-v-5bb33761><div data-v-5bb33761><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Ch05 Mongodb Replica Sets</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Yang Haoran</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>11/18/2022</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>MongoDB</span><span class="tag-item" data-v-8a445198>DB</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="副本集-replica-sets"><a href="#副本集-replica-sets" class="header-anchor">#</a> 副本集-Replica Sets</h1> <h3 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h3> <p>MongoDB中的副本集（Replica Set）是一组维护相同数据集的mongod服务。 副本集可提供冗余和高
+可用性，是所有生产部署的基础。</p> <p>也可以说，副本集类似于有自动故障恢复功能的主从集群。通俗的讲就是用多台机器进行同一数据的异
+步同步，从而使多台机器拥有同一数据的多个副本，并且当主库当掉时在不需要用户干预的情况下自动
+切换其他备份服务器做主库。而且还可以利用副本服务器做只读服务器，实现读写分离，提高负载。</p> <ul><li><p>冗余和数据可用性
+复制提供冗余并提高数据可用性。 通过在不同数据库服务器上提供多个数据副本，复制可提供一定级别
+的容错功能，以防止丢失单个数据库服务器。</p> <p>在某些情况下，复制可以提供增加的读取性能，因为客户端可以将读取操作发送到不同的服务上， 在不
+同数据中心维护数据副本可以增加分布式应用程序的数据位置和可用性。 您还可以为专用目的维护其他
+副本，例如灾难恢复，报告或备份。</p></li> <li><p>MongoDB中的复制
+副本集是一组维护相同数据集的mongod实例。 副本集包含多个数据承载节点和可选的一个仲裁节点。
+在承载数据的节点中，一个且仅一个成员被视为主节点，而其他节点被视为次要（从）节点。</p> <p>主节点接收所有写操作。 副本集只能有一个master能够确认具有{w：“most”}写入关注的写入; 虽然在某
+些情况下，另一个mongod实例可能暂时认为自己也是master。主要记录其操作日志中的数据集的所有
+更改，即oplog。</p></li></ul> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221118103757388.png" alt="image-20221118103757388"></p> <p>辅助(副本)节点复制主节点的oplog并将操作应用于其数据集，以使辅助节点的数据集反映主节点的数据
+集。 如果master不在，则符合条件的中学将举行选举以选出新的master。</p> <ul><li><p>主从复制和副本集区别</p> <p>主从集群和副本集最大的区别就是副本集没有固定的“主节点”，但是主从复制有；整个集群会选出一个“主节点”，当其挂掉后，又在剩下的从节点中选中其他节点为“主节点”，副本集总有一个活跃点(主、primary)和一个或多个备份节点(从、secondary)。</p></li></ul> <h3 id="副本集的三个角色"><a href="#副本集的三个角色" class="header-anchor">#</a> 副本集的三个角色</h3> <p>副本集有两种类型三种角色</p> <p>两种类型：</p> <ul><li><p>主节点（Primary）类型：数据操作的主要连接点，可读写。</p></li> <li><p>次要（辅助、从）节点（Secondaries）类型：数据冗余备份节点，可以读或选举。</p></li></ul> <p>三种角色：</p> <ul><li>主要成员（Primary）！：主要接收所有写操作。就是主节点。</li> <li>副本成员（Replicate）：从主节点通过复制操作以维护相同的数据集，即备份数据，不可写操作，但可
+以读操作（但需要配置）。是默认的一种从节点类型。</li> <li>仲裁者（Arbiter）：不保留任何数据的副本，只具有投票选举作用。当然也可以将仲裁服务器维护为副
+本集的一部分，即副本成员同时也可以是仲裁者。也是一种从节点类型。</li></ul> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221118105740396.png" alt="image-20221118105740396"></p> <p>关于仲裁者的额外说明：用来凑奇数个实例</p> <ul><li><p>您可以将额外的mongod实例添加到副本集作为仲裁者。 仲裁者不维护数据集。 仲裁者的目的是通过
+响应其他副本集成员的心跳和选举请求来维护副本集中的仲裁。 因为它们不存储数据集，所以仲裁器可
+以是提供副本集仲裁功能的好方法，其资源成本比具有数据集的全功能副本集成员更便宜。</p></li> <li><p>如果您的副本集具有偶数个成员，请添加仲裁者以获得主要选举中的“大多数”投票。 仲裁者不需要专用
+硬件。</p></li> <li><p>仲裁者将永远是仲裁者，而主要人员可能会退出并成为次要人员，而次要人员可能成为选举期间的主要
+人员。</p></li> <li><p>如果你的副本+主节点的个数是偶数，建议加一个仲裁者，形成奇数，容易满足大多数的投票。</p></li> <li><p>如果你的副本+主节点的个数是奇数，可以不加仲裁者。</p></li></ul> <h3 id="主节点的选举原则"><a href="#主节点的选举原则" class="header-anchor">#</a> 主节点的选举原则</h3> <p>MongoDB在副本集中，会自动进行主节点的选举，主节点选举的触发条件：
+1） 主节点故障
+2） 主节点网络不可达（默认心跳信息为10秒）
+3） 人工干预（rs.stepDown(600)）
+一旦触发选举，就要根据一定规则来选主节点。</p> <p>选举规则是根据票数来决定谁获胜：</p> <ul><li><p>票数最高，且获得了“大多数”成员的投票支持的节点获胜。
+“大多数”的定义为：假设复制集内投票成员数量为N，则大多数为 N/2 + 1。例如：3个投票成员，
+则大多数的值是2。当复制集内存活成员数量不足大多数时，整个复制集将无法选举出Primary，
+复制集将无法提供写服务，处于只读状态。</p></li> <li><p>若票数相同，且都获得了“大多数”成员的投票支持的，数据新的节点获胜。
+数据的新旧是通过操作日志oplog来对比的。</p></li></ul> <p>在获得票数的时候，优先级（priority）参数影响重大。
+可以通过设置优先级（priority）来设置额外票数。优先级即权重，取值为0-1000，相当于可额外增加
+0-1000的票数，优先级的值越大，就越可能获得多数成员的投票（votes）数。指定较高的值可使成员
+更有资格成为主要成员，更低的值可使成员更不符合条件。
+默认情况下，优先级的值是1</p> <h3 id="仲裁节点和主节点故障"><a href="#仲裁节点和主节点故障" class="header-anchor">#</a> 仲裁节点和主节点故障</h3> <p>先关掉仲裁节点27019，
+关掉现在的主节点27018</p> <ul><li><p>登录27017后，发现，27017仍然是从节点，副本集中没有主节点了，导致此时，副本集是只读状态，
+无法写入。</p></li> <li><p>为啥不选举了？因为27017的票数，没有获得大多数，即没有大于等于2，它只有默认的一票（优先级
+是1）</p></li> <li><p>如果要触发选举，随便加入一个成员即可。</p></li> <li><p>如果只加入27019仲裁节点成员，则主节点一定是27017，因为没得选了，仲裁节点不参与选举，
+但参与投票。</p></li> <li><p>如果只加入27018节点，会发起选举。因为27017和27018都是两票，则按照谁数据新，谁当主节
+点。</p></li></ul> <h2 id="仲裁节点和从节点故障"><a href="#仲裁节点和从节点故障" class="header-anchor">#</a> 仲裁节点和从节点故障</h2> <p>先关掉仲裁节点27019，
+关掉现在的副本节点27018</p> <ul><li>10秒后，27017主节点自动降级为副本节点。（服务降级）</li> <li>副本集不可写数据了，已经故障了。</li></ul> <h2 id="compass连接副本集"><a href="#compass连接副本集" class="header-anchor">#</a> Compass连接副本集</h2> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221118115734408.png" alt="image-20221118115734408"></p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221118115741020.png" alt="image-20221118115741020"></p> <h2 id="springdatamongodb连接副本集"><a href="#springdatamongodb连接副本集" class="header-anchor">#</a> SpringDataMongoDB连接副本集</h2> <p>副本集语法：</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code>mongodb<span class="token punctuation">:</span>//host1<span class="token punctuation">,</span>host2<span class="token punctuation">,</span>host3/articledb<span class="token punctuation">?</span>
+connect=replicaSet<span class="token important">&amp;slaveOk=true&amp;replicaSet=副本集名字</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>其中：</p> <ul><li>slaveOk=true：开启副本节点读的功能，可实现读写分离。</li> <li>connect=replicaSet：自动到副本集中选择读写的主机。如果slaveOK是打开的，则实现了读写分离</li></ul> <p>【示例】
+连接 replica set 三台服务器 (端口 27017, 27018, 和27019)，直接连接第一个服务器，无论是replica
+set一部分或者主服务器或者从服务器，写入操作应用在主服务器 并且分布查询到从服务器。
+修改配置文件application.yml</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+<span class="token comment">#数据源配置</span>
+<span class="token key atrule">data</span><span class="token punctuation">:</span>
+<span class="token key atrule">mongodb</span><span class="token punctuation">:</span>
+<span class="token comment"># 主机地址</span>
+<span class="token comment"># host: 180.76.159.126</span>
+<span class="token comment"># 数据库</span>
+<span class="token comment"># database: articledb</span>
+<span class="token comment"># 默认端口是27017</span>
+<span class="token comment"># port: 27017</span>
+<span class="token comment">#也可以使用uri连接</span>
+<span class="token comment">#uri: mongodb://192.168.40.134:27017/articledb</span>
+<span class="token comment"># 副本集的连接字符串</span>
+<span class="token key atrule">uri</span><span class="token punctuation">:</span>
+mongodb<span class="token punctuation">:</span>//180.76.159.126<span class="token punctuation">:</span><span class="token number">27017</span><span class="token punctuation">,</span>180.76.159.126<span class="token punctuation">:</span><span class="token number">27018</span><span class="token punctuation">,</span>180.76.159.126<span class="token punctuation">:</span>27019/article
+db<span class="token punctuation">?</span>connect=replicaSet<span class="token important">&amp;slaveOk=true&amp;replicaSet=myrs</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>注意：
+主机必须是副本集中所有的主机，包括主节点、副本节点、仲裁节点。
+SpringDataMongoDB自动实现了读写分离：</p> <ul><li>写操作时，只打开主节点连接</li> <li>读操作是，同时打开主节点和从节点连接，但使用从节点获取数据</li></ul> <p>完整的连接字符串的参考
+MongoDB客户端连接语法：</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code>mongodb://<span class="token punctuation">[</span>username:password@<span class="token punctuation">]</span>host1<span class="token punctuation">[</span>:port1<span class="token punctuation">]</span><span class="token punctuation">[</span>,host2<span class="token punctuation">[</span>:port2<span class="token punctuation">]</span>,<span class="token punctuation">..</span>.<span class="token punctuation">[</span>,hostN<span class="token punctuation">[</span>:portN<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>/<span class="token punctuation">[</span>database<span class="token punctuation">]</span><span class="token punctuation">[</span>?options<span class="token punctuation">]</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li><p>mongodb:// 这是固定的格式，必须要指定。</p></li> <li><p>username:password@ 可选项，如果设置，在连接数据库服务器之后，驱动都会尝试登陆这个数据库</p></li> <li><p>host1 必须的指定至少一个host, host1 是这个URI唯一要填写的。它指定了要连接服务器的地址。如果要连接复制集，请指定多个主机地址。</p></li> <li><p>portX 可选的指定端口，如果不填，默认为27017</p></li> <li><p>/database 如果指定username:password@，连接并验证登陆指定数据库。若不指定，默认打开test 数据库。</p></li> <li><p>?options 是连接选项。如果不使用/database，则前面需要加上/。所有连接选项都是键值对
+name=value，键值对之间通过&amp;或;（分号）隔开</p></li></ul> <p>标准的连接格式包含了多个选项(options)，如下所示：</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221118120111565.png" alt="image-20221118120111565"></p></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-ac050c62><li class="level-3" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#简介" class="sidebar-link reco-side-简介" data-v-ac050c62>简介</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#副本集的三个角色" class="sidebar-link reco-side-副本集的三个角色" data-v-ac050c62>副本集的三个角色</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#主节点的选举原则" class="sidebar-link reco-side-主节点的选举原则" data-v-ac050c62>主节点的选举原则</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#仲裁节点和主节点故障" class="sidebar-link reco-side-仲裁节点和主节点故障" data-v-ac050c62>仲裁节点和主节点故障</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#仲裁节点和从节点故障" class="sidebar-link reco-side-仲裁节点和从节点故障" data-v-ac050c62>仲裁节点和从节点故障</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#compass连接副本集" class="sidebar-link reco-side-compass连接副本集" data-v-ac050c62>Compass连接副本集</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/MongoDB/Ch05_MongoDB_Cluster.html#springdatamongodb连接副本集" class="sidebar-link reco-side-springdatamongodb连接副本集" data-v-ac050c62>SpringDataMongoDB连接副本集</a></li></ul></main></div> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/周杰伦 - .烟花易冷.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/note.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/note.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>烟花易冷</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>Jay Zhou</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.16e62a1e.js" defer></script><script src="/assets/js/3.f7fab766.js" defer></script><script src="/assets/js/1.2b4836f4.js" defer></script><script src="/assets/js/109.4ea1d6c9.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ch13 Pod lifespan | Blog of YHR</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/head.ico">
+    <meta name="description" content="Blog of YHR">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.d59960e4.css" as="style"><link rel="preload" href="/assets/js/app.16e62a1e.js" as="script"><link rel="preload" href="/assets/js/3.f7fab766.js" as="script"><link rel="preload" href="/assets/js/1.2b4836f4.js" as="script"><link rel="preload" href="/assets/js/89.60f7ba20.js" as="script"><link rel="prefetch" href="/assets/js/10.62bc4096.js"><link rel="prefetch" href="/assets/js/100.33ef7509.js"><link rel="prefetch" href="/assets/js/101.419c44c1.js"><link rel="prefetch" href="/assets/js/102.922755e1.js"><link rel="prefetch" href="/assets/js/103.a47c852e.js"><link rel="prefetch" href="/assets/js/104.96462a62.js"><link rel="prefetch" href="/assets/js/105.62e4133f.js"><link rel="prefetch" href="/assets/js/106.3cddfc61.js"><link rel="prefetch" href="/assets/js/107.9f3d32e8.js"><link rel="prefetch" href="/assets/js/108.22a3f665.js"><link rel="prefetch" href="/assets/js/109.4ea1d6c9.js"><link rel="prefetch" href="/assets/js/11.130817a7.js"><link rel="prefetch" href="/assets/js/110.49d506ff.js"><link rel="prefetch" href="/assets/js/111.0174b5ec.js"><link rel="prefetch" href="/assets/js/112.54a7e6f0.js"><link rel="prefetch" href="/assets/js/113.0ca614f3.js"><link rel="prefetch" href="/assets/js/114.ea2c1a18.js"><link rel="prefetch" href="/assets/js/115.fec9fc26.js"><link rel="prefetch" href="/assets/js/116.c64774a5.js"><link rel="prefetch" href="/assets/js/117.4deb59cb.js"><link rel="prefetch" href="/assets/js/118.907403a6.js"><link rel="prefetch" href="/assets/js/119.4c0a4bb6.js"><link rel="prefetch" href="/assets/js/12.24bd718c.js"><link rel="prefetch" href="/assets/js/120.27412c3f.js"><link rel="prefetch" href="/assets/js/121.df0e1279.js"><link rel="prefetch" href="/assets/js/122.3c9e250c.js"><link rel="prefetch" href="/assets/js/123.6f55b7e8.js"><link rel="prefetch" href="/assets/js/124.16f632e6.js"><link rel="prefetch" href="/assets/js/125.f749d8eb.js"><link rel="prefetch" href="/assets/js/126.51da1623.js"><link rel="prefetch" href="/assets/js/127.1ee33951.js"><link rel="prefetch" href="/assets/js/128.ae8c0e1e.js"><link rel="prefetch" href="/assets/js/129.c0c572cf.js"><link rel="prefetch" href="/assets/js/13.fbb7a095.js"><link rel="prefetch" href="/assets/js/130.eb05cf11.js"><link rel="prefetch" href="/assets/js/131.f19ab208.js"><link rel="prefetch" href="/assets/js/132.392fbcc1.js"><link rel="prefetch" href="/assets/js/133.c06eb5fd.js"><link rel="prefetch" href="/assets/js/134.48365cf1.js"><link rel="prefetch" href="/assets/js/135.39ac2996.js"><link rel="prefetch" href="/assets/js/136.166e8908.js"><link rel="prefetch" href="/assets/js/137.26cfba85.js"><link rel="prefetch" href="/assets/js/138.b39c0b4f.js"><link rel="prefetch" href="/assets/js/139.17c7b032.js"><link rel="prefetch" href="/assets/js/14.a25764bd.js"><link rel="prefetch" href="/assets/js/140.e468387b.js"><link rel="prefetch" href="/assets/js/141.0b9c01ea.js"><link rel="prefetch" href="/assets/js/142.2e5f2bd2.js"><link rel="prefetch" href="/assets/js/143.736eeef4.js"><link rel="prefetch" href="/assets/js/144.c2d117c7.js"><link rel="prefetch" href="/assets/js/145.4d6ed98a.js"><link rel="prefetch" href="/assets/js/146.b808a027.js"><link rel="prefetch" href="/assets/js/147.973d4ef8.js"><link rel="prefetch" href="/assets/js/148.d45071eb.js"><link rel="prefetch" href="/assets/js/149.7017165f.js"><link rel="prefetch" href="/assets/js/15.6cf718cf.js"><link rel="prefetch" href="/assets/js/150.7b061830.js"><link rel="prefetch" href="/assets/js/151.885b2073.js"><link rel="prefetch" href="/assets/js/152.47a0bb77.js"><link rel="prefetch" href="/assets/js/153.e2421cf8.js"><link rel="prefetch" href="/assets/js/154.a300ac19.js"><link rel="prefetch" href="/assets/js/155.9902c652.js"><link rel="prefetch" href="/assets/js/156.5550793c.js"><link rel="prefetch" href="/assets/js/157.23eea347.js"><link rel="prefetch" href="/assets/js/158.2d902b1e.js"><link rel="prefetch" href="/assets/js/159.ab288f97.js"><link rel="prefetch" href="/assets/js/16.b15903f1.js"><link rel="prefetch" href="/assets/js/160.7d92d460.js"><link rel="prefetch" href="/assets/js/161.27ca688a.js"><link rel="prefetch" href="/assets/js/162.cfb1e499.js"><link rel="prefetch" href="/assets/js/163.1593b5b4.js"><link rel="prefetch" href="/assets/js/164.ae6559d5.js"><link rel="prefetch" href="/assets/js/165.76303240.js"><link rel="prefetch" href="/assets/js/166.8c2d8d91.js"><link rel="prefetch" href="/assets/js/167.94299f76.js"><link rel="prefetch" href="/assets/js/168.8b2787a7.js"><link rel="prefetch" href="/assets/js/169.b12ebad7.js"><link rel="prefetch" href="/assets/js/17.cc348de5.js"><link rel="prefetch" href="/assets/js/170.95a6e737.js"><link rel="prefetch" href="/assets/js/171.af4dd23e.js"><link rel="prefetch" href="/assets/js/172.a61b39a5.js"><link rel="prefetch" href="/assets/js/173.2595fee1.js"><link rel="prefetch" href="/assets/js/174.d3eb2121.js"><link rel="prefetch" href="/assets/js/175.39d51942.js"><link rel="prefetch" href="/assets/js/176.d30a171e.js"><link rel="prefetch" href="/assets/js/177.0aea5380.js"><link rel="prefetch" href="/assets/js/178.bb8f2d6a.js"><link rel="prefetch" href="/assets/js/179.6b7a9fa5.js"><link rel="prefetch" href="/assets/js/18.4dcc5060.js"><link rel="prefetch" href="/assets/js/180.bd756777.js"><link rel="prefetch" href="/assets/js/181.2d63b01c.js"><link rel="prefetch" href="/assets/js/182.d1ec5d42.js"><link rel="prefetch" href="/assets/js/183.b194a49b.js"><link rel="prefetch" href="/assets/js/184.3461c05b.js"><link rel="prefetch" href="/assets/js/185.3aeef8a5.js"><link rel="prefetch" href="/assets/js/186.1ad0a08c.js"><link rel="prefetch" href="/assets/js/187.b02d9649.js"><link rel="prefetch" href="/assets/js/19.d3303b39.js"><link rel="prefetch" href="/assets/js/20.48a565ed.js"><link rel="prefetch" href="/assets/js/21.ad358693.js"><link rel="prefetch" href="/assets/js/22.af306ccf.js"><link rel="prefetch" href="/assets/js/23.e0362658.js"><link rel="prefetch" href="/assets/js/24.6653ac7e.js"><link rel="prefetch" href="/assets/js/25.dc7570f8.js"><link rel="prefetch" href="/assets/js/26.0fcebc62.js"><link rel="prefetch" href="/assets/js/27.f659024e.js"><link rel="prefetch" href="/assets/js/28.74cae363.js"><link rel="prefetch" href="/assets/js/29.ad31318f.js"><link rel="prefetch" href="/assets/js/30.dfafb7d7.js"><link rel="prefetch" href="/assets/js/31.1b2a0d00.js"><link rel="prefetch" href="/assets/js/32.76ae4ec8.js"><link rel="prefetch" href="/assets/js/33.af3f8f26.js"><link rel="prefetch" href="/assets/js/34.24379e9f.js"><link rel="prefetch" href="/assets/js/35.f786d97f.js"><link rel="prefetch" href="/assets/js/36.2f47f285.js"><link rel="prefetch" href="/assets/js/37.a9817fe5.js"><link rel="prefetch" href="/assets/js/38.a7401e08.js"><link rel="prefetch" href="/assets/js/39.56c9d6ec.js"><link rel="prefetch" href="/assets/js/4.bb98ad1b.js"><link rel="prefetch" href="/assets/js/40.bce88960.js"><link rel="prefetch" href="/assets/js/41.4b6acc7d.js"><link rel="prefetch" href="/assets/js/42.27724809.js"><link rel="prefetch" href="/assets/js/43.3733dcf6.js"><link rel="prefetch" href="/assets/js/44.0f215aff.js"><link rel="prefetch" href="/assets/js/45.229a34f2.js"><link rel="prefetch" href="/assets/js/46.b79d0d94.js"><link rel="prefetch" href="/assets/js/47.e5995a28.js"><link rel="prefetch" href="/assets/js/48.2688355d.js"><link rel="prefetch" href="/assets/js/49.ca67ae90.js"><link rel="prefetch" href="/assets/js/5.cf61d0dc.js"><link rel="prefetch" href="/assets/js/50.ec3d5a34.js"><link rel="prefetch" href="/assets/js/51.c3d3f38c.js"><link rel="prefetch" href="/assets/js/52.c6cd86fd.js"><link rel="prefetch" href="/assets/js/53.8b2d0232.js"><link rel="prefetch" href="/assets/js/54.fbf1c554.js"><link rel="prefetch" href="/assets/js/55.76d57768.js"><link rel="prefetch" href="/assets/js/56.1cf52a13.js"><link rel="prefetch" href="/assets/js/57.1e553623.js"><link rel="prefetch" href="/assets/js/58.7fce5dd6.js"><link rel="prefetch" href="/assets/js/59.c10b5db5.js"><link rel="prefetch" href="/assets/js/6.c2517fa8.js"><link rel="prefetch" href="/assets/js/60.f59a8084.js"><link rel="prefetch" href="/assets/js/61.a80b132d.js"><link rel="prefetch" href="/assets/js/62.f0c93854.js"><link rel="prefetch" href="/assets/js/63.ead7ff84.js"><link rel="prefetch" href="/assets/js/64.b2c8ec27.js"><link rel="prefetch" href="/assets/js/65.83c390e6.js"><link rel="prefetch" href="/assets/js/66.4c1d38b4.js"><link rel="prefetch" href="/assets/js/67.c25329b8.js"><link rel="prefetch" href="/assets/js/68.4e96cb5e.js"><link rel="prefetch" href="/assets/js/69.2fc55249.js"><link rel="prefetch" href="/assets/js/7.b414af1c.js"><link rel="prefetch" href="/assets/js/70.252178bd.js"><link rel="prefetch" href="/assets/js/71.a83df8f5.js"><link rel="prefetch" href="/assets/js/72.b449071a.js"><link rel="prefetch" href="/assets/js/73.acd7402b.js"><link rel="prefetch" href="/assets/js/74.09b0dede.js"><link rel="prefetch" href="/assets/js/75.c5c0e01d.js"><link rel="prefetch" href="/assets/js/76.3c34bb03.js"><link rel="prefetch" href="/assets/js/77.a6fd78e3.js"><link rel="prefetch" href="/assets/js/78.64615b1e.js"><link rel="prefetch" href="/assets/js/79.23656ca0.js"><link rel="prefetch" href="/assets/js/8.698f90d4.js"><link rel="prefetch" href="/assets/js/80.7e2ecb3f.js"><link rel="prefetch" href="/assets/js/81.9cf6aa60.js"><link rel="prefetch" href="/assets/js/82.25f11624.js"><link rel="prefetch" href="/assets/js/83.80f3d293.js"><link rel="prefetch" href="/assets/js/84.f13207a4.js"><link rel="prefetch" href="/assets/js/85.8d9d653b.js"><link rel="prefetch" href="/assets/js/86.2562618d.js"><link rel="prefetch" href="/assets/js/87.02217e39.js"><link rel="prefetch" href="/assets/js/88.4068694f.js"><link rel="prefetch" href="/assets/js/9.91408e8e.js"><link rel="prefetch" href="/assets/js/90.3c059814.js"><link rel="prefetch" href="/assets/js/91.7bec922c.js"><link rel="prefetch" href="/assets/js/92.6925b1e5.js"><link rel="prefetch" href="/assets/js/93.a70c8c29.js"><link rel="prefetch" href="/assets/js/94.64f62a4a.js"><link rel="prefetch" href="/assets/js/95.3c02a0f7.js"><link rel="prefetch" href="/assets/js/96.a4acb480.js"><link rel="prefetch" href="/assets/js/97.2191b75a.js"><link rel="prefetch" href="/assets/js/98.052a9504.js"><link rel="prefetch" href="/assets/js/99.1cef4cff.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d59960e4.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-5bb33761><div data-v-5bb33761><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-5bb33761 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Blog of YHR</h3> <p class="description" data-v-59e6cb88>Blog of YHR</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2022
+      </a></span></div></div> <div class="hide" data-v-5bb33761><header class="navbar" data-v-5bb33761><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.jpg" alt="Blog of YHR" class="logo"> <span class="site-name">Blog of YHR</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-5bb33761></div> <aside class="sidebar" data-v-5bb33761><div class="personal-info-wrapper" data-v-1fad0c41 data-v-5bb33761><img src="/head.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Yang Haoran
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>177</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>73</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Ch13 Pod lifespan</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2022
+      </a></span></div></div> <div data-v-5bb33761><div data-v-5bb33761><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Ch13 Pod lifespan</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Yang Haoran</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>4/30/2022</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>K8s</span><span class="tag-item" data-v-8a445198>Kubernetes</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="pod-lifespan"><a href="#pod-lifespan" class="header-anchor">#</a> Pod lifespan</h1> <p>我们一般将pod对象从创建至终的这段时间范围称为pod的生命周期，它主要包含下面的过程：</p> <ul><li>pod创建过程</li> <li>运行初始化容器（init container）过程</li> <li>运行主容器（main container）
+<ul><li>容器启动后钩子（post start）、容器终止前钩子（pre stop）</li> <li>容器的存活性探测（liveness probe）、就绪性探测（readiness probe）</li></ul></li> <li>pod终止过程</li></ul> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20200412111402706-1626782188724.png" alt="image-20200412111402706"></p> <p>在整个生命周期中，Pod会出现5种<strong>状态</strong>（<strong>相位</strong>），分别如下：</p> <ul><li>挂起（Pending）：apiserver已经创建了pod资源对象，但它尚未被调度完成或者仍处于下载镜像的过程中</li> <li>运行中（Running）：pod已经被调度至某节点，并且所有容器都已经被kubelet创建完成</li> <li>成功（Succeeded）：pod中的所有容器都已经成功终止并且不会被重启</li> <li>失败（Failed）：所有容器都已经终止，但至少有一个容器终止失败，即容器返回了非0值的退出状态</li> <li>未知（Unknown）：apiserver无法正常获取到pod对象的状态信息，通常由网络通信失败所导致</li></ul> <h2 id="_1-pod的创建和终止"><a href="#_1-pod的创建和终止" class="header-anchor">#</a> 1. pod的创建和终止</h2> <p><strong>pod的创建过程</strong></p> <ol><li><p>用户通过kubectl或其他api客户端提交需要创建的pod信息给apiServer</p></li> <li><p>apiServer开始生成pod对象的信息，并将信息存入etcd，然后返回确认信息至客户端</p></li> <li><p>apiServer开始反映etcd中的pod对象的变化，其它组件使用watch机制来跟踪检查apiServer上的变动</p></li> <li><p>scheduler发现有新的pod对象要创建，开始为Pod分配主机并将结果信息更新至apiServer</p></li> <li><p>node节点上的kubelet发现有pod调度过来，尝试调用docker启动容器，并将结果回送至apiServer</p></li> <li><p>apiServer将接收到的pod状态信息存入etcd中</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20200406184656917.png" alt="image-20200406184656917"></p></li></ol> <p><strong>pod的终止过程</strong></p> <ol><li>用户向apiServer发送删除pod对象的命令</li> <li>apiServer中的pod对象信息会随着时间的推移而更新，在宽限期内（默认30s），pod被视为dead</li> <li>将pod标记为terminating状态</li> <li>kubelet在监控到pod对象转为terminating状态的同时启动pod关闭过程</li> <li>端点控制器监控到pod对象的关闭行为时将其从所有匹配到此端点的service资源的端点列表中移除</li> <li>如果当前pod对象定义了preStop钩子处理器，则在其标记为terminating后即会以同步的方式启动执行</li> <li>pod对象中的容器进程收到停止信号</li> <li>宽限期结束后，若pod中还存在仍在运行的进程，那么pod对象会收到立即终止的信号</li> <li>kubelet请求apiServer将此pod资源的宽限期设置为0从而完成删除操作，此时pod对于用户已不可见</li></ol> <h2 id="_2-初始化容器"><a href="#_2-初始化容器" class="header-anchor">#</a> 2. 初始化容器</h2> <p>初始化容器是在pod的主容器启动之前要运行的容器，主要是做一些主容器的前置工作，它具有两大特征：</p> <ol><li>初始化容器必须运行完成直至结束，若某初始化容器运行失败，那么kubernetes需要重启它直到成功完成</li> <li>初始化容器必须按照定义的顺序执行，当且仅当前一个成功之后，后面的一个才能运行</li></ol> <p>初始化容器有很多的应用场景，下面列出的是最常见的几个：</p> <ul><li>提供主容器镜像中不具备的工具程序或自定义代码</li> <li>初始化容器要先于应用容器串行启动并运行完成，因此可用于延后应用容器的启动直至其依赖的条件得到满足</li></ul> <p>接下来做一个案例，模拟下面这个需求：</p> <p>假设要以主容器来运行nginx，但是要求在运行nginx之前先要能够连接上mysql和redis所在服务器</p> <p>为了简化测试，事先规定好mysql<code>(192.168.90.14)</code>和redis<code>(192.168.90.15)</code>服务器的地址</p> <p>创建pod-initcontainer.yaml，内容如下：</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>initcontainer
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> main<span class="token punctuation">-</span>container
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span> 
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">initContainers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> test<span class="token punctuation">-</span>mysql
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> busybox<span class="token punctuation">:</span><span class="token number">1.30</span>
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'until ping 192.168.90.14 -c 1 ; do echo waiting for mysql...; sleep 2; done;'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> test<span class="token punctuation">-</span>redis
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> busybox<span class="token punctuation">:</span><span class="token number">1.30</span>
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'sh'</span><span class="token punctuation">,</span> <span class="token string">'-c'</span><span class="token punctuation">,</span> <span class="token string">'until ping 192.168.90.15 -c 1 ; do echo waiting for reids...; sleep 2; done;'</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建pod</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f pod-initcontainer.yaml</span>
+pod/pod-initcontainer created
+
+<span class="token comment"># 查看pod状态</span>
+<span class="token comment"># 发现pod卡在启动第一个初始化容器过程中，后面的容器不会运行</span>
+root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe pod  pod-initcontainer -n dev</span>
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  49s   default-scheduler  Successfully assigned dev/pod-initcontainer to node1
+  Normal  Pulled     48s   kubelet, node1     Container image <span class="token string">&quot;busybox:1.30&quot;</span> already present on machine
+  Normal  Created    48s   kubelet, node1     Created container test-mysql
+  Normal  Started    48s   kubelet, node1     Started container test-mysql
+
+<span class="token comment"># 动态查看pod</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pods pod-initcontainer -n dev -w</span>
+NAME                             READY   STATUS     RESTARTS   AGE
+pod-initcontainer                <span class="token number">0</span>/1     Init:0/2   <span class="token number">0</span>          15s
+pod-initcontainer                <span class="token number">0</span>/1     Init:1/2   <span class="token number">0</span>          52s
+pod-initcontainer                <span class="token number">0</span>/1     Init:1/2   <span class="token number">0</span>          53s
+pod-initcontainer                <span class="token number">0</span>/1     PodInitializing   <span class="token number">0</span>          89s
+pod-initcontainer                <span class="token number">1</span>/1     Running           <span class="token number">0</span>          90s
+
+<span class="token comment"># 接下来新开一个shell，为当前服务器新增两个ip，观察pod的变化</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># ifconfig ens33:1 192.168.90.14 netmask 255.255.255.0 up</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># ifconfig ens33:2 192.168.90.15 netmask 255.255.255.0 up</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h2 id="_3-钩子函数"><a href="#_3-钩子函数" class="header-anchor">#</a> 3. 钩子函数</h2> <p>钩子函数能够感知自身生命周期中的事件，并在相应的时刻到来时运行用户指定的程序代码。</p> <p>kubernetes在主容器的启动之后和停止之前提供了两个钩子函数：</p> <ul><li>post start：容器创建之后执行，如果失败了会重启容器</li> <li>pre stop ：容器终止之前执行，执行完成之后容器将成功终止，在其完成之前会阻塞删除容器的操作</li></ul> <p>钩子处理器支持使用下面三种方式定义动作：</p> <ul><li><p>Exec命令：在容器内执行一次命令</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code>……
+  <span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
+    <span class="token key atrule">postStart</span><span class="token punctuation">:</span> 
+      <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+        <span class="token key atrule">command</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> cat
+        <span class="token punctuation">-</span> /tmp/healthy
+……
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></li> <li><p>TCPSocket：在当前容器尝试访问指定的socket</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code>……      
+  <span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
+    <span class="token key atrule">postStart</span><span class="token punctuation">:</span>
+      <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+……
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li> <li><p>HTTPGet：在当前容器中向某url发起http请求，如果成功返回就启动容器</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code>……
+  <span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
+    <span class="token key atrule">postStart</span><span class="token punctuation">:</span>
+      <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> / <span class="token comment">#URI地址</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span> <span class="token comment">#端口号</span>
+        <span class="token key atrule">host</span><span class="token punctuation">:</span> 192.168.5.3 <span class="token comment">#主机地址</span>
+        <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP <span class="token comment">#支持的协议，http或者https</span>
+……
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></li></ul> <p>接下来，以exec方式为例，演示下钩子函数的使用，创建pod-hook-exec.yaml文件，内容如下：（-c的意思是以管理员身份运行）</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>hook<span class="token punctuation">-</span>exec
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> main<span class="token punctuation">-</span>container
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
+      <span class="token key atrule">postStart</span><span class="token punctuation">:</span> 
+        <span class="token key atrule">exec</span><span class="token punctuation">:</span> <span class="token comment"># 在容器启动的时候执行一个命令，修改掉nginx的默认首页内容</span>
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/bin/sh&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;-c&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;echo postStart... &gt;  /usr/share/nginx/html/index.html&quot;</span><span class="token punctuation">]</span>
+      <span class="token key atrule">preStop</span><span class="token punctuation">:</span>
+        <span class="token key atrule">exec</span><span class="token punctuation">:</span> <span class="token comment"># 在容器停止之前停止nginx服务</span>
+          <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/usr/sbin/nginx&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;-s&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;quit&quot;</span><span class="token punctuation">]</span>
+<span class="token comment"># 创建pod</span>
+<span class="token punctuation">[</span>root@k8s<span class="token punctuation">-</span>master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f pod-hook-exec.yaml</span>
+pod/pod<span class="token punctuation">-</span>hook<span class="token punctuation">-</span>exec created
+
+<span class="token comment"># 查看pod</span>
+<span class="token punctuation">[</span>root@k8s<span class="token punctuation">-</span>master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pods  pod-hook-exec -n dev -o wide</span>
+NAME           READY   STATUS     RESTARTS   AGE    IP            NODE    
+pod<span class="token punctuation">-</span>hook<span class="token punctuation">-</span>exec  1/1     Running    0          29s    10.244.2.48   node2   
+
+<span class="token comment"># 访问pod</span>
+<span class="token punctuation">[</span>root@k8s<span class="token punctuation">-</span>master01 ~<span class="token punctuation">]</span><span class="token comment"># curl 10.244.2.48</span>
+postStart<span class="token punctuation">...</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h2 id="_4-容器探测"><a href="#_4-容器探测" class="header-anchor">#</a> 4. 容器探测</h2> <p>容器探测用于检测容器中的应用实例是否正常工作，是保障业务可用性的一种传统机制。如果经过探测，实例的状态不符合预期，那么kubernetes就会把该问题实例&quot; 摘除 &quot;，不承担业务流量。kubernetes提供了两种探针来实现容器探测，分别是：</p> <ul><li>liveness probes：存活性探针，用于检测应用实例当前是否处于正常运行状态，如果不是，k8s会重启容器</li> <li>readiness probes：就绪性探针，用于检测应用实例当前是否可以接收请求，如果不能，k8s不会转发流量</li></ul> <blockquote><p>livenessProbe 决定是否重启容器，readinessProbe 决定是否将请求转发给容器。</p></blockquote> <p>上面两种探针目前均支持三种探测方式：</p> <ul><li><p>Exec命令：在容器内执行一次命令，如果命令执行的退出码为0，则认为程序正常，否则不正常</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code>……
+  <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+    <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">command</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> cat
+      <span class="token punctuation">-</span> /tmp/healthy
+……
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></li> <li><p>TCPSocket：将会尝试访问一个用户容器的端口，如果能够建立这条连接，则认为程序正常，否则不正常</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code>……      
+  <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+    <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+……
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li> <li><p>HTTPGet：调用容器内Web应用的URL，如果返回的状态码在200和399之间，则认为程序正常，否则不正常</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code>……
+  <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+    <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+      <span class="token key atrule">path</span><span class="token punctuation">:</span> / <span class="token comment">#URI地址</span>
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span> <span class="token comment">#端口号</span>
+      <span class="token key atrule">host</span><span class="token punctuation">:</span> 127.0.0.1 <span class="token comment">#主机地址</span>
+      <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP <span class="token comment">#支持的协议，http或者https</span>
+……
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div></li></ul> <p>下面以liveness probes为例，做几个演示：</p> <p><strong>方式一：Exec</strong></p> <p>创建pod-liveness-exec.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>liveness<span class="token punctuation">-</span>exec
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span> 
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">exec</span><span class="token punctuation">:</span>
+        <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;/bin/cat&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;/tmp/hello.txt&quot;</span><span class="token punctuation">]</span> <span class="token comment"># 执行一个查看文件的命令，但是没有此文档，所以会执行失败</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>创建pod，观察效果</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建Pod</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f pod-liveness-exec.yaml</span>
+pod/pod-liveness-exec created
+
+<span class="token comment"># 查看Pod详情</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe pods pod-liveness-exec -n dev</span>
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+  Normal   Created    20s <span class="token punctuation">(</span>x2 over 50s<span class="token punctuation">)</span>  kubelet, node1     Created container nginx
+  Normal   Started    20s <span class="token punctuation">(</span>x2 over 50s<span class="token punctuation">)</span>  kubelet, node1     Started container nginx
+  Normal   Killing    20s                kubelet, node1     Container nginx failed liveness probe, will be restarted
+  Warning  Unhealthy  0s <span class="token punctuation">(</span>x5 over 40s<span class="token punctuation">)</span>   kubelet, node1     Liveness probe failed: cat: can<span class="token string">'t open '</span>/tmp/hello11.txt': No such <span class="token function">file</span> or directory
+  
+<span class="token comment"># 观察上面的信息就会发现nginx容器启动之后就进行了健康检查</span>
+<span class="token comment"># 检查失败之后，容器被kill掉，然后尝试进行重启（这是重启策略的作用，后面讲解）</span>
+<span class="token comment"># 稍等一会之后，再观察pod信息，就可以看到RESTARTS不再是0，而是一直增长</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pods pod-liveness-exec -n dev</span>
+NAME                READY   STATUS             RESTARTS   AGE
+pod-liveness-exec   <span class="token number">0</span>/1     CrashLoopBackOff   <span class="token number">2</span>          3m19s
+
+<span class="token comment"># 当然接下来，可以修改成一个存在的文件，比如/tmp/hello.txt，再试，结果就正常了......</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>方式二：TCPSocket</strong></p> <p>创建pod-liveness-tcpsocket.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>liveness<span class="token punctuation">-</span>tcpsocket
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span> 
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">tcpSocket</span><span class="token punctuation">:</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span> <span class="token comment"># 尝试访问8080端口</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>创建pod，观察效果</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建Pod</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f pod-liveness-tcpsocket.yaml</span>
+pod/pod-liveness-tcpsocket created
+
+<span class="token comment"># 查看Pod详情</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe pods pod-liveness-tcpsocket -n dev</span>
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+  Normal   Scheduled  31s                            default-scheduler  Successfully assigned dev/pod-liveness-tcpsocket to node2
+  Normal   Pulled     <span class="token operator">&lt;</span>invalid<span class="token operator">&gt;</span>                      kubelet, node2     Container image <span class="token string">&quot;nginx:1.17.1&quot;</span> already present on machine
+  Normal   Created    <span class="token operator">&lt;</span>invalid<span class="token operator">&gt;</span>                      kubelet, node2     Created container nginx
+  Normal   Started    <span class="token operator">&lt;</span>invalid<span class="token operator">&gt;</span>                      kubelet, node2     Started container nginx
+  Warning  Unhealthy  <span class="token operator">&lt;</span>invalid<span class="token operator">&gt;</span> <span class="token punctuation">(</span>x2 over <span class="token operator">&lt;</span>invalid<span class="token operator">&gt;</span><span class="token punctuation">)</span>  kubelet, node2     Liveness probe failed: dial tcp <span class="token number">10.244</span>.2.44:8080: connect: connection refused
+  
+<span class="token comment"># 观察上面的信息，发现尝试访问8080端口,但是失败了</span>
+<span class="token comment"># 稍等一会之后，再观察pod信息，就可以看到RESTARTS不再是0，而是一直增长</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pods pod-liveness-tcpsocket  -n dev</span>
+NAME                     READY   STATUS             RESTARTS   AGE
+pod-liveness-tcpsocket   <span class="token number">0</span>/1     CrashLoopBackOff   <span class="token number">2</span>          3m19s
+
+<span class="token comment"># 当然接下来，可以修改成一个可以访问的端口，比如80，再试，结果就正常了......</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>方式三：HTTPGet</strong></p> <p>创建pod-liveness-httpget.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>liveness<span class="token punctuation">-</span>httpget
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>  <span class="token comment"># 其实就是访问http://127.0.0.1:80/hello  </span>
+        <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP <span class="token comment">#支持的协议，http或者https</span>
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span> <span class="token comment">#端口号</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /hello <span class="token comment">#URI地址</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>创建pod，观察效果</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建Pod</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f pod-liveness-httpget.yaml</span>
+pod/pod-liveness-httpget created
+
+<span class="token comment"># 查看Pod详情</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe pod pod-liveness-httpget -n dev</span>
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.
+  Normal   Pulled     6s <span class="token punctuation">(</span>x3 over 64s<span class="token punctuation">)</span>  kubelet, node1     Container image <span class="token string">&quot;nginx:1.17.1&quot;</span> already present on machine
+  Normal   Created    6s <span class="token punctuation">(</span>x3 over 64s<span class="token punctuation">)</span>  kubelet, node1     Created container nginx
+  Normal   Started    6s <span class="token punctuation">(</span>x3 over 63s<span class="token punctuation">)</span>  kubelet, node1     Started container nginx
+  Warning  Unhealthy  6s <span class="token punctuation">(</span>x6 over 56s<span class="token punctuation">)</span>  kubelet, node1     Liveness probe failed: HTTP probe failed with statuscode: <span class="token number">404</span>
+  Normal   Killing    6s <span class="token punctuation">(</span>x2 over 36s<span class="token punctuation">)</span>  kubelet, node1     Container nginx failed liveness probe, will be restarted
+  
+<span class="token comment"># 观察上面信息，尝试访问路径，但是未找到,出现404错误</span>
+<span class="token comment"># 稍等一会之后，再观察pod信息，就可以看到RESTARTS不再是0，而是一直增长</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get pod pod-liveness-httpget -n dev</span>
+NAME                   READY   STATUS    RESTARTS   AGE
+pod-liveness-httpget   <span class="token number">1</span>/1     Running   <span class="token number">5</span>          3m17s
+
+<span class="token comment"># 当然接下来，可以修改成一个可以访问的路径path，比如/，再试，结果就正常了......</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>至此，已经使用liveness Probe演示了三种探测方式，但是查看livenessProbe的子属性，会发现除了这三种方式，还有一些其他的配置，在这里一并解释下：</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl explain pod.spec.containers.livenessProbe</span>
+FIELDS:
+   <span class="token builtin class-name">exec</span> <span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span>  
+   tcpSocket    <span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span>
+   httpGet      <span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span>
+   initialDelaySeconds  <span class="token operator">&lt;</span>integer<span class="token operator">&gt;</span>  <span class="token comment"># 容器启动后等待多少秒执行第一次探测</span>
+   timeoutSeconds       <span class="token operator">&lt;</span>integer<span class="token operator">&gt;</span>  <span class="token comment"># 探测超时时间。默认1秒，最小1秒</span>
+   periodSeconds        <span class="token operator">&lt;</span>integer<span class="token operator">&gt;</span>  <span class="token comment"># 执行探测的频率。默认是10秒，最小1秒</span>
+   failureThreshold     <span class="token operator">&lt;</span>integer<span class="token operator">&gt;</span>  <span class="token comment"># 连续探测失败多少次才被认定为失败。默认是3。最小值是1</span>
+   successThreshold     <span class="token operator">&lt;</span>integer<span class="token operator">&gt;</span>  <span class="token comment"># 连续探测成功多少次才被认定为成功。默认是1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>下面稍微配置两个，演示下效果即可：</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token punctuation">[</span>root@k8s<span class="token punctuation">-</span>master01 ~<span class="token punctuation">]</span><span class="token comment"># more pod-liveness-httpget.yaml</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>liveness<span class="token punctuation">-</span>httpget
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+        <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span> 
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+      <span class="token key atrule">initialDelaySeconds</span><span class="token punctuation">:</span> <span class="token number">30</span> <span class="token comment"># 容器启动后30s开始探测</span>
+      <span class="token key atrule">timeoutSeconds</span><span class="token punctuation">:</span> <span class="token number">5</span> <span class="token comment"># 探测超时时间为5s</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="_5-重启策略"><a href="#_5-重启策略" class="header-anchor">#</a> 5. 重启策略</h2> <p>在上一节中，一旦容器探测出现了问题，kubernetes就会对容器所在的Pod进行重启，其实这是由pod的重启策略决定的，pod的重启策略有 3 种，分别如下：</p> <ul><li>Always ：容器失效时，自动重启该容器，这也是默认值。</li> <li>OnFailure ： 容器终止运行且退出码不为0时重启</li> <li>Never ： 不论状态为何，都不重启该容器</li></ul> <p>重启策略适用于pod对象中的所有容器，首次需要重启的容器，将在其需要时立即进行重启，随后再次需要重启的操作将由kubelet延迟一段时间后进行，且反复的重启操作的延迟时长以此为10s、20s、40s、80s、160s和300s，300s是最大延迟时长。</p> <p>创建pod-restartpolicy.yaml：</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> pod<span class="token punctuation">-</span>restartpolicy
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>port
+      <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+      <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+        <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTP
+        <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /hello
+  <span class="token key atrule">restartPolicy</span><span class="token punctuation">:</span> Never <span class="token comment"># 设置重启策略为Never</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p>运行Pod测试</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建Pod</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f pod-restartpolicy.yaml</span>
+pod/pod-restartpolicy created
+
+<span class="token comment"># 查看Pod详情，发现nginx容器失败</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl  describe pods pod-restartpolicy  -n dev</span>
+<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+  Warning  Unhealthy  15s <span class="token punctuation">(</span>x3 over 35s<span class="token punctuation">)</span>  kubelet, node1     Liveness probe failed: HTTP probe failed with statuscode: <span class="token number">404</span>
+  Normal   Killing    15s                kubelet, node1     Container nginx failed liveness probe
+  
+<span class="token comment"># 多等一会，再观察pod的重启次数，发现一直是0，并未重启   </span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl  get pods pod-restartpolicy -n dev</span>
+NAME                   READY   STATUS    RESTARTS   AGE
+pod-restartpolicy      <span class="token number">0</span>/1     Running   <span class="token number">0</span>          5min42s
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-ac050c62><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch13_Pod_life.html#_1-pod的创建和终止" class="sidebar-link reco-side-_1-pod的创建和终止" data-v-ac050c62>1. pod的创建和终止</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch13_Pod_life.html#_2-初始化容器" class="sidebar-link reco-side-_2-初始化容器" data-v-ac050c62>2. 初始化容器</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch13_Pod_life.html#_3-钩子函数" class="sidebar-link reco-side-_3-钩子函数" data-v-ac050c62>3. 钩子函数</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch13_Pod_life.html#_4-容器探测" class="sidebar-link reco-side-_4-容器探测" data-v-ac050c62>4. 容器探测</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch13_Pod_life.html#_5-重启策略" class="sidebar-link reco-side-_5-重启策略" data-v-ac050c62>5. 重启策略</a></li></ul></main></div> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/song/周杰伦 - .烟花易冷.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/note.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/note.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>烟花易冷</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>Jay Zhou</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.16e62a1e.js" defer></script><script src="/assets/js/3.f7fab766.js" defer></script><script src="/assets/js/1.2b4836f4.js" defer></script><script src="/assets/js/89.60f7ba20.js" defer></script>
+  </body>
+</html>

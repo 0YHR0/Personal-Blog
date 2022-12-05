@@ -1,0 +1,17 @@
+{
+  "name": "Blog of YHR",
+  "version": "1.0.0",
+  "author": "reco_luan",
+  "scripts": {
+    "dev": "vuepress dev . --open --host \"localhost\"",
+    "build": "vuepress build ."
+  },
+  "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.9.7",
+    "vuepress": "1.8.2",
+    "vuepress-plugin-dynamic-title": "^1.0.0",
+    "vuepress-plugin-nuggets-style-copy": "^1.0.3",
+    "vuepress-theme-reco": "1.6.14"
+  },
+  "description": "Blog of YHR"
+}

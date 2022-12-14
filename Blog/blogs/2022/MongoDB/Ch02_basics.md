@@ -232,10 +232,10 @@ db.inventory.replaceOne(
 
 ```js
 // 默认会修改第一条
-db.document.update({ userid: "30", { $set {username: "guest"} } })
+db.document.update({ userid: "30"}, { $set： {username: "guest"} } )
 
 // 修改所有符合条件的数据
-db.document.update( { userid: "30", { $set {username: "guest"} } }, {multi: true} )
+db.document.update( { userid: "30"}, { $set： {username: "guest"} } , {multi: true} )
 ```
 
 **列值增长的修改**
@@ -243,7 +243,7 @@ db.document.update( { userid: "30", { $set {username: "guest"} } }, {multi: true
 如果我们想实现对某列值在原有值的基础上进行增加或减少, 可以使用 `$inc` 运算符来实现
 
 ```javascript
-db.document.update({ _id: "3", {$inc: {likeNum: NumberInt(1)}} })
+db.document.update({ _id: "3"}, {$inc: {likeNum: NumberInt(1)}} })
 ```
 
 ##### 修改操作符

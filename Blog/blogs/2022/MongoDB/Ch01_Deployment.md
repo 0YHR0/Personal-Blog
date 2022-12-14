@@ -36,7 +36,7 @@ https://www.bogotobogo.com/DevOps/Docker/Docker_Kubernetes_MongoDB_MongoExpress.
 
 ## K8s部署：
 
-https://github.com/0YHR0/mongodb-kubernetes-operator
+https://github.com/mongodb/mongodb-kubernetes-operator
 
 
 

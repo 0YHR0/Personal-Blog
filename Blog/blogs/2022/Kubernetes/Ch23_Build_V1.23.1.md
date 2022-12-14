@@ -13,8 +13,6 @@ categories:
 
 
 
-考： https://blog.csdn.net/weixin_43501172/article/details/125869017
-
 主要参考： https://blog.csdn.net/weixin_43501172/article/details/125869017
 
 ## K8s Metrics Server

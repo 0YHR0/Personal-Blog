@@ -42,7 +42,7 @@ func main() {
 }
 ```
 
-
+![image-20221214164958810](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221214164958810.png)
 
 ### 包
 
@@ -51,6 +51,8 @@ func main() {
 - 文件名与包名没有直接关系，不一定要将文件名与包名定成同一个。
 - 文件夹名与包名没有直接关系，并非需要一致。
 - 同一个文件夹下的文件只能有一个包名，否则编译报错。
+
+**为了让其他包访问到本包的函数，函数名要大写，类似public**
 
 
 
@@ -121,6 +123,14 @@ intVal := 1 相等于：
 var intVal int 
 intVal =1 
 ```
+
+
+
+### 数据类型转换
+
+![image-20221215230503051](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221215230503051.png)
+
+String转基本数据类型用strconv
 
 
 

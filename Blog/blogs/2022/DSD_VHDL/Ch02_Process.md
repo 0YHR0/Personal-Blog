@@ -97,3 +97,15 @@ categories:
 + 如果if条件语句不完整（比如没有else），则会生成一个latch![image-20221104134020244](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221104134020244.png)
 + clock' event and clock=1 也可以写成 rising_edge(clk)![image-20221104141435639](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221104141435639.png)
 + 一个<=生成一个flip-flop，所以用variable，可以不生成![image-20221104141954712](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20221104141954712.png)
+
+
+
+
+
+### For
+
+![image-20230104122543296](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230104122543296.png)
+
+![image-20230104122836634](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230104122836634.png)
+
+![image-20230104122735037](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230104122735037.png)

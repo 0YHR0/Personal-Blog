@@ -58,3 +58,9 @@ categories:
 + proc 3只有1个Flipflop
 + proc 4有两个Flipflop，因为tmp在使用之前没有赋值，所以综合的时候会把他作为一个记忆元件（memory element），所以tmp也会编程一个Flip-flop
 
+
+
+
+
+![image-20230111124908521](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111124908521.png)
+

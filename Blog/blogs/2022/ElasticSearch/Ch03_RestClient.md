@@ -490,3 +490,37 @@ class HotelDocumentTest {
 GET /hotel/_search
 ```
 
+
+
+
+
+# 查询文档
+
+![image-20230111164726147](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111164726147.png)
+
+![image-20230111165830146](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111165830146.png)
+
++ 例子：![image-20230111170303075](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111170303075.png)
+
+
+
+## 响应结果解析
+
+![image-20230111165207228](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111165207228.png)
+
+
+
+### 排序和分页
+
+![image-20230111170542833](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111170542833.png)
+
++ ctrl + alt + m抽取方法
+
+## 高亮
+
+![image-20230111170954397](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111170954397.png)
+
+![image-20230111171114918](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111171114918.png)
+
++ 解析![image-20230111171337405](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111171337405.png)
++ 总结![image-20230111171600620](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111171600620.png)

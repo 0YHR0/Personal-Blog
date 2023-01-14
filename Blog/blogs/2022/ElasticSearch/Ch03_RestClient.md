@@ -501,6 +501,7 @@ GET /hotel/_search
 ![image-20230111165830146](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111165830146.png)
 
 + 例子：![image-20230111170303075](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111170303075.png)
++ 例子：![image-20230111212751926](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111212751926.png)![image-20230111213030833](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111213030833.png)
 
 
 

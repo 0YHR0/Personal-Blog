@@ -15,6 +15,18 @@ categories:
 
 主要参考： https://blog.csdn.net/weixin_43501172/article/details/125869017
 
+
+
+b步骤不用cri-docker， 用containerd代替
+
+https://blog.csdn.net/weixin_43501172/article/details/125869017
+
+https://serverfault.com/questions/1118051/failed-to-run-kubelet-validate-service-connection-cri-v1-runtime-api-is-not-im
+
+## 
+
+
+
 ## K8s Metrics Server
 
 

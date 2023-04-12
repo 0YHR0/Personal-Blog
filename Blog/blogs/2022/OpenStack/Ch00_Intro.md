@@ -80,5 +80,37 @@ https://www.bilibili.com/video/BV1aQ4y117hd?p=8&spm_id_from=pageDriver&vd_source
 
 
 
+# Freezer backup
+
+Freezer主要有四个组件， Freezer-Agent、Freezer-Scheduler、Freezer-Web-Ui、 Freezer-Api。
+
+l   Freezer-Agent:
+
+主要用于真正执行备份、还原等动作的组件。
+
+l   Freezer-Scheduler:
+
+与Freezer-api进行交互以及编排Freezer-agent定期执行特定任务的组件。
+
+l   Freezer-Api:
+
+提供Rest Api 服务，与数据库进行交互，存取Job的一些信息。
+
+l   Freezer-Web-Ui:
+
+在Horizon中进行任务的编排，与Freezer-api进行交互发送Job的一些信息等。
+
+![](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230216223559595.png)
+
+![image-20230216223559595](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230216223559595.png)
+
+
+
+例子：![image-20230216223717612](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230216223717612.png)
+
+
+
+https://blog.51cto.com/u_11979904/5651189
+
 + TRILI  storware (not free)
 + backup for vm: Raksha

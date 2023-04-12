@@ -64,3 +64,10 @@ categories:
 
 ![image-20230111124908521](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111124908521.png)
 
+
+
+# Function
+
+![image-20230226010745246](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230226010745246.png)
+
+![image-20230226145559823](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230226145559823.png)

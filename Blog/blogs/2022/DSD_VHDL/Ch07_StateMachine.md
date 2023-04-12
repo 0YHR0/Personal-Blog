@@ -58,6 +58,9 @@ FSM可以用State diagram或者ASM来表达
 
 ASM
 
++ 一个框框是一个状态
++ 因为moore只和输入有关系，所以在状态改变的一开始，但是mealy会根据输入做一些判断
+
 ![image-20230111104536733](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111104536733.png)
 
 ![image-20230111105022241](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111105022241.png)
@@ -82,3 +85,8 @@ state的方框里是register：
 
 输出与状态之间是moore![image-20230111111256256](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230111111256256.png)
 
+
+
++ Distriburted RAM 不同步读，同步写、
+  + 要实现同步读可以加一个FF
++ Block RAM 同步读，同步写

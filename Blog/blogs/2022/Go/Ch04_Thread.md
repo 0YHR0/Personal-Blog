@@ -143,7 +143,7 @@ from main 9
   	fmt.Println(str)         // aaa
   	fmt.Println(len(strCha)) //1
   	fmt.Println(cap(strCha)) //3
-  	//关闭channel，不能往里面写数据了，但是还是可以往里面写数据
+  	//关闭channel，不能往里面写数据了，但是还是可以往里面读数据
   	close(strCha)
   
   }

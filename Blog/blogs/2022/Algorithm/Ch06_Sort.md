@@ -1,10 +1,10 @@
 ---
-title: Ch06 Sort
+title: Ch03 Sort
 date: 2019-07-12
 tags:
- - Data structure
+ - Algorithm
 categories:
- - Data structure
+ - Algorithm
 
 ---
 
@@ -24,21 +24,98 @@ categories:
 
 
 
-(1)冒泡排序
+### (1) 冒泡排序
 
 冒泡排序就是把小的元素往前调或者把大的元素往后调。比较是相邻的两个元素比较，交换也发生在这两个元素之间。所以，如果两个元素相等，我想你是不会再无聊地把他们俩交换一下的；如果两个相等的元素没有相邻，那么即使通过前面的两两交换把两个相邻起来，这时候也不会交换，所以相同元素的前后顺序并没有改变，所以冒泡排序是一种稳定排序算法。
 
+**不断比较相邻两个数**
+
+```go
+func BubbleSort(arr *[12]int) {
+	flag := false // 优化，若某次发现不用交换，则提前结束排序
+	for i := 0; i < len(arr)-1; i++ {
+		for j := 1; j < len(arr)-i; j++ {
+			if arr[j-1] > arr[j] {
+				arr[j], arr[j-1] = arr[j-1], arr[j]
+				flag = true
+			}
+		}
+		if flag == false { // 如果在某一次循环中没有交换过，则直接break
+			break
+		} else {
+			flag = false // 下次判断的初始条件
+		}
+	}
+	fmt.Println("this is bubble sort:")
+}
+```
 
 
-(2)选择排序
+
+
+
+
+
+### (2)选择排序
 
 选择排序是给每个位置选择当前元素最小的，比如给第一个位置选择最小的，在剩余元素里面给第二个元素选择第二小的，依次类推，直到第n - 1个元素，第n个元素不用选择了，因为只剩下它一个最大的元素了。那么，在一趟选择，如果当前元素比一个元素小，而该小的元素又出现在一个和当前元素相等的元素后面，那么交换后稳定性就被破坏了。比较拗口，举个例子，序列5 8 5 2 9，我们知道第一遍选择第1个元素5会和2交换，那么原序列中2个5的相对前后顺序就被破坏了，所以选择排序不是一个稳定的排序算法。
+
+
+
+**每次找到整个数组中最小的数，把它放在数组前端（效率高于冒泡排序）**
+
+```go
+func SelectSort(arr *[12]int) {
+	for i := 0; i < len(arr)-1; i++ {
+		min := i
+		//find the min value position
+		for j := i + 1; j < len(arr); j++ {
+			if arr[j] < arr[min] {
+				min = j
+			}
+		}
+		arr[i], arr[min] = arr[min], arr[i]
+	}
+}
+```
+
+
 
 
 
 (3)插入排序
 
 插入排序是在一个已经有序的小序列的基础上，一次插入一个元素。当然，刚开始这个有序的小序列只有1个元素，就是第一个元素。比较是从有序序列的末尾开始，也就是想要插入的元素和已经有序的最大者开始比起，如果比它大则直接插入在其后面，否则一直往前找直到找到它该插入的位置。如果碰见一个和插入元素相等的，那么插入元素把想插入的元素放在相等元素的后面。所以，相等元素的前后顺序没有改变，从原无序序列出去的顺序就是排好序后的顺序，所以插入排序是稳定的。
+
+
+
+**把数据看成一个有序表与一个无序表，开始时有序表中有一个元素，无序表中有n-1个元素，慢慢把无序表中的元素插入到有序表中。**
+
+```go
+func InsertSort(arr *[12]int) {
+	for i := 1; i < len(arr); i++ {
+		insertIndex := i
+		j := 0
+		// find the position in the sorted array
+		for j = 0; j < i; j++ {
+			if arr[insertIndex] < arr[j] {
+				//find the postion j
+				break
+			}
+		}
+		insertNum := arr[insertIndex]
+		// move all the larger ones to the right
+		for k := insertIndex; k > j; k-- {
+			arr[k] = arr[k-1]
+		}
+		arr[j] = insertNum
+	}
+}
+```
+
+
+
+
 
 
 
@@ -63,6 +140,96 @@ categories:
 (7)希尔排序(shell)
 
 希尔排序是按照不同步长对元素进行插入排序，当刚开始元素很无序的时候，步长最大，所以插入排序的元素个数很少，速度很快；当元素基本有序了，步长很小， 插入排序对于有序的序列效率很高。所以，希尔排序的时间复杂度会比O(n^2)好一些。由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。
+
+
+
+**高效的插入排序（插入排序的最坏情况效率低）**
+
+```go
+func ShellSort(arr *[12]int) {
+
+	for gap := len(arr) / 2; gap > 0; gap = gap / 2 {
+		// back pointer
+		for back := gap; back < len(arr); back++ {
+			front := back - gap
+			// Insert sort
+			tmp := arr[back]
+			for ; front >= 0 && arr[front] > tmp; front = front - gap {
+				arr[front+gap] = arr[front]
+			}
+			arr[front+gap] = tmp
+		}
+	}
+}
+```
+
+
+
+参考：https://www.youtube.com/watch?v=1yDcmjLTWOg
+
++ 交换法：效率偏低，好理解
+
+  ```java
+  public static void shellsort(int[] arr) {
+  		int temp = 0;
+  		int count = 1;
+  		//使用希尔排序中插入排序的次数,gap代表步长
+  		for(int gap = arr.length / 2; gap > 0; gap = gap / 2) {
+  			//插入排序开始，先每组前2个元素排序(有序表)，然后接下来的元素插入到这个有序表中
+  			for(int i = gap ; i < arr.length; i++) {//组间交替执行
+  				for(int j = i - gap; j >= 0 ; j = j - gap) {//组内插入排序
+  					//如果前一个元素大的话，交换
+  					if(arr[j] > arr[j + gap]) {
+  						temp = arr[j];
+  						arr[j] = arr[j + gap];
+  						arr[j + gap] = temp;
+  					}
+  				}
+  			}
+  			System.out.println("第 " + count + " 次排序结果： ");
+  			for (int k : arr) {
+  				System.out.print(k + " ");
+  			}
+  			System.out.println();
+  			count ++;
+  		}
+  	}
+  ```
+
+  
+
++ 位移法：效率高
+
+  ```java
+  public static void shell(int[] arr) {
+  		int temp = 0;
+  		int count = 0;
+  		for(int gap = arr.length / 2;gap > 0; gap = gap / 2) {//分组
+  			for(int i = gap - 1; i < arr.length; i++) {//交替遍历各组元素
+  				int j = i - gap;
+  				temp = arr[i];//存放要插入的那个元素
+  				while(j >= 0 && temp < arr[j]) {//当要插入的元素还没找到位置，组内元素一直后移
+  					arr[j + gap] = arr[j]; 
+  					j = j - gap;
+  				}
+  				arr[j + gap] = temp;//插入
+  			}
+  			
+  			
+  			
+  			System.out.println("第 " + count + " 次排序结果： ");
+  			for (int k : arr) {
+  				System.out.print(k + " ");
+  			}
+  			System.out.println();
+  			count ++;
+  		}
+  	}
+  ```
+
+  
+
+  
 
 
 

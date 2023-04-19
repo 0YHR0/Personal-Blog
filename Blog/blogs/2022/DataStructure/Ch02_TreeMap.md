@@ -1,5 +1,5 @@
 ---
-title: Ch02 TreeMap
+title: Ch02 TreeMap(Java)
 date: 2019-06-11
 tags:
  - Data structure

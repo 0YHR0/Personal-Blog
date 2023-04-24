@@ -46,3 +46,20 @@ usermod -s /bin/bash haoran
 ubuntu22安装docker
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+
+
+
+docker 安装winery
+
+https://winery.readthedocs.io/en/latest/user/getting-started.html
+
+```sh
+docker run -it -p 8080:8080 \
+  -e PUBLIC_HOSTNAME=localhost \
+  -e WINERY_FEATURE_RADON=true \
+  -e WINERY_REPOSITORY_PROVIDER=yaml \
+  -v <path_on_your_host>:/var/repository \
+  -u `id -u` \
+  opentosca/radon-gmt
+```
+

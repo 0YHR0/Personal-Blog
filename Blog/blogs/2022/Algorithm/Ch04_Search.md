@@ -41,6 +41,35 @@ public class DoubleFind {
 
 
 
+非递归
+
+```java
+public int DoubleSearchNoRecursion(int []arr, int target) {
+		int left = 0;
+		int right = arr.length - 1;
+		while(left <= right) {
+			int mid = (left + right) / 2;
+			if(arr[mid] == target) {
+				return mid;
+			}
+			else if (target < arr[mid]) {
+				right = mid - 1;
+			}
+			else {
+				left = mid + 1;
+			}
+		}
+		return -1;
+	}
+
+```
+
+
+
+
+
+
+
 ## 插值查找
 
 ![image-20230419215756400](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230419215756400.png)

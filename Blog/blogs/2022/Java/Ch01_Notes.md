@@ -121,3 +121,7 @@ System.out.println(c==d);//false
 ```
 
 Integer在JVM没有设置过的时候，默认缓存为-128到127. 所以如果赋值为-128到127，会指向同一个值，而超过此范围就会开辟新的内存空间。
+
+
+
+![image-20230426225603459](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225603459.png)

@@ -1,0 +1,152 @@
+---
+title: Ch12_Volatile&transient
+date: 2020-04-28
+tags:
+ - Java
+categories:
+ - Java
+
+---
+
+# Volatile
+
+
+
+**可见性（visibility）**
+
+可见性：一个线程对共享变量做了修改之后，其他的线程立即能够看到（感知到）该变量这种修改（变化）。 Java内存模型是通过将在工作内存中的变量修改后的值同步到主内存，在读取变量前从主内存刷新最新值到工作内存中，这种依赖主内存的方式来实现可见性的。
+
+
+
+**原子性（atomicity）**
+
+原子性：一个操作不能被打断，要么全部执行完毕，要么不执行。 java内存模型所保证的是，同线程内，所有的操作都是由上到下的，但是多个线程并行的情况下，则不能保证其操作的有序性。
+
+
+
+**有序性**
+
+有序性：在本线程内观察，操作都是有序的；如果在一个线程中观察另外一个线程，所有的操作都是无序的。
+
+java内存模型所保证的是，同线程内，所有的操作都是由上到下的，但是多个线程并行的情况下，则不能保证其操作的有序性。 计算机在执行程序时，为了提高性能，编译器个处理器常常会对指令做重排，一般分为以下 3 种
+
+
+
+![image-20230426225103661](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225103661.png)
+
+
+
+单线程环境里面确保程序最终执行的结果和代码执行的结果一致 处理器在进行重排序时必须考虑指令之间的数据依赖性 多线程环境中线程交替执行，由于编译器优化重排的存在，两个线程中使用的变量能否保证用的变量能否一致性是无法确定的，结果无法预测
+
+![image-20230426225146664](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225146664.png)
+
+
+
+volatile禁止指令重排。
+
+**禁止指令排序**
+
+volatile 实现禁止指令重排序的优化，从而避免了多线程环境下程序出现乱序的现象
+
+先了解一个概念，内存屏障（Memory Barrier）又称内存栅栏，是一个 CPU 指令，他的作用有两个：
+
+保证特定操作的执行顺序 保证某些变量的内存可见性（利用该特性实现 volatile 的内存可见性） 由于编译器个处理器都能执行指令重排序优化，如果在指令间插入一条 Memory Barrier 则会告诉编译器和 CPU，不管什么指令都不能个这条 Memory Barrier 指令重排序，也就是说通过插入内存屏障禁止在内存屏障前后执行重排序优化。内存屏障另一个作用是强制刷出各种 CPU 缓存数据，因此任何 CPU 上的线程都能读取到这些数据的最新版本。
+
+下面是保守策略下，volatile写插入内存屏障后生成的指令序列示意图：
+
+![image-20230426225205135](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225205135.png)
+
+
+
+下面是在保守策略下，volatile读插入内存屏障后生成的指令序列示意图：
+
+![image-20230426225214644](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225214644.png)
+
+
+
+**线程安全性保证**
+
+工作内存与主内存同步延迟现象导致可见性问题 可以使用 synchronzied 或 volatile 关键字解决，它们可以使用一个线程修改后的变量立即对其他线程可见 对于指令重排导致可见性问题和有序性问题 可以利用 volatile 关键字解决，因为 volatile 的另一个作用就是禁止指令重排序优化
+
+
+
+**volatile**
+
+它所修饰的**变量**不保留拷贝，直接访问主内存中的。
+
+在Java内存模型中，有main memory，每个线程也有自己的memory (例如寄存器)。为了性能，一个线程会在自己的memory中保持要访问的变量的副本。这样就会出现同一个变量在某个瞬间，在一个线程的memory中的值可能与另外一个线程memory中的值，或者main memory中的值不一致的情况。 一个变量声明为volatile，就意味着这个变量是随时会被其他线程修改的，因此不能将它cache在线程memory中。
+
+
+
+**使用场景**
+
+您只能在有限的一些情形下使用 volatile 变量替代锁。要使 volatile 变量提供理想的线程安全，必须同时满足下面两个条件： 1)对变量的写操作不依赖于当前值。 2)该变量没有包含在具有其他变量的不变式中。
+
+volatile最适用一个线程写，多个线程读的场合。 如果有多个线程并发写操作，仍然需要使用锁或者线程安全的容器或者原子变量来代替。
+
+
+
+**synchronized**
+
+当它用来修饰**一个方法或者一个代码块**的时候，能够保证在同一时刻最多只有一个线程执行该段代码。
+
+1. 当两个并发线程访问同一个对象object中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。
+2. 然而，当一个线程访问object的一个synchronized(this)同步代码块时，另一个线程仍然可以访问该object中的非synchronized(this)同步代码块。
+3. 尤其关键的是，当一个线程访问object的一个synchronized(this)同步代码块时，其他线程对object中所有其它synchronized(this)同步代码块的访问将被阻塞。
+4. 当一个线程访问object的一个synchronized(this)同步代码块时，它就获得了这个object的对象锁。结果，其它线程对该object对象所有同步代码部分的访问都被暂时阻塞。
+
+![image-20230426225248452](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225248452.png)
+
+共享资源及增删改的对象。
+
+
+
+**Lock**
+
+从jdk 5.0开始，java提供了更强大的线程同步机制-通过显示定义同步锁对象来实现同步，同步锁使用Lock对象充当。 java.util.concurrent.Locks.Lock接口是控制多个线程对共享资源进行访问的工具。锁提供了对共享资源的独占访问，每次只能有一个线程对Lock对象加锁，线程开始访问共享资源之前应先获得Lock对象。 ReentrantLock类实现了Lock,它拥有与synchronized相同的并发性和内存语义，在实现线程安全的控制中，比较常用的是ReentrantLock，可以显示加锁、释放锁。
+
+![image-20230426225309759](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225309759.png)
+
+
+
+**volatile和synchronized**
+
+1. volatile是变量修饰符，而synchronized则作用于一段代码或方法。
+2. volatile只是在线程内存和“主”内存间同步某个变量的值；而synchronized通过锁定和解锁某个监视器同步所有变量的值, 显然synchronized要比volatile消耗更多资源。
+3. volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞。
+4. volatile保证数据的可见性，但**不能保证原子性**；而synchronized可以保证原子性，也可以间接保证可见性，因为它会将私有内存中和公共内存中的数据做同步。
+5. volatile标记的变量不会被编译器优化；synchronized标记的变量可以被编译器优化。
+
+
+
+**Volatile的happens-before规则：volatile变量规则：****对一个volatile域的写，happens-before于任意后续对这个volatile域的读。**![image-20230426225325209](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225325209.png)
+
+
+
+
+
+# **transient**
+
+java语言的关键字，变量修饰符，如果用transient声明一个实例变量，当对象存储时，它的值不需要维持。
+
+Java的serialization提供了一种持久化对象实例的机制。当持久化对象时，可能有一个特殊的对象数据 成员，我们不想用serialization机制来保存它。为了在一个特定对象的一个域上关闭serialization，可以在这个域前加上关键字 transient。当一个对象被序列化的时候，transient型变量的值不包括在序列化的表示中，然而非transient型的变量是被包括进去的
+
+---
+
+**被transient关键字修饰过得变量真的不能被序列化嘛？**
+
+Java序列化提供两种方式。
+
+一种是实现Serializable接口
+
+另一种是实现Exteranlizable接口。 需要重写writeExternal和readExternal方法，它的效率比Serializable高一些，并且可以决定哪些属性需要序列化（即使是transient修饰的），但是对大量对象，或者重复对象，则效率低。
+
+从上面的这两种序列化方式，我想你已经看到了，使用Exteranlizable接口实现序列化时，我们自己指定那些属性是需要序列化的，即使是transient修饰的。
+
+---
+
+**静态变量会被序列化嘛？**
+
+不会，因为静态变量在全局区,本来流里面就没有写入静态变量,我打印静态变量当然会去全局区查找,而我们的序列化是写到磁盘上的，所以JVM查找这个静态变量的值，是从全局区查找的，而不是磁盘上。user.setAge(18);年龄改成18之后，被写到了全局区，其实就是方法区，只不过被所有的线程共享的一块空间。因此可以总结一句话：
+
+静态变量不管是不是transient关键字修饰，都不会被序列化。

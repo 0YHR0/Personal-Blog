@@ -10,6 +10,26 @@ categories:
 
 # JavaThread
 
+线程创建与执行的基本方法：![image-20230426224835274](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426224835274.png)
+
+
+
+应用1：猫狗喝水
+
+完全解耦做法：只创建一个house线程类，通过Thread.currentThread.getName来区分猫狗
+
+使用sleep来实现轮流，同步
+
+![image-20230426224850061](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426224850061.png)
+
+
+
+![image-20230426224857363](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426224857363.png)
+
+
+
+
+
 
 
 **1. Thread.sleep(1000),线程在1000毫秒后是否会被唤醒？**

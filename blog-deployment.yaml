@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: blog
+  name: blog
+  namespace: blog
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  selector:
+    matchLabels:
+      k8s-app: blog
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        k8s-app: blog
+      name: blog
+    spec:
+      containers:
+      - image: 0yhr0/blog:1.2.1
+        imagePullPolicy: IfNotPresent
+        name: blog
+        resources:
+          requests:
+            cpu: "0.1"
+            memory: 100Mi
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

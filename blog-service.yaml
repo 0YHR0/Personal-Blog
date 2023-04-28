@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: blog
+  name: blog
+  namespace:  blog
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: blog
+    port: 10080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    k8s-app: blog
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost

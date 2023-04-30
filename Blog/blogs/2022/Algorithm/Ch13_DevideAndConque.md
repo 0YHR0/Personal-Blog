@@ -19,9 +19,9 @@ categories:
 
 设共有柱子ABC，需要把A柱移动到C柱
 
-1. 先把2移动到B
-2. 再把1移动到C
-3. 再把2移动到C
+1.  先把2移动到B
+2.  再把1移动到C
+3.  再把2移动到C
 
 ```java
  public class Hanoitower {

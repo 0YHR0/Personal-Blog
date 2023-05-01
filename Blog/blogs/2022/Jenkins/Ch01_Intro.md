@@ -20,6 +20,8 @@ https://blog.csdn.net/qq_34285557/article/details/124763695
 
 https://www.jenkins.io/doc/book/installing/kubernetes/#install-jenkins-with-yaml-files
 
+https://www.cnblogs.com/diskld/p/15736588.html
+
 
 
 ## deployment

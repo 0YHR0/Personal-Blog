@@ -63,3 +63,12 @@ docker run -it -p 8080:8080 \
   opentosca/radon-gmt
 ```
 
+
+
+
+
+# Netplan
+
+使用netplan配置网络
+
+https://blog.csdn.net/h4241778/article/details/110099003

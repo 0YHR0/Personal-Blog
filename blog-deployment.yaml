@@ -23,7 +23,7 @@ spec:
       name: blog
     spec:
       containers:
-      - image: 0yhr0/blog:1.2.1
+      - image: 0yhr0/blog:1.2.3
         imagePullPolicy: IfNotPresent
         name: blog
         resources:

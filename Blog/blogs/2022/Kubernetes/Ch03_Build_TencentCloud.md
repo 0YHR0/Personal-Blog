@@ -553,7 +553,7 @@ vim calico-3.13.1.yaml
 kubectl apply -f calico-3.13.1.yaml
 ```
 
-
+kubeadm init --pod-network-cidr=10.244.0.0/16
 
 3.查看Master节点的初始化结果
 

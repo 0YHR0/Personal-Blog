@@ -15,10 +15,6 @@ categories:
 
 deploy a NFS service on one machine
 
-
-
-
-
 新建一个目录，把它暴露给其他主机--->ch17
 
 
@@ -48,3 +44,9 @@ chown: changing ownership of '/var/lib/mysql/': Operation not permitted
 解决：
 
 ![image-20220711011648194](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220711011648194.png)
+
+
+
+
+
+NFS provisionor: https://computingforgeeks.com/configure-nfs-as-kubernetes-persistent-volume-storage/

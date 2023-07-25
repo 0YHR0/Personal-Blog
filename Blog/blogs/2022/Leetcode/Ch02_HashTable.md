@@ -82,6 +82,16 @@ HashSet 基于 HashMap 来实现的，是一个不允许有重复元素的集合
       System.out.print(value + ", ");
   }
   
+  PriorityQueue<int[]> pq = new PriorityQueue<>((pair1, pair2)->pair2[1] - pair1[1]);
+  
+  //注意Map.
+  for(Map.Entry<Integer, Integer> entry: map.entrySet()){
+      int[] toAdd = new int[2];
+      toAdd[0] = entry.getKey();
+      toAdd[1] = entry.getValue();
+      pq.add(toAdd);
+  }
+  
   containsKey(1)；
   containsValue("Zhihu")；
   
@@ -332,3 +342,135 @@ class Solution {
 
 
 Arrays.sort() 从小到大排序
+
+
+
+### 15.三数之和
+
+![image-20230713162925054](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230713162925054.png)
+
++ 先排序数组，再使用双指针 [i, left, right]
++ 去重的时候拿i和之前的i-1 比较，如果有重复的就直接跳过这组
++ https://programmercarl.com/0015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.html#%E5%93%88%E5%B8%8C%E8%A7%A3%E6%B3%95
+
+
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        int left = 1;
+        int right = nums.length - 1;
+        for(int i = 0; i < nums.length; i++){
+            // 排序之后如果第一个元素已经大于零，那么无论如何组合都不可能凑成三元组，直接返回结果就可以了
+            if (nums[i] > 0) { 
+                return result;
+            }
+            //去重，要是i跟上一轮一样直接跳过
+            if(i >= 1 && nums[i] == nums[i - 1]){
+                continue;
+            }
+            
+            left = i + 1;
+            right = nums.length - 1;
+
+            while(left < right){
+                if(nums[i] + nums[left] + nums[right] > 0){
+                    right --;
+                }
+                else if(nums[i] + nums[left] + nums[right] < 0){
+                    left ++;
+                }else{
+                    //找到结果
+                    List<Integer> toBeAdded = new ArrayList<Integer>();
+                    toBeAdded.add(nums[i]);
+                    toBeAdded.add(nums[left]);
+                    toBeAdded.add(nums[right]);
+                    result.add(toBeAdded);
+                    // 在left和right遍历的时候碰到下一个值是一样的就直接跳过（去重）
+                    while (right > left && nums[right] == nums[right - 1]) right--;
+                    while (right > left && nums[left] == nums[left + 1]) left++;
+
+                    //只动一个指针的话不可能为0，所以要两个一起动
+                    right--;
+                    left++;
+                }
+            }
+        }
+        return result;
+    }
+}
+```
+
+
+
+
+
+### 18. 四数之和
+
+![image-20230713165458604](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230713165458604.png)
+
+思路和三数之和差不多
+
+![image-20230713172614372](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230713172614372.png)
+
+
+
+```java
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        for(int a = 0; a < nums.length; a++){
+
+            //这边注意判断 > 0
+            if(nums[a] > 0 && nums[a] > target){
+                return result;
+            }
+            if(a >= 1 && nums[a] == nums[a - 1]){
+                continue;
+            }
+            for(int b = a + 1; b < nums.length; b++){
+                if(b > a + 1 && nums[b] == nums[b - 1]){
+                    continue;
+                }
+                int left = b + 1;
+                int right = nums.length - 1;
+                while(left < right){
+                    if(nums[a] + nums[b] + nums[left] + nums[right] < target){
+                        left ++;
+                    }
+                    else if(nums[a] + nums[b] + nums[left] + nums[right] > target){
+                        right --;
+                    }else{
+                        //add
+                        List<Integer> toBeAdded = new ArrayList<Integer>();
+                        toBeAdded.add(nums[a]);
+                        toBeAdded.add(nums[b]);
+                        toBeAdded.add(nums[left]);
+                        toBeAdded.add(nums[right]);
+                        result.add(toBeAdded);
+
+                        // 这里left < right 不能漏掉！！
+                        while(left < right && nums[left] == nums[left + 1]){
+                            left ++;            
+                        } 
+                        while(left < right && nums[right] == nums[right - 1]){
+                            right --;            
+                        }
+                        left ++;
+                        right --;
+                    }
+
+                    
+                }
+            }
+        }
+
+        return result;
+
+    }
+}
+```
+

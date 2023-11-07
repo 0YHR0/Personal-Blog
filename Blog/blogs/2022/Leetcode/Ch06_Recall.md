@@ -242,7 +242,7 @@ class Solution {
 
 ### [131. 分割回文串](https://leetcode.cn/problems/palindrome-partitioning/)
 
-
+![image-20230923224618256](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230923224618256.png)
 
 ![image-20230728232539695](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230728232539695.png)
 

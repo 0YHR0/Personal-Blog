@@ -125,3 +125,22 @@ Integer在JVM没有设置过的时候，默认缓存为-128到127. 所以如果�
 
 
 ![image-20230426225603459](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20230426225603459.png)
+
+
+
+
+
+- 类加载双亲委派
+  - https://blog.csdn.net/u013568373/article/details/93995246
+- 索引建立原则：
+  - https://www.cnblogs.com/deepalley/p/10784756.html
+- Linux 5种IO模型：
+  - https://zhuanlan.zhihu.com/p/115912936
+- I/O模型以及多路复用三种实现方式select、poll和epoll比较及区别
+  - https://blog.csdn.net/hotpots/article/details/103257237
+- 为什么CMS两次标记时要 stop the world
+  - https://blog.csdn.net/xiaobao5214/article/details/88051863
+- TCP是逻辑上的连接
+- java实现开根号运算
+- javaweb，servlet编译异常（javax.servlet.ServletException: 实例化Servlet类[Servletss]异常）
+  - 删除.iml中的部分![img](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/251a8f4f-8cc6-4fce-a3b9-a20efa6029d1-14899999.jpg)

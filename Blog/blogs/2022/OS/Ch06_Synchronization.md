@@ -1,0 +1,108 @@
+---
+title: Ch06 Process synchronization
+date: 2022-04-06
+tags:
+ - OS
+categories:
+ - OS
+
+---
+
+# Process synchronization
+
+- 操作系统原语实现，因为进程控制在把pcb放到相应队列的同时要对其内容进行修改![img](https://api2.mubu.com/v3/document_image/e74f2f7a-3ae9-495b-a8ee-42fad7e04179-14899999.jpg)
+
+- critical section：需要同步的代码段
+
+  
+
+  
+
+  
+
+  - 软件实现方法：Peterson算法：先表示自己想用临界区，再主动说如果对方想用的话，先给对方用，最后再检查判断![img](https://api2.mubu.com/v3/document_image/bbf9e753-3893-4602-b5a6-406da2be28eb-14899999.jpg)
+
+  - 硬件实现方法：如果是单处理机的话可以用开关中断来实现，或者可以用互斥锁（Mutex Locks）来实现
+    - 获得锁和释放锁必须是原子操作，但是用互斥锁的话会一直自旋等待，浪费cpu![img](https://api2.mubu.com/v3/document_image/1ae0b9fa-fdc9-4654-bb65-cc6feebdd9cd-14899999.jpg)
+
+- 信号量Semaphore：
+
+  
+
+  - 可以使用信号量来控制哪个操作先发生，信号量初始值要设置为0，V要在前操作之后执行，P要在后操作之前执行（注意顺序！！！）![img](https://api2.mubu.com/v3/document_image/0263f295-07ef-4c0c-8cb5-9dd5d590d023-14899999.jpg)
+
+  - 使用PV操作，是原子操作，在获取资源之前用P，使用完之后用V，必须成对出现
+
+  - 整形信号量，用数字表示临界资源的数量
+
+    
+
+    
+
+    - 问题：会一直循环等待，不释放cpu资源
+
+  - 记录型信号量：每个信号量绑定一个等待队列，－n就是有n个进程在等待![img](https://api2.mubu.com/v3/document_image/79ad4dcf-7c08-455f-ba68-7b4210c2510d-14899999.jpg)
+
+  - 可能会导致的问题：
+
+    - 死锁![img](https://api2.mubu.com/v3/document_image/ca4b09a7-1acb-4c49-b8d2-2951a2e38fba-14899999.jpg)
+
+    - 饥饿：有的进程可能会一直得不到执行
+
+    - 优先级：可能低优先级的一直占用着资源
+
+- Bounded Buffer Problem：有界缓冲区问题，由于缓冲区需要被互斥访问（因为多个生产者可能会互相覆盖数据），所以用mutex信号量（初始值为1）
+
+  
+
+  
+
+  - 消费者![img](https://api2.mubu.com/v3/document_image/e247a23a-90d2-40bf-a5b9-85cd301d6e33-14899999.jpg)
+
+  - 生产者![img](https://api2.mubu.com/v3/document_image/c34bcf0e-d367-465e-bc7a-ba971c421de1-14899999.jpg)
+
+- Readers-Writers Problem：读写互斥
+
+  - 写：获取读写锁![img](https://api2.mubu.com/v3/document_image/715f1cff-733c-462b-a3a8-a96c905c5758-14899999.jpg)
+
+  - 读：对于读的数量的获取是互斥的，当数量等于1的时候，获取读写锁，当数量等于0的时候，释放读写锁
+
+    
+
+    - *可能导致饥饿问题，所以可以增加一个信号量来让写优先![img](https://api2.mubu.com/v3/document_image/dea78da2-a298-40cf-ad70-b66f82cff2bd-14899999.jpg)
+
+- 哲学家进餐问题：
+
+  
+
+  
+
+  - 不能直接都拿起左边的筷子![img](https://api2.mubu.com/v3/document_image/fe7a88fe-9ca5-43bb-a24f-5bd8b469c7ce-14899999.jpg)
+
+  - 为了避免死锁，有三种方法：
+
+    - 1.![img](https://api2.mubu.com/v3/document_image/f68d297b-1e52-4188-840b-fb0bbb4306e8-14899999.jpg)
+
+    - 2.![img](https://api2.mubu.com/v3/document_image/7e2c1ebe-1a0a-4bec-9ac7-bc4ec97fc7e1-14899999.jpg)
+
+    - 3.![img](https://api2.mubu.com/v3/document_image/a9688e95-a56c-484f-bd80-f8dc1cc8ca57-14899999.jpg)
+
+- 管程Monitors
+
+  
+
+  - 结构：![img](https://api2.mubu.com/v3/document_image/3715b292-c206-4889-93a0-b47ada155a39-14899999.jpg)
+
+  - wait等待，signal唤醒![img](https://api2.mubu.com/v3/document_image/95bdf120-be8f-4a96-aa54-d60916210352-14899999.jpg)
+
+  - 管程实现哲学家吃饭问题：
+
+    - 放下筷子的时候测试邻居能不能吃，能吃的话唤醒
+
+    - 自己要吃的时候，看周围邻居在不在吃，都不在吃的话可以吃，唤醒自己，否则等待![img](https://api2.mubu.com/v3/document_image/0812dfd8-2747-4d90-932b-1afcb1cf9d18-14899999.jpg)![img](https://api2.mubu.com/v3/document_image/909f42a1-cda9-4b3d-ae14-ff4c4e4d40f3-14899999.jpg)
+
+  - 管程相当于封装了一遍，调用的时候就非常简单：![img](https://api2.mubu.com/v3/document_image/83773a71-df61-41c5-9315-a4be1e8463d9-14899999.jpg)
+
+  - 用信号量来实现管程![img](https://api2.mubu.com/v3/document_image/ad32d1de-0456-49b3-bce4-69f37cfbf7b6-14899999.jpg)![img](https://api2.mubu.com/v3/document_image/55ea9482-7508-48dd-a1b5-fd5c46b7b016-14899999.jpg)![img](https://api2.mubu.com/v3/document_image/f55c6111-95b5-4287-b2a8-1413ec2ec4f7-14899999.jpg)![img](https://api2.mubu.com/v3/document_image/d95a8928-87b0-43c8-a82b-ed54252d44ac-14899999.jpg)
+
+  - 可以定义优先级![img](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/b4055179-ba6d-4958-9125-9ff1d239a148-14899999.jpg)

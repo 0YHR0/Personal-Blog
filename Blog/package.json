@@ -1,6 +1,6 @@
 {
   "name": "Blog of YHR",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "author": "reco_luan",
   "scripts": {
     "dev": "vuepress dev . --open --host \"localhost\"",

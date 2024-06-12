@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '16'  # 设置Node.js版本为16
 
       - name: Install dependencies and build
         run: |
@@ -34,12 +34,13 @@ jobs:
         id: version
         run: |
           cd Blog
-          echo "::set-output name=VERSION::$(node -p \"require('./package.json').version\")"
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Build Docker image
         run: |
           cd Blog
-          docker build -t your-dockerhub-username/your-repo-name:${{ steps.version.outputs.VERSION }} .
+          docker build -t 0yhr0/blog:${{ env.VERSION }} .
         env:
           DOCKER_BUILDKIT: 1
 
@@ -51,15 +52,15 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push 0yhr0/blog:${{ steps.version.outputs.VERSION }}
+          docker push your-dockerhub-username/your-repo-name:${{ env.VERSION }}
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.version.outputs.VERSION }}
-          release_name: Release v${{ steps.version.outputs.VERSION }}
+          tag_name: v${{ env.VERSION }}
+          release_name: Release v${{ env.VERSION }}
           draft: false
           prerelease: false
           files: Blog/public.tar.gz  # 指定压缩文件的正确路径

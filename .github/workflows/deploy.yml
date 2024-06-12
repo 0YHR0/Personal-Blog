@@ -52,7 +52,7 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push your-dockerhub-username/your-repo-name:${{ env.VERSION }}
+          docker push 0yhr0/blog:${{ env.VERSION }}
 
       - name: Create GitHub Release
         uses: actions/create-release@v1

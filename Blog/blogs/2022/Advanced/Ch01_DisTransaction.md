@@ -506,6 +506,10 @@ seata框架**「为每一个RM维护了一张UNDO_LOG表」**，其中保存了�
 
 
 
+### SAGA
+
+https://cloud.tencent.com/developer/article/1839642
+
 # 总结
 
 事务消息和 TCC 事务两种分布式事务实现方案的技术原理：

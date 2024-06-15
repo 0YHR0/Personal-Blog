@@ -1,0 +1,133 @@
+---
+title: Ch28 StatefulSet
+date: 2024-05-01
+tags:
+ - K8s
+ - Kubernetes
+categories:
+ - Kubernetes
+
+---
+
+
+
+# StatefulSet
+
+
+
+### Pod的release与adopt
+
++ statefulSet中的pod的名字都是按照一定规律来进行设置的, 名字本身也有含义, k8s在进行statefulset更新的时候，首先会过滤属于当前statefulset的pod，并做如下操作
+
+
+
+![image-20240501214019185](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240501214019185.png)
+
+
+
+K8s中控制器与Pod的关联主要通过两个部分：**controllerRef**和**label**, statefulset在进行Pod过滤的时候，
+
++ 如果发现对应的pod的controllerRef都是当前的statefulset但是其label或者名字并不匹配，则就会尝试release对应的Pod
+
++ 反之如果发现对应Pod的label和名字都匹配，但是controllerRef并不是当前的statefulSet就会更新对应的controllerRef为当前的statefulset, 这个操作被称为adopt
+
+
+
+通过该流程可以确保当前statefulset关联的Pod要么与当前的对象关联，要么我就释放你，这样可以维护Pod的一致性，即时有人修改了对应的Pod则也会调整成最终一致性.
+
+
+
+### 副本分类
+
+在经过第一步的Pod状态的修正之后，statefulset会遍历所有属于自己的Pod，同时将Pod分为两个大类：
+
++ 有效副本
++ 无效副本(condemned)
+
+前面提到过Pod的名字也是有序的即有N个副本的Pod则名字依次是{0…N-1}, 这里区分有效和无效也是依据对应的索引顺序，如果超过当前的副本即为无效副本。
+
+![image-20240501214209801](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240501214209801.png)
+
+
+
+### 单调更新
+
+单调更新主要是指的当对应的Pod管理策略不是并行管理的时候，只要当前Replicas(有效副本)中任一一个Pod发生创建、终止、未就绪的时候，都会等待对应的Pod就绪，即你要想更新一个statefulset的Pod的时候，对应的Pod必须已经RunningAndReady。
+
+
+
+
+
+### 基于计数器的滚动更新
+
+滚动更新的实现相对隐晦一点，其主要是通过控制副本计数来实现
+
++ 首先倒序检查对应的Pod的版本是否是最新版本
++ 如果发现不是，则直接删除对应的Pod，同时将currentReplica计数减一
++ 这样在检查对应的Pod的时候，就会发现对应的Pod的不存在，就需要为对应的Pod生成新的Pod信息，此时就会使用最新的副本去更新![image-20240501214407260](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240501214407260.png)
+
+
+
+
+
+### 无效副本的清理
+
+无效副本的清理应该主要是发生在对应的statefulset缩容的时候，如果发现对应的副本已经被遗弃，就会直接删除，此处默认也需要遵循单调性原则，即每次都只更新一个副本
+
+
+
+
+
+
+
+### 基于删除的单调性更新
+
+Pod的版本检测位于对应一致性同步的最后，则证明当前的statefulSet在满足单调性的情况下，有效副本里面的所有Pod都是RunningAndReady状态了，此时就开始倒序进行版本检查，如果发现版本不一致，就根据当前的partition的数量来决定允许并行更新的数量，在这里删除后，就会触发对应的事件，从而触发下一个调度事件，触发下一轮一致性检查
+
+
+
+
+
+### OnDelete策略
+
+StatefulSet的更新策略除了RollingUpdate还有一种即OnDelete即必须人工删除对应的 Pod来触发一致性检查，所以针对那些如果想只更新指定索引的statefulset可以尝试该策略，每次只删除对应的索引，这样只有指定的索引会更新为最新的版本
+
+
+
+
+
+### 状态存储
+
+状态存储其实就是我们常说的PVC，在Pod创建和更新的时候，如果发现对应的PVC的不存在则就会根据statefulset里面的配置创建对应的PVC，并更新对应Pod的配置
+
+
+
+![image-20240501214620017](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240501214620017.png)
+
+
+
+ref: https://www.kubernetes.org.cn/7083.html
+
+
+
+实验：https://juejin.cn/post/7094244830326292511
+
+
+
+
+
+
+
+## 原理
+
++ StatefulSet 的控制器直接管理的是 Pod。通过在 Pod 的名字里加上事先约定好的编号，保证应用拓扑状态的服务稳定。
+
++ Kubernetes 通过 Headless Service，为这些有编号的 Pod，在 DNS 服务器中生成带有同样编号的 DNS 记录，生成唯一的网络标识。
+
++ StatefulSet 为每一个 Pod 分配并创建一个同样编号的 PVC。保证了每一个 Pod 都拥有一个独立的 Volume，保证数据不会丢失
+
+  
+
+  
+
+  详见：https://blog.csdn.net/qq_39254455/article/details/106278603

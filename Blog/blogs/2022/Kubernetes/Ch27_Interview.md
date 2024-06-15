@@ -592,7 +592,7 @@ K8s中的某个Metrics Server持续采集所有pod副本的指标数据。HPA控
 
 直接修改pod副本数即可，可以通过下面的方式来修改pod副本数：
 
-1. 直接修改yaml文件的replicas字段数值，然后`kubectl<span> </span>apply<span> </span>-f xxx.yaml`来实现更新；
+1. 直接修改yaml文件的replicas字段数值，然后`kubectl apply -f xxx.yaml`来实现更新；
 2. 使用`kubectl edit deployment xxx` 修改replicas来实现在线更新；
 3. 使用`kubectl scale --replicas=5 deployment/deployment-nginx`命令来扩容缩容。
 

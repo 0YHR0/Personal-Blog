@@ -9,6 +9,60 @@ categories:
 
 
 
+![image-20240514204802427](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514204802427.png)
+
+![image-20240514212341366](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514212341366.png)
+
+![image-20240514212434978](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514212434978.png)
+
+![image-20240514212524064](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514212524064.png)
+
+![image-20240514212558462](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514212558462.png)
+
+
+
+![image-20240514212948111](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514212948111.png)
+
+![image-20240514213021997](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514213021997.png)
+
+
+
+![image-20240514213357604](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514213357604.png)
+
+![image-20240514213607064](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514213607064.png)
+
+![image-20240514213636960](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514213636960.png)
+
+![image-20240514213829418](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514213829418.png)
+
+![image-20240514213907410](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514213907410.png)
+
+![image-20240514214201023](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514214201023.png)
+
+![image-20240514214458850](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514214458850.png)
+
+![image-20240514214651101](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514214651101.png)
+
+![image-20240514214724165](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514214724165.png)
+
+![image-20240514214845392](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514214845392.png)
+
+![image-20240514215012327](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514215012327.png)
+
+![image-20240514215131596](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514215131596.png)
+
+![image-20240514215332985](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514215332985.png)
+
+![image-20240514215456349](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514215456349.png)
+
+![image-20240514215734073](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514215734073.png)
+
+![image-20240514215827913](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514215827913.png)
+
+![image-20240514223619000](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514223619000.png)
+
+![image-20240514224127492](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514224127492.png)
+
 
 
 ## 拉取远程分支并在本地创建对应分支
@@ -153,6 +207,12 @@ git stash              //暂存本分支的修改
 
 如笔者通过 git stash 命令，会显示对应的 "Saved working directory and index state WIP on master :xxxxxxx" 信息。用户可以多次使用 git stash 命令，暂存的状态会以栈的形式存放。
 
+！！ 比较有用！！
+
+详见：https://www.jianshu.com/p/1c7ecc8d3dfb
+
+
+
 
 
 #### **查看暂存信息**
@@ -204,3 +264,46 @@ git stash 将用户做过的修改存放在本次 git stash 产生的暂存数�
 
 
 ![image-20231107110011541](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231107110011541.png)
+
+
+
+
+
+### git rebase 和 git merge
+
++ merge![image-20240514225826177](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514225826177.png)
+  + 产生冲突时解决冲突并add：![image-20240517204555787](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240517204555787.png)
+  + ![image-20240517213658454](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240517213658454.png)
+
++ rebase（一般不用，会造成日志混乱）![image-20240514225840579](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240514225840579.png)
+
+ref：https://www.51cto.com/article/678181.html
+
+
+
+### git cherry-pick 
+
+你在不合并整个分支的情况下，将单个提交的更改引入到另一个分支。
+
+```sh
+git cherry-pick <commit-hash>
+```
+
+### 常见使用场景
+
+1. **选择性合并更改**：你可能不希望将整个分支合并到当前分支中，而只想引入其中的一些特定提交。
+2. **错误修复**：如果在一个分支上修复了一个错误，并且希望将这个修复应用到其他分支。
+3. **补丁应用**：将某个特定功能或修复的提交应用到其他相关的分支上，而不需要合并整个分支的历史记录。
+
+
+
+
+
+
+
+
+
+# 常用
+
++ 可以在把别人提交的内容先拉取到本地分支（新增）：git checkout origin test:test
++ 再用git merge合并自己开发分支和别人的内容

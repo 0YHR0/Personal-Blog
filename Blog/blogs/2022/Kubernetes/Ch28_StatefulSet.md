@@ -15,6 +15,14 @@ categories:
 
 
 
+![image-20241011193630913](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193630913.png)
+
+![image-20241011193718481](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193718481.png)
+
+![image-20241011193750165](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193750165.png)
+
+
+
 ### Pod的release与adopt
 
 + statefulSet中的pod的名字都是按照一定规律来进行设置的, 名字本身也有含义, k8s在进行statefulset更新的时候，首先会过滤属于当前statefulset的pod，并做如下操作

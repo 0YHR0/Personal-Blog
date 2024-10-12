@@ -23,6 +23,20 @@ kubernetes的Volume支持多种类型，比较常见的有下面几个：
 
 
 
+![image-20241011193824924](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193824924.png)
+
+![image-20241011193857082](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193857082.png)
+
+![image-20241011193911819](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193911819.png)
+
+![image-20241011193920599](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011193920599.png)
+
+![image-20241011194036661](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194036661.png)
+
+
+
+![image-20241011194025164](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194025164.png)
+
 ### 基本存储
 
 #### EmptyDir

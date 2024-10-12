@@ -19,7 +19,13 @@ categories:
 
 ![image-20200408193950807](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20200408193950807.png)
 
+![image-20241011191717677](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191717677.png)
 
+![image-20241011191725522](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191725522.png)
+
+![image-20241011191733110](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191733110.png)
+
+![image-20241011191741672](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191741672.png)
 
 ### 操作：
 
@@ -121,4 +127,6 @@ spec:
         - containerPort: 80
           protocol: TCP
 ```
+
+
 

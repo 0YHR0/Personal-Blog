@@ -251,11 +251,13 @@ service "service-clusterip" deleted
 
 
 
-### HeadLiness类型的Service
+### HeadLess类型的Service![image-20241011194247293](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194247293.png)
 
-在某些场景中，开发人员可能不想使用Service提供的负载均衡功能，而希望自己来控制负载均衡策略，针对这种情况，kubernetes提供了HeadLiness Service，这类Service不会分配Cluster IP，如果想要访问service，只能通过service的域名进行查询。(不是很明白)
+![image-20241011194301660](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194301660.png)
 
-创建service-headliness.yaml
+在某些场景中，开发人员可能不想使用Service提供的负载均衡功能，而希望自己来控制负载均衡策略，针对这种情况，kubernetes提供了HeadLess Service，这类Service不会分配Cluster IP，如果想要访问service，只能通过service的域名进行查询。(不是很明白)
+
+创建service-headless.yaml
 
 ```yaml
 apiVersion: v1
@@ -266,7 +268,7 @@ metadata:
 spec:
   selector:
     app: nginx-pod
-  clusterIP: None # 将clusterIP设置为None，即可创建headliness Service
+  clusterIP: None # 将clusterIP设置为None，即可创建headless Service
   type: ClusterIP
   ports:
   - port: 80    
@@ -388,9 +390,11 @@ www.a.shifen.com.       30      IN      A       39.156.66.18
 www.a.shifen.com.       30      IN      A       39.156.66.14
 ```
 
-
+![image-20241011194646673](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194646673.png)
 
 ### Ingress介绍
+
+![image-20241011194708555](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194708555.png)
 
 Service对集群之外暴露服务的主要方式有两种：NotePort和LoadBalancer，但是这两种方式，都有一定的缺点：
 

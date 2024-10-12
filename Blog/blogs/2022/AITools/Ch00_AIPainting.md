@@ -4,7 +4,7 @@ date: 2024-05-05
 tags:
  - Stable Diffusion
 categories:
- - AI Painting
+ - AIGC
 
 ---
 
@@ -17,6 +17,18 @@ categories:
 
 
 ![image-20240505135355385](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20240505135355385.png)
+
+
+
+
+
+## Use Online
+
+https://www.esheep.com/
+
+
+
+
 
 
 

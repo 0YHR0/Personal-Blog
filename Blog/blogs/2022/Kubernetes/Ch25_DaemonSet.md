@@ -28,7 +28,13 @@ Daemon Pod 的意义确实是非常重要的。比如的作用：
 - 存储插件的 Agent 组件，也必须运行在每一个节点上，用来在这个节点上挂载远程存储目录，操作容器的 Volume 目录，比如：glusterd、ceph。
 - 监控组件和日志组件，也必须运行在每一个节点上，负责这个节点上的监控信息和日志搜集，比如：fluentd、logstash、Prometheus 等。
 
+![image-20241011191456939](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191456939.png)
 
+![image-20241011191507044](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191507044.png)
+
+![image-20241011191516056](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191516056.png)
+
+![image-20241011191547652](https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011191547652.png)
 
 ## **DaemonSet 创建**
 

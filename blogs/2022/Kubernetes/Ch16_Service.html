@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ch16 Service | Blog of YHR</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/head.ico">
+    <meta name="description" content="Blog of YHR">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.7e0aff35.css" as="style"><link rel="preload" href="/assets/js/app.0d75b3ae.js" as="script"><link rel="preload" href="/assets/js/3.5fe2d7cb.js" as="script"><link rel="preload" href="/assets/js/1.571bc783.js" as="script"><link rel="preload" href="/assets/js/197.e936d914.js" as="script"><link rel="prefetch" href="/assets/js/10.f4157172.js"><link rel="prefetch" href="/assets/js/100.600845a3.js"><link rel="prefetch" href="/assets/js/101.4d329296.js"><link rel="prefetch" href="/assets/js/102.f2e5e344.js"><link rel="prefetch" href="/assets/js/103.f7c81069.js"><link rel="prefetch" href="/assets/js/104.f3484d36.js"><link rel="prefetch" href="/assets/js/105.6fa7a43d.js"><link rel="prefetch" href="/assets/js/106.a4526e44.js"><link rel="prefetch" href="/assets/js/107.6bd4110b.js"><link rel="prefetch" href="/assets/js/108.ed650d05.js"><link rel="prefetch" href="/assets/js/109.d5ef1a12.js"><link rel="prefetch" href="/assets/js/11.e75a940e.js"><link rel="prefetch" href="/assets/js/110.320af159.js"><link rel="prefetch" href="/assets/js/111.745931d6.js"><link rel="prefetch" href="/assets/js/112.364b4a1b.js"><link rel="prefetch" href="/assets/js/113.e1727a6b.js"><link rel="prefetch" href="/assets/js/114.a9eac271.js"><link rel="prefetch" href="/assets/js/115.7cdac123.js"><link rel="prefetch" href="/assets/js/116.6b248114.js"><link rel="prefetch" href="/assets/js/117.dcea7200.js"><link rel="prefetch" href="/assets/js/118.b2f87986.js"><link rel="prefetch" href="/assets/js/119.e9b73e82.js"><link rel="prefetch" href="/assets/js/12.af598d62.js"><link rel="prefetch" href="/assets/js/120.7308514e.js"><link rel="prefetch" href="/assets/js/121.033e559f.js"><link rel="prefetch" href="/assets/js/122.0a23e902.js"><link rel="prefetch" href="/assets/js/123.a0b26f3a.js"><link rel="prefetch" href="/assets/js/124.d0a956ee.js"><link rel="prefetch" href="/assets/js/125.56067c87.js"><link rel="prefetch" href="/assets/js/126.0599407b.js"><link rel="prefetch" href="/assets/js/127.b71de461.js"><link rel="prefetch" href="/assets/js/128.985d4fd2.js"><link rel="prefetch" href="/assets/js/129.68ab690f.js"><link rel="prefetch" href="/assets/js/13.90a1a54e.js"><link rel="prefetch" href="/assets/js/130.5378eea2.js"><link rel="prefetch" href="/assets/js/131.ed59e042.js"><link rel="prefetch" href="/assets/js/132.f87fedea.js"><link rel="prefetch" href="/assets/js/133.5c837044.js"><link rel="prefetch" href="/assets/js/134.12f246c8.js"><link rel="prefetch" href="/assets/js/135.fcd31c6b.js"><link rel="prefetch" href="/assets/js/136.56ba26f0.js"><link rel="prefetch" href="/assets/js/137.9a86a61c.js"><link rel="prefetch" href="/assets/js/138.6def26a7.js"><link rel="prefetch" href="/assets/js/139.30bd5349.js"><link rel="prefetch" href="/assets/js/14.1ccc67ee.js"><link rel="prefetch" href="/assets/js/140.f1b65e8c.js"><link rel="prefetch" href="/assets/js/141.dc9cb476.js"><link rel="prefetch" href="/assets/js/142.c92f7bd0.js"><link rel="prefetch" href="/assets/js/143.443f8757.js"><link rel="prefetch" href="/assets/js/144.222a326f.js"><link rel="prefetch" href="/assets/js/145.74b2011c.js"><link rel="prefetch" href="/assets/js/146.dddac3ad.js"><link rel="prefetch" href="/assets/js/147.e19ce114.js"><link rel="prefetch" href="/assets/js/148.a5845780.js"><link rel="prefetch" href="/assets/js/149.aa54ea62.js"><link rel="prefetch" href="/assets/js/15.dfede46b.js"><link rel="prefetch" href="/assets/js/150.9a66537d.js"><link rel="prefetch" href="/assets/js/151.988a228c.js"><link rel="prefetch" href="/assets/js/152.19a2ed1b.js"><link rel="prefetch" href="/assets/js/153.f5224996.js"><link rel="prefetch" href="/assets/js/154.3a357718.js"><link rel="prefetch" href="/assets/js/155.687e7886.js"><link rel="prefetch" href="/assets/js/156.f53ab431.js"><link rel="prefetch" href="/assets/js/157.6f08da80.js"><link rel="prefetch" href="/assets/js/158.00cd5ce0.js"><link rel="prefetch" href="/assets/js/159.62567f7d.js"><link rel="prefetch" href="/assets/js/16.a84ac3ad.js"><link rel="prefetch" href="/assets/js/160.0d2c5b31.js"><link rel="prefetch" href="/assets/js/161.17bc7f01.js"><link rel="prefetch" href="/assets/js/162.f20a9778.js"><link rel="prefetch" href="/assets/js/163.dcb49eda.js"><link rel="prefetch" href="/assets/js/164.cf9a89a5.js"><link rel="prefetch" href="/assets/js/165.af27b85e.js"><link rel="prefetch" href="/assets/js/166.a0eca64c.js"><link rel="prefetch" href="/assets/js/167.48c35bf3.js"><link rel="prefetch" href="/assets/js/168.cc470428.js"><link rel="prefetch" href="/assets/js/169.75d05775.js"><link rel="prefetch" href="/assets/js/17.538a5c5d.js"><link rel="prefetch" href="/assets/js/170.72057365.js"><link rel="prefetch" href="/assets/js/171.2fde742f.js"><link rel="prefetch" href="/assets/js/172.a1d7322d.js"><link rel="prefetch" href="/assets/js/173.f6ab8bc3.js"><link rel="prefetch" href="/assets/js/174.1d19f66c.js"><link rel="prefetch" href="/assets/js/175.696172b3.js"><link rel="prefetch" href="/assets/js/176.f8e48a27.js"><link rel="prefetch" href="/assets/js/177.ccdc985d.js"><link rel="prefetch" href="/assets/js/178.fc3ac249.js"><link rel="prefetch" href="/assets/js/179.2535813d.js"><link rel="prefetch" href="/assets/js/18.c3b5ea8d.js"><link rel="prefetch" href="/assets/js/180.89299fdc.js"><link rel="prefetch" href="/assets/js/181.7eb206e9.js"><link rel="prefetch" href="/assets/js/182.86aca462.js"><link rel="prefetch" href="/assets/js/183.25b35999.js"><link rel="prefetch" href="/assets/js/184.d8890995.js"><link rel="prefetch" href="/assets/js/185.dd269408.js"><link rel="prefetch" href="/assets/js/186.5b49179c.js"><link rel="prefetch" href="/assets/js/187.1c14510e.js"><link rel="prefetch" href="/assets/js/188.d945b173.js"><link rel="prefetch" href="/assets/js/189.fc875aba.js"><link rel="prefetch" href="/assets/js/19.95babed9.js"><link rel="prefetch" href="/assets/js/190.3b7b9931.js"><link rel="prefetch" href="/assets/js/191.c947890d.js"><link rel="prefetch" href="/assets/js/192.c035e97c.js"><link rel="prefetch" href="/assets/js/193.84d63913.js"><link rel="prefetch" href="/assets/js/194.4a6f20ad.js"><link rel="prefetch" href="/assets/js/195.e712fd63.js"><link rel="prefetch" href="/assets/js/196.a270ad0b.js"><link rel="prefetch" href="/assets/js/198.1305745e.js"><link rel="prefetch" href="/assets/js/199.e1d247c9.js"><link rel="prefetch" href="/assets/js/20.611fe6d3.js"><link rel="prefetch" href="/assets/js/200.8c8932ad.js"><link rel="prefetch" href="/assets/js/201.71466513.js"><link rel="prefetch" href="/assets/js/202.5bf12a9b.js"><link rel="prefetch" href="/assets/js/203.0b1d1691.js"><link rel="prefetch" href="/assets/js/204.30ee65a9.js"><link rel="prefetch" href="/assets/js/205.dd05a120.js"><link rel="prefetch" href="/assets/js/206.25c34bdb.js"><link rel="prefetch" href="/assets/js/207.13198c5e.js"><link rel="prefetch" href="/assets/js/208.968a3fb5.js"><link rel="prefetch" href="/assets/js/209.4d071672.js"><link rel="prefetch" href="/assets/js/21.15b1c5ae.js"><link rel="prefetch" href="/assets/js/210.0b41fca9.js"><link rel="prefetch" href="/assets/js/211.8b36b90a.js"><link rel="prefetch" href="/assets/js/212.51c11db7.js"><link rel="prefetch" href="/assets/js/213.83a681b5.js"><link rel="prefetch" href="/assets/js/214.93e699e7.js"><link rel="prefetch" href="/assets/js/215.061feef2.js"><link rel="prefetch" href="/assets/js/216.97a11e55.js"><link rel="prefetch" href="/assets/js/217.817822fb.js"><link rel="prefetch" href="/assets/js/218.ff991719.js"><link rel="prefetch" href="/assets/js/219.51151182.js"><link rel="prefetch" href="/assets/js/22.dd13e052.js"><link rel="prefetch" href="/assets/js/220.4aec2024.js"><link rel="prefetch" href="/assets/js/221.8c242d92.js"><link rel="prefetch" href="/assets/js/222.34d6cff9.js"><link rel="prefetch" href="/assets/js/223.f0709977.js"><link rel="prefetch" href="/assets/js/224.918d366e.js"><link rel="prefetch" href="/assets/js/225.14e9c841.js"><link rel="prefetch" href="/assets/js/226.4daf091e.js"><link rel="prefetch" href="/assets/js/227.221ea8a2.js"><link rel="prefetch" href="/assets/js/228.6959bfd6.js"><link rel="prefetch" href="/assets/js/229.d497d308.js"><link rel="prefetch" href="/assets/js/23.1f8240a9.js"><link rel="prefetch" href="/assets/js/230.7a7afcaf.js"><link rel="prefetch" href="/assets/js/231.07f546f0.js"><link rel="prefetch" href="/assets/js/232.6b0eff22.js"><link rel="prefetch" href="/assets/js/233.1c0187e8.js"><link rel="prefetch" href="/assets/js/234.590a950d.js"><link rel="prefetch" href="/assets/js/235.0151c604.js"><link rel="prefetch" href="/assets/js/236.54c1a2a5.js"><link rel="prefetch" href="/assets/js/237.f2ca9292.js"><link rel="prefetch" href="/assets/js/238.7ce7751d.js"><link rel="prefetch" href="/assets/js/239.0842f0fa.js"><link rel="prefetch" href="/assets/js/24.426fc5a2.js"><link rel="prefetch" href="/assets/js/240.0988c1ed.js"><link rel="prefetch" href="/assets/js/241.17132366.js"><link rel="prefetch" href="/assets/js/242.823a6e31.js"><link rel="prefetch" href="/assets/js/243.6168b218.js"><link rel="prefetch" href="/assets/js/244.40ab3ddf.js"><link rel="prefetch" href="/assets/js/245.6be5950e.js"><link rel="prefetch" href="/assets/js/246.92f9d36d.js"><link rel="prefetch" href="/assets/js/247.d77a3bc7.js"><link rel="prefetch" href="/assets/js/248.dfe97a29.js"><link rel="prefetch" href="/assets/js/249.89e4e040.js"><link rel="prefetch" href="/assets/js/25.db0990da.js"><link rel="prefetch" href="/assets/js/250.1ca125ba.js"><link rel="prefetch" href="/assets/js/251.46ea1618.js"><link rel="prefetch" href="/assets/js/252.d90cf6e4.js"><link rel="prefetch" href="/assets/js/253.49cabac7.js"><link rel="prefetch" href="/assets/js/254.4759e867.js"><link rel="prefetch" href="/assets/js/255.35bc653f.js"><link rel="prefetch" href="/assets/js/256.81b60506.js"><link rel="prefetch" href="/assets/js/257.c7b69b27.js"><link rel="prefetch" href="/assets/js/258.2afed5f5.js"><link rel="prefetch" href="/assets/js/259.241b08a1.js"><link rel="prefetch" href="/assets/js/26.3fbbba13.js"><link rel="prefetch" href="/assets/js/260.938be499.js"><link rel="prefetch" href="/assets/js/261.8c757d33.js"><link rel="prefetch" href="/assets/js/262.f9921018.js"><link rel="prefetch" href="/assets/js/263.e713267f.js"><link rel="prefetch" href="/assets/js/264.89ba59c8.js"><link rel="prefetch" href="/assets/js/265.e03ba261.js"><link rel="prefetch" href="/assets/js/266.39d75b93.js"><link rel="prefetch" href="/assets/js/267.8077768a.js"><link rel="prefetch" href="/assets/js/268.6534128e.js"><link rel="prefetch" href="/assets/js/269.939d4cbb.js"><link rel="prefetch" href="/assets/js/27.496d7e3f.js"><link rel="prefetch" href="/assets/js/270.b81feace.js"><link rel="prefetch" href="/assets/js/271.b47bec35.js"><link rel="prefetch" href="/assets/js/272.950c0df4.js"><link rel="prefetch" href="/assets/js/273.c7b9bb56.js"><link rel="prefetch" href="/assets/js/274.dcd6973f.js"><link rel="prefetch" href="/assets/js/275.cb8f1083.js"><link rel="prefetch" href="/assets/js/276.4dbf6dfc.js"><link rel="prefetch" href="/assets/js/277.6165e4bb.js"><link rel="prefetch" href="/assets/js/278.d051bcbd.js"><link rel="prefetch" href="/assets/js/279.8bf5e837.js"><link rel="prefetch" href="/assets/js/28.6325346b.js"><link rel="prefetch" href="/assets/js/280.52e465e1.js"><link rel="prefetch" href="/assets/js/281.39bcc6b8.js"><link rel="prefetch" href="/assets/js/282.8e98af46.js"><link rel="prefetch" href="/assets/js/283.56e2cf95.js"><link rel="prefetch" href="/assets/js/284.8cae1a8c.js"><link rel="prefetch" href="/assets/js/285.ce78ebf9.js"><link rel="prefetch" href="/assets/js/286.5cc92e94.js"><link rel="prefetch" href="/assets/js/287.f05762e8.js"><link rel="prefetch" href="/assets/js/288.a91a9532.js"><link rel="prefetch" href="/assets/js/289.8634ec0b.js"><link rel="prefetch" href="/assets/js/29.0795d3db.js"><link rel="prefetch" href="/assets/js/290.8725abff.js"><link rel="prefetch" href="/assets/js/291.ef384147.js"><link rel="prefetch" href="/assets/js/292.d5e771b7.js"><link rel="prefetch" href="/assets/js/293.7e306f30.js"><link rel="prefetch" href="/assets/js/294.28042fc0.js"><link rel="prefetch" href="/assets/js/295.1ccb312a.js"><link rel="prefetch" href="/assets/js/296.7368ec88.js"><link rel="prefetch" href="/assets/js/297.5c1c6286.js"><link rel="prefetch" href="/assets/js/298.072e0af6.js"><link rel="prefetch" href="/assets/js/299.f24c8a0c.js"><link rel="prefetch" href="/assets/js/30.ef96deda.js"><link rel="prefetch" href="/assets/js/300.222184dc.js"><link rel="prefetch" href="/assets/js/301.97c7d86e.js"><link rel="prefetch" href="/assets/js/302.85eb8139.js"><link rel="prefetch" href="/assets/js/303.b29f057f.js"><link rel="prefetch" href="/assets/js/304.99223f65.js"><link rel="prefetch" href="/assets/js/305.45c9331c.js"><link rel="prefetch" href="/assets/js/306.8a6752c5.js"><link rel="prefetch" href="/assets/js/307.212468b2.js"><link rel="prefetch" href="/assets/js/308.4b0b39cb.js"><link rel="prefetch" href="/assets/js/309.4bb19c35.js"><link rel="prefetch" href="/assets/js/31.eb9e6bea.js"><link rel="prefetch" href="/assets/js/310.519d4a4e.js"><link rel="prefetch" href="/assets/js/311.0024b8bb.js"><link rel="prefetch" href="/assets/js/312.cc3c5004.js"><link rel="prefetch" href="/assets/js/313.8581766b.js"><link rel="prefetch" href="/assets/js/314.dbc81f26.js"><link rel="prefetch" href="/assets/js/315.44912838.js"><link rel="prefetch" href="/assets/js/316.6e6ff020.js"><link rel="prefetch" href="/assets/js/317.65a0a865.js"><link rel="prefetch" href="/assets/js/318.4eb05019.js"><link rel="prefetch" href="/assets/js/319.306631cc.js"><link rel="prefetch" href="/assets/js/32.f514f36e.js"><link rel="prefetch" href="/assets/js/320.2b7b8e0a.js"><link rel="prefetch" href="/assets/js/321.e1b6cfe2.js"><link rel="prefetch" href="/assets/js/322.9f6a9107.js"><link rel="prefetch" href="/assets/js/323.e89052b0.js"><link rel="prefetch" href="/assets/js/324.d217125b.js"><link rel="prefetch" href="/assets/js/325.dea605d0.js"><link rel="prefetch" href="/assets/js/326.ae11d353.js"><link rel="prefetch" href="/assets/js/327.c3381fe3.js"><link rel="prefetch" href="/assets/js/328.58a4f174.js"><link rel="prefetch" href="/assets/js/329.a1ae0ba3.js"><link rel="prefetch" href="/assets/js/33.3f479a60.js"><link rel="prefetch" href="/assets/js/330.65d1a4c4.js"><link rel="prefetch" href="/assets/js/331.07757e62.js"><link rel="prefetch" href="/assets/js/332.6bc01a65.js"><link rel="prefetch" href="/assets/js/333.2dd59e88.js"><link rel="prefetch" href="/assets/js/334.0401a840.js"><link rel="prefetch" href="/assets/js/335.da7bfdf0.js"><link rel="prefetch" href="/assets/js/336.3756c1ce.js"><link rel="prefetch" href="/assets/js/337.0022f80b.js"><link rel="prefetch" href="/assets/js/338.1b6c141a.js"><link rel="prefetch" href="/assets/js/339.ee1932eb.js"><link rel="prefetch" href="/assets/js/34.f6cf0ff9.js"><link rel="prefetch" href="/assets/js/340.439b90cf.js"><link rel="prefetch" href="/assets/js/341.ed530afe.js"><link rel="prefetch" href="/assets/js/342.0594363a.js"><link rel="prefetch" href="/assets/js/343.ce347f62.js"><link rel="prefetch" href="/assets/js/344.0f721307.js"><link rel="prefetch" href="/assets/js/345.e6bccf97.js"><link rel="prefetch" href="/assets/js/346.8d8fb28e.js"><link rel="prefetch" href="/assets/js/347.01dbd6c0.js"><link rel="prefetch" href="/assets/js/348.f2708d30.js"><link rel="prefetch" href="/assets/js/349.e73bedd1.js"><link rel="prefetch" href="/assets/js/35.ef3d267e.js"><link rel="prefetch" href="/assets/js/350.1a527edb.js"><link rel="prefetch" href="/assets/js/351.56986ae6.js"><link rel="prefetch" href="/assets/js/352.c3f538c5.js"><link rel="prefetch" href="/assets/js/353.a399ccd0.js"><link rel="prefetch" href="/assets/js/354.50f3b83a.js"><link rel="prefetch" href="/assets/js/355.ac601682.js"><link rel="prefetch" href="/assets/js/356.4dc73d82.js"><link rel="prefetch" href="/assets/js/357.1885013f.js"><link rel="prefetch" href="/assets/js/358.3e76fc9d.js"><link rel="prefetch" href="/assets/js/359.b30209a5.js"><link rel="prefetch" href="/assets/js/36.50911f27.js"><link rel="prefetch" href="/assets/js/360.ff9e1709.js"><link rel="prefetch" href="/assets/js/361.aa7292e4.js"><link rel="prefetch" href="/assets/js/362.c833851c.js"><link rel="prefetch" href="/assets/js/363.40cebbe9.js"><link rel="prefetch" href="/assets/js/364.cf5a7168.js"><link rel="prefetch" href="/assets/js/365.99297c58.js"><link rel="prefetch" href="/assets/js/366.571fc241.js"><link rel="prefetch" href="/assets/js/367.057d4059.js"><link rel="prefetch" href="/assets/js/368.05e2944f.js"><link rel="prefetch" href="/assets/js/369.2b3d472c.js"><link rel="prefetch" href="/assets/js/37.fa1564e7.js"><link rel="prefetch" href="/assets/js/370.e3199f39.js"><link rel="prefetch" href="/assets/js/371.dbc2038d.js"><link rel="prefetch" href="/assets/js/372.623bfad5.js"><link rel="prefetch" href="/assets/js/373.417ba36d.js"><link rel="prefetch" href="/assets/js/374.bc9f40b9.js"><link rel="prefetch" href="/assets/js/375.98a71593.js"><link rel="prefetch" href="/assets/js/376.c45edf9c.js"><link rel="prefetch" href="/assets/js/377.b514bb78.js"><link rel="prefetch" href="/assets/js/378.85ef2c85.js"><link rel="prefetch" href="/assets/js/379.b36b8fd4.js"><link rel="prefetch" href="/assets/js/38.27a4e72f.js"><link rel="prefetch" href="/assets/js/380.92087cae.js"><link rel="prefetch" href="/assets/js/381.bb0b1aff.js"><link rel="prefetch" href="/assets/js/382.ce8f279b.js"><link rel="prefetch" href="/assets/js/383.38e4f4f9.js"><link rel="prefetch" href="/assets/js/384.aad42d42.js"><link rel="prefetch" href="/assets/js/385.ff60588a.js"><link rel="prefetch" href="/assets/js/386.064aa0f8.js"><link rel="prefetch" href="/assets/js/387.a0414d55.js"><link rel="prefetch" href="/assets/js/388.9ed5a876.js"><link rel="prefetch" href="/assets/js/389.4b07ab29.js"><link rel="prefetch" href="/assets/js/39.6f12f3c4.js"><link rel="prefetch" href="/assets/js/390.b6c577bd.js"><link rel="prefetch" href="/assets/js/391.a943936c.js"><link rel="prefetch" href="/assets/js/392.c4d47c78.js"><link rel="prefetch" href="/assets/js/393.65f1b390.js"><link rel="prefetch" href="/assets/js/394.1c4eb326.js"><link rel="prefetch" href="/assets/js/4.d82b85a8.js"><link rel="prefetch" href="/assets/js/40.1c0ec968.js"><link rel="prefetch" href="/assets/js/41.a2261115.js"><link rel="prefetch" href="/assets/js/42.39358252.js"><link rel="prefetch" href="/assets/js/43.4bcd6c91.js"><link rel="prefetch" href="/assets/js/44.d0cd77ff.js"><link rel="prefetch" href="/assets/js/45.8422bc56.js"><link rel="prefetch" href="/assets/js/46.6e56acdf.js"><link rel="prefetch" href="/assets/js/47.6d349074.js"><link rel="prefetch" href="/assets/js/48.b4d5fdf2.js"><link rel="prefetch" href="/assets/js/49.da0693a6.js"><link rel="prefetch" href="/assets/js/5.1bfe4518.js"><link rel="prefetch" href="/assets/js/50.5848c685.js"><link rel="prefetch" href="/assets/js/51.9e96d370.js"><link rel="prefetch" href="/assets/js/52.2b398e18.js"><link rel="prefetch" href="/assets/js/53.7c1ccac6.js"><link rel="prefetch" href="/assets/js/54.da3b83e5.js"><link rel="prefetch" href="/assets/js/55.f91ef7d8.js"><link rel="prefetch" href="/assets/js/56.5b6ce68d.js"><link rel="prefetch" href="/assets/js/57.fb0b6b98.js"><link rel="prefetch" href="/assets/js/58.c424530d.js"><link rel="prefetch" href="/assets/js/59.25ee2811.js"><link rel="prefetch" href="/assets/js/6.701e992c.js"><link rel="prefetch" href="/assets/js/60.a3a91188.js"><link rel="prefetch" href="/assets/js/61.66d21b41.js"><link rel="prefetch" href="/assets/js/62.3251d278.js"><link rel="prefetch" href="/assets/js/63.40e92fb1.js"><link rel="prefetch" href="/assets/js/64.36d5d1bb.js"><link rel="prefetch" href="/assets/js/65.d495e493.js"><link rel="prefetch" href="/assets/js/66.8e2f5c1a.js"><link rel="prefetch" href="/assets/js/67.62bb4e09.js"><link rel="prefetch" href="/assets/js/68.41206555.js"><link rel="prefetch" href="/assets/js/69.8e5206c9.js"><link rel="prefetch" href="/assets/js/7.f086b79a.js"><link rel="prefetch" href="/assets/js/70.64426c39.js"><link rel="prefetch" href="/assets/js/71.4ef597fd.js"><link rel="prefetch" href="/assets/js/72.39ef4f67.js"><link rel="prefetch" href="/assets/js/73.8664cdd1.js"><link rel="prefetch" href="/assets/js/74.4b89a60a.js"><link rel="prefetch" href="/assets/js/75.af9b86de.js"><link rel="prefetch" href="/assets/js/76.67d30446.js"><link rel="prefetch" href="/assets/js/77.3f05de0a.js"><link rel="prefetch" href="/assets/js/78.68ce2655.js"><link rel="prefetch" href="/assets/js/79.a736a84a.js"><link rel="prefetch" href="/assets/js/8.bd90a9cf.js"><link rel="prefetch" href="/assets/js/80.f0f28d30.js"><link rel="prefetch" href="/assets/js/81.09a029b6.js"><link rel="prefetch" href="/assets/js/82.5df2fd6d.js"><link rel="prefetch" href="/assets/js/83.f8191cf9.js"><link rel="prefetch" href="/assets/js/84.fed1a13d.js"><link rel="prefetch" href="/assets/js/85.aa1dae38.js"><link rel="prefetch" href="/assets/js/86.a99a2375.js"><link rel="prefetch" href="/assets/js/87.37e13ccb.js"><link rel="prefetch" href="/assets/js/88.4cec61dc.js"><link rel="prefetch" href="/assets/js/89.e657aea3.js"><link rel="prefetch" href="/assets/js/9.ab05b51e.js"><link rel="prefetch" href="/assets/js/90.0ac98413.js"><link rel="prefetch" href="/assets/js/91.2ddd383e.js"><link rel="prefetch" href="/assets/js/92.c5d152f5.js"><link rel="prefetch" href="/assets/js/93.c46e7b57.js"><link rel="prefetch" href="/assets/js/94.02456fe8.js"><link rel="prefetch" href="/assets/js/95.d9c58e5d.js"><link rel="prefetch" href="/assets/js/96.717a20b7.js"><link rel="prefetch" href="/assets/js/97.18a3f309.js"><link rel="prefetch" href="/assets/js/98.109e9edc.js"><link rel="prefetch" href="/assets/js/99.ae7a2b4c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7e0aff35.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-5bb33761><div data-v-5bb33761><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-5bb33761 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Blog of YHR</h3> <p class="description" data-v-59e6cb88>Blog of YHR</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2024
+      </a></span></div></div> <div class="hide" data-v-5bb33761><header class="navbar" data-v-5bb33761><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.jpg" alt="Blog of YHR" class="logo"> <span class="site-name">Blog of YHR</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/AIDistributedTraining/" class="nav-link"><i class="undefined"></i>
+  AIDistributedTraining
+</a></li><li class="dropdown-item"><!----> <a href="/categories/AIGC/" class="nav-link"><i class="undefined"></i>
+  AIGC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Lock/" class="nav-link"><i class="undefined"></i>
+  Distributed Lock
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Transaction/" class="nav-link"><i class="undefined"></i>
+  Distributed Transaction
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Algorithm/" class="nav-link"><i class="undefined"></i>
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Architecture/" class="nav-link"><i class="undefined"></i>
+  Architecture
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data structure/" class="nav-link"><i class="undefined"></i>
+  Data structure
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed System/" class="nav-link"><i class="undefined"></i>
+  Distributed System
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Go/" class="nav-link"><i class="undefined"></i>
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Haskell/" class="nav-link"><i class="undefined"></i>
+  Haskell
+</a></li><li class="dropdown-item"><!----> <a href="/categories/HuaweiCloud/" class="nav-link"><i class="undefined"></i>
+  HuaweiCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/NLP/" class="nav-link"><i class="undefined"></i>
+  NLP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaWeb/" class="nav-link"><i class="undefined"></i>
+  JavaWeb
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/LLMs/" class="nav-link"><i class="undefined"></i>
+  LLMs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Leetcode/" class="nav-link"><i class="undefined"></i>
+  Leetcode
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DB/" class="nav-link"><i class="undefined"></i>
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Notes/" class="nav-link"><i class="undefined"></i>
+  Notes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OpenStack/" class="nav-link"><i class="undefined"></i>
+  OpenStack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Prometheus/" class="nav-link"><i class="undefined"></i>
+  Prometheus
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RealTimeSE/" class="nav-link"><i class="undefined"></i>
+  RealTimeSE
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Springboot/" class="nav-link"><i class="undefined"></i>
+  Springboot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringMVC/" class="nav-link"><i class="undefined"></i>
+  SpringMVC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Security/" class="nav-link"><i class="undefined"></i>
+  Spring Security
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Zookeeper/" class="nav-link"><i class="undefined"></i>
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/K8s/" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-5bb33761></div> <aside class="sidebar" data-v-5bb33761><div class="personal-info-wrapper" data-v-1fad0c41 data-v-5bb33761><img src="/head.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Yang Haoran
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>384</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>111</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/AIDistributedTraining/" class="nav-link"><i class="undefined"></i>
+  AIDistributedTraining
+</a></li><li class="dropdown-item"><!----> <a href="/categories/AIGC/" class="nav-link"><i class="undefined"></i>
+  AIGC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Lock/" class="nav-link"><i class="undefined"></i>
+  Distributed Lock
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Transaction/" class="nav-link"><i class="undefined"></i>
+  Distributed Transaction
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Algorithm/" class="nav-link"><i class="undefined"></i>
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Architecture/" class="nav-link"><i class="undefined"></i>
+  Architecture
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data structure/" class="nav-link"><i class="undefined"></i>
+  Data structure
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed System/" class="nav-link"><i class="undefined"></i>
+  Distributed System
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Go/" class="nav-link"><i class="undefined"></i>
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Haskell/" class="nav-link"><i class="undefined"></i>
+  Haskell
+</a></li><li class="dropdown-item"><!----> <a href="/categories/HuaweiCloud/" class="nav-link"><i class="undefined"></i>
+  HuaweiCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/NLP/" class="nav-link"><i class="undefined"></i>
+  NLP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaWeb/" class="nav-link"><i class="undefined"></i>
+  JavaWeb
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/LLMs/" class="nav-link"><i class="undefined"></i>
+  LLMs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Leetcode/" class="nav-link"><i class="undefined"></i>
+  Leetcode
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DB/" class="nav-link"><i class="undefined"></i>
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Notes/" class="nav-link"><i class="undefined"></i>
+  Notes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OpenStack/" class="nav-link"><i class="undefined"></i>
+  OpenStack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Prometheus/" class="nav-link"><i class="undefined"></i>
+  Prometheus
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RealTimeSE/" class="nav-link"><i class="undefined"></i>
+  RealTimeSE
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Springboot/" class="nav-link"><i class="undefined"></i>
+  Springboot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringMVC/" class="nav-link"><i class="undefined"></i>
+  SpringMVC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Security/" class="nav-link"><i class="undefined"></i>
+  Spring Security
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Zookeeper/" class="nav-link"><i class="undefined"></i>
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/K8s/" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Ch16 Service</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2024
+      </a></span></div></div> <div data-v-5bb33761><div data-v-5bb33761><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Ch16 Service</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Yang Haoran</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>5/22/2022</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>K8s</span><span class="tag-item" data-v-8a445198>Kubernetes</span></i></div></div> <div class="theme-reco-content content__default"><h1 id="service"><a href="#service" class="header-anchor">#</a> Service</h1> <h4 id="service介绍"><a href="#service介绍" class="header-anchor">#</a> Service介绍</h4> <p>在kubernetes中，pod是应用程序的载体，我们可以通过pod的ip来访问应用程序，但是pod的ip地址不是固定的，这也就意味着不方便直接采用pod的ip对服务进行访问。</p> <p>为了解决这个问题，kubernetes提供了Service资源，Service会对提供同一个服务的多个pod进行聚合，并且提供一个统一的入口地址。通过访问Service的入口地址就能访问到后面的pod服务。</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521160046024.png" alt="image-20220521160046024"></p> <p>Service在很多情况下只是一个概念，真正起作用的其实是kube-proxy服务进程，每个Node节点上都运行着一个kube-proxy服务进程。当创建Service的时候会通过api-server向etcd写入创建的service的信息，而kube-proxy会基于监听的机制发现这种Service的变动，然后<strong>它会将最新的Service信息转换成对应的访问规则</strong>。</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521161354058.png" alt="image-20220521161354058"></p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 10.97.97.97:80 是service提供的访问入口</span>
+<span class="token comment"># 当访问这个入口的时候，可以发现后面有三个pod的服务在等待调用，</span>
+<span class="token comment"># kube-proxy会基于rr（轮询）的策略，将请求分发到其中一个pod上去</span>
+<span class="token comment"># 这个规则会同时在集群内的所有节点上都生成，所以在任何一个节点上，都可以访问。</span>
+<span class="token punctuation">[</span>root@node1 ~<span class="token punctuation">]</span><span class="token comment"># ipvsadm -Ln  #表示查看IPVS规则</span>
+IP Virtual Server version <span class="token number">1.2</span>.1 <span class="token punctuation">(</span>size<span class="token operator">=</span><span class="token number">4096</span><span class="token punctuation">)</span>
+Prot LocalAddress:Port Scheduler Flags
+  -<span class="token operator">&gt;</span> RemoteAddress:Port           Forward Weight ActiveConn InActConn
+TCP  <span class="token number">10.97</span>.97.97:80 rr
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.39:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.40:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.2.33:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>kube-proxy目前支持三种工作模式:</p> <p><strong>userspace 模式</strong></p> <p>userspace模式下，kube-proxy会为每一个Service创建一个监听端口，发向Cluster IP的请求被Iptables规则重定向到kube-proxy监听的端口上，kube-proxy根据LB算法选择一个提供服务的Pod并和其建立链接，以将请求转发到Pod上。 该模式下，kube-proxy充当了一个负载均衡器的角色。由于kube-proxy运行在userspace中，在进行转发处理时会增加内核和用户空间之间的数据拷贝，虽然比较稳定，但是效率比较低。<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521162550693.png" alt="image-20220521162550693"></p> <p><strong>iptables 模式</strong></p> <p>iptables模式下，kube-proxy为service后端的每个Pod创建对应的iptables规则，直接将发向Cluster IP的请求重定向到一个Pod IP。 该模式下kube-proxy不承担四层负责均衡器的角色，只负责创建iptables规则。该模式的优点是较userspace模式效率更高，但不能提供灵活的LB策略，当后端Pod不可用时也无法进行重试。<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521162624393.png" alt="image-20220521162624393"></p> <p><strong>ipvs 模式</strong></p> <p>ipvs模式和iptables类似，kube-proxy监控Pod的变化并创建相应的ipvs规则。ipvs相对iptables转发效率更高。除此以外，ipvs支持更多的LB算法。<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521162702119.png" alt="image-20220521162702119"></p> <ul><li>创建service的请求从apiServer进来，然后通过kube-proxy生成一套规则</li> <li>Client请求被Clusterip负责转发</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 此模式必须安装ipvs内核模块，否则会降级为iptables
+# 开启ipvs
+[root@k8s-master01 ~]# kubectl edit cm kube-proxy -n kube-system
+# 修改mode: &quot;ipvs&quot;
+[root@k8s-master01 ~]# kubectl delete pod -l k8s-app=kube-proxy -n kube-system
+[root@node1 ~]# ipvsadm -Ln
+IP Virtual Server version 1.2.1 (size=4096)
+Prot LocalAddress:Port Scheduler Flags
+  -&gt; RemoteAddress:Port           Forward Weight ActiveConn InActConn
+TCP  10.97.97.97:80 rr
+  -&gt; 10.244.1.39:80               Masq    1      0          0
+  -&gt; 10.244.1.40:80               Masq    1      0          0
+  -&gt; 10.244.2.33:80               Masq    1      0          0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="service类型"><a href="#service类型" class="header-anchor">#</a> Service类型</h3> <p>Service的资源清单文件：</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">kind</span><span class="token punctuation">:</span> Service  <span class="token comment"># 资源类型</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1  <span class="token comment"># 资源版本</span>
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span> <span class="token comment"># 元数据</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> service <span class="token comment"># 资源名称</span>
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev <span class="token comment"># 命名空间</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span> <span class="token comment"># 描述</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span> <span class="token comment"># 标签选择器，用于确定当前service代理哪些pod</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> <span class="token comment"># Service类型，指定service的访问方式</span>
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span>  <span class="token comment"># 虚拟服务的ip地址</span>
+  <span class="token key atrule">sessionAffinity</span><span class="token punctuation">:</span> <span class="token comment"># session亲和性，支持ClientIP、None两个选项，意思是来自同一台电脑的请求会转发到同一个pod上</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span> <span class="token comment"># 端口信息</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP 
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">3017</span>  <span class="token comment"># service端口</span>
+      <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">5003</span> <span class="token comment"># pod端口</span>
+      <span class="token key atrule">nodePort</span><span class="token punctuation">:</span> <span class="token number">31122</span> <span class="token comment"># 主机端口</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>ClusterIP：默认值，它是Kubernetes系统自动分配的虚拟IP，只能在集群内部访问</li> <li>NodePort：将Service通过指定的Node上的端口暴露给外部，通过此方法，就可以在集群外部访问服务</li> <li>LoadBalancer：使用外接负载均衡器完成到服务的负载分发，注意此模式需要外部云环境支持</li> <li>ExternalName： 把集群外部的服务引入集群内部，直接使用</li></ul> <h3 id="service使用"><a href="#service使用" class="header-anchor">#</a> Service使用</h3> <p>实验环境搭建：deployment.yaml</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>[root@k8s-master01 ~]# kubectl create -f deployment.yaml
+deployment.apps/pc-deployment created
+
+# 查看pod详情
+[root@k8s-master01 ~]# kubectl get pods -n dev -o wide --show-labels
+NAME                             READY   STATUS     IP            NODE     LABELS
+pc-deployment-66cb59b984-8p84h   1/1     Running    10.244.1.39   node1    app=nginx-pod
+pc-deployment-66cb59b984-vx8vx   1/1     Running    10.244.2.33   node2    app=nginx-pod
+pc-deployment-66cb59b984-wnncx   1/1     Running    10.244.1.40   node1    app=nginx-pod
+
+# 为了方便后面的测试，修改下三台nginx的index.html页面（三台修改的IP地址不一致）
+# kubectl exec -it pc-deployment-66cb59b984-8p84h -n dev /bin/sh
+# echo &quot;10.244.1.39&quot; &gt; /usr/share/nginx/html/index.html
+
+#修改完毕之后，访问测试
+[root@k8s-master01 ~]# curl 10.244.1.39
+10.244.1.39
+[root@k8s-master01 ~]# curl 10.244.2.33
+10.244.2.33
+[root@k8s-master01 ~]# curl 10.244.1.40
+10.244.1.40
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h3 id="clusterip类型的service"><a href="#clusterip类型的service" class="header-anchor">#</a> ClusterIP类型的Service</h3> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> service<span class="token punctuation">-</span>clusterip
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>pod
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> 10.97.97.97 <span class="token comment"># service的ip地址，如果不写，默认会生成一个</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>  <span class="token comment"># Service端口       </span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span> <span class="token comment"># pod端口</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建service</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f service-clusterip.yaml</span>
+service/service-clusterip created
+
+<span class="token comment"># 查看service</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get svc -n dev -o wide</span>
+NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>   AGE   SELECTOR
+service-clusterip   ClusterIP   <span class="token number">10.97</span>.97.97   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>/TCP    13s   <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx-pod
+
+<span class="token comment"># 查看service的详细信息</span>
+<span class="token comment"># 在这里有一个Endpoints列表，里面就是当前service可以负载到的服务入口</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe svc service-clusterip -n dev</span>
+Name:              service-clusterip
+Namespace:         dev
+Labels:            <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+Annotations:       <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+Selector:          <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx-pod
+Type:              ClusterIP
+IP:                <span class="token number">10.97</span>.97.97
+Port:              <span class="token operator">&lt;</span>unset<span class="token operator">&gt;</span>  <span class="token number">80</span>/TCP
+TargetPort:        <span class="token number">80</span>/TCP
+Endpoints:         <span class="token number">10.244</span>.1.39:80,10.244.1.40:80,10.244.2.33:80
+Session Affinity:  None
+Events:            <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+
+<span class="token comment"># 查看ipvs的映射规则</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># ipvsadm -Ln</span>
+TCP  <span class="token number">10.97</span>.97.97:80 rr
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.39:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.40:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.2.33:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+
+<span class="token comment"># 访问10.97.97.97:80观察效果</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># curl 10.97.97.97:80</span>
+<span class="token number">10.244</span>.2.33
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><p><strong>Endpoint</strong></p> <p>Endpoint是kubernetes中的一个资源对象，存储在etcd中，用来记录一个service对应的所有pod的访问地址，它是根据service配置文件中selector描述产生的。</p> <p>一个Service由一组Pod组成，这些Pod通过Endpoints暴露出来，<strong>Endpoints是实现实际服务的端点集合</strong>。换句话说，service和pod之间的联系是通过endpoints实现的。<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521174723818.png" alt="image-20220521174723818"></p> <p><strong>负载分发策略</strong></p> <p>对Service的访问被分发到了后端的Pod上去，目前kubernetes提供了两种负载分发策略：</p> <ul><li><p>如果不定义，默认使用kube-proxy的策略，比如随机、轮询</p></li> <li><p>基于客户端地址的会话保持模式，即来自同一个客户端发起的所有请求都会转发到固定的一个Pod上</p> <p>此模式可以使在spec中添加<code>sessionAffinity:ClientIP</code>选项</p></li></ul> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 查看ipvs的映射规则【rr 轮询】</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># ipvsadm -Ln</span>
+TCP  <span class="token number">10.97</span>.97.97:80 rr
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.39:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.40:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.2.33:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+
+<span class="token comment"># 循环访问测试</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># while true;do curl 10.97.97.97:80; sleep 5; done;</span>
+<span class="token number">10.244</span>.1.40
+<span class="token number">10.244</span>.1.39
+<span class="token number">10.244</span>.2.33
+<span class="token number">10.244</span>.1.40
+<span class="token number">10.244</span>.1.39
+<span class="token number">10.244</span>.2.33
+
+<span class="token comment"># 修改分发策略----sessionAffinity:ClientIP</span>
+
+<span class="token comment"># 查看ipvs规则【persistent 代表持久】</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># ipvsadm -Ln</span>
+TCP  <span class="token number">10.97</span>.97.97:80 rr persistent <span class="token number">10800</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.39:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.1.40:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+  -<span class="token operator">&gt;</span> <span class="token number">10.244</span>.2.33:80               Masq    <span class="token number">1</span>      <span class="token number">0</span>          <span class="token number">0</span>
+
+<span class="token comment"># 循环访问测试</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># while true;do curl 10.97.97.97; sleep 5; done;</span>
+<span class="token number">10.244</span>.2.33
+<span class="token number">10.244</span>.2.33
+<span class="token number">10.244</span>.2.33
+  
+<span class="token comment"># 删除service</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl delete -f service-clusterip.yaml</span>
+<span class="token function">service</span> <span class="token string">&quot;service-clusterip&quot;</span> deleted
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h3 id="headless类型的service"><a href="#headless类型的service" class="header-anchor">#</a> HeadLess类型的Service<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194247293.png" alt="image-20241011194247293"></h3> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194301660.png" alt="image-20241011194301660"></p> <p>在某些场景中，开发人员可能不想使用Service提供的负载均衡功能，而希望自己来控制负载均衡策略，针对这种情况，kubernetes提供了HeadLess Service，这类Service不会分配Cluster IP，如果想要访问service，只能通过service的域名进行查询。(不是很明白)</p> <p>创建service-headless.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> service<span class="token punctuation">-</span>headliness
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>pod
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> None <span class="token comment"># 将clusterIP设置为None，即可创建headless Service</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>    
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建service</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f service-headliness.yaml</span>
+service/service-headliness created
+
+<span class="token comment"># 获取service， 发现CLUSTER-IP未分配</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get svc service-headliness -n dev -o wide</span>
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>   AGE   SELECTOR
+service-headliness   ClusterIP   None         <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>/TCP    11s   <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx-pod
+
+<span class="token comment"># 查看service详情</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe svc service-headliness  -n dev</span>
+Name:              service-headliness
+Namespace:         dev
+Labels:            <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+Annotations:       <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+Selector:          <span class="token assign-left variable">app</span><span class="token operator">=</span>nginx-pod
+Type:              ClusterIP
+IP:                None
+Port:              <span class="token operator">&lt;</span>unset<span class="token operator">&gt;</span>  <span class="token number">80</span>/TCP
+TargetPort:        <span class="token number">80</span>/TCP
+Endpoints:         <span class="token number">10.244</span>.1.39:80,10.244.1.40:80,10.244.2.33:80
+Session Affinity:  None
+Events:            <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>
+
+<span class="token comment"># 查看域名的解析情况</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl exec -it pc-deployment-66cb59b984-8p84h -n dev /bin/sh</span>
+/ <span class="token comment"># cat /etc/resolv.conf</span>
+nameserver <span class="token number">10.96</span>.0.10
+search dev.svc.cluster.local svc.cluster.local cluster.local
+
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># dig @10.96.0.10 service-headliness.dev.svc.cluster.local</span>
+service-headliness.dev.svc.cluster.local. <span class="token number">30</span> IN A <span class="token number">10.244</span>.1.40
+service-headliness.dev.svc.cluster.local. <span class="token number">30</span> IN A <span class="token number">10.244</span>.1.39
+service-headliness.dev.svc.cluster.local. <span class="token number">30</span> IN A <span class="token number">10.244</span>.2.33
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><p><strong>NodePort类型的Service</strong></p> <p>在之前的样例中，创建的Service的ip地址只有集群内部才可以访问，如果希望将Service暴露给集群外部使用，那么就要使用到另外一种类型的Service，称为NodePort类型。NodePort的工作原理其实就是<strong>将service的端口映射到Node的一个端口上</strong>，然后就可以通过<code>NodeIp:NodePort</code>来访问service了。</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521204642010.png" alt="image-20220521204642010"></p> <p>创建service-nodeport.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> service<span class="token punctuation">-</span>nodeport
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>pod
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> NodePort <span class="token comment"># service类型</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">nodePort</span><span class="token punctuation">:</span> <span class="token number">30002</span> <span class="token comment"># 指定绑定的node的端口(默认的取值范围是：30000-32767), 如果不指定，会默认分配</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token comment"># 创建service</span>
+<span class="token punctuation">[</span>root@k8s<span class="token punctuation">-</span>master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f service-nodeport.yaml</span>
+service/service<span class="token punctuation">-</span>nodeport created
+
+<span class="token comment"># 查看service</span>
+<span class="token punctuation">[</span>root@k8s<span class="token punctuation">-</span>master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get svc -n dev -o wide</span>
+NAME               TYPE       CLUSTER<span class="token punctuation">-</span>IP      EXTERNAL<span class="token punctuation">-</span>IP   PORT(S)       SELECTOR
+service<span class="token punctuation">-</span>nodeport   NodePort   10.105.64.191   &lt;none<span class="token punctuation">&gt;</span>        80<span class="token punctuation">:</span>30002/TCP  app=nginx<span class="token punctuation">-</span>pod
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p><strong>LoadBalancer类型的Service</strong></p> <p>LoadBalancer和NodePort很相似，目的都是向外部暴露一个端口，区别在于LoadBalancer会在集群的外部再来做一个负载均衡设备，而这个设备需要外部环境支持的，外部服务发送到这个设备上的请求，会被设备负载之后转发到集群中。<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521205508339.png" alt="image-20220521205508339"></p> <p><strong>ExternalName类型的Service</strong></p> <p>ExternalName类型的Service用于引入集群外部的服务，它通过<code>externalName</code>属性指定外部一个服务的地址，然后在集群内部访问此service就可以访问到外部的服务了。</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521210638556.png" alt="image-20220521210638556"></p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> service<span class="token punctuation">-</span>externalname
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ExternalName <span class="token comment"># service类型</span>
+  <span class="token key atrule">externalName</span><span class="token punctuation">:</span> www.baidu.com  <span class="token comment">#改成ip地址也可以</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建service</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl  create -f service-externalname.yaml</span>
+service/service-externalname created
+
+<span class="token comment"># 域名解析</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># dig @10.96.0.10 service-externalname.dev.svc.cluster.local</span>
+service-externalname.dev.svc.cluster.local. <span class="token number">30</span> IN CNAME www.baidu.com.
+www.baidu.com.          <span class="token number">30</span>      IN      CNAME   www.a.shifen.com.
+www.a.shifen.com.       <span class="token number">30</span>      IN      A       <span class="token number">39.156</span>.66.18
+www.a.shifen.com.       <span class="token number">30</span>      IN      A       <span class="token number">39.156</span>.66.14
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194646673.png" alt="image-20241011194646673"></p> <h3 id="ingress介绍"><a href="#ingress介绍" class="header-anchor">#</a> Ingress介绍</h3> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20241011194708555.png" alt="image-20241011194708555"></p> <p>Service对集群之外暴露服务的主要方式有两种：NotePort和LoadBalancer，但是这两种方式，都有一定的缺点：</p> <ul><li>NodePort方式的缺点是会占用很多集群机器的端口，那么当集群服务变多的时候，这个缺点就愈发明显</li> <li>LB方式的缺点是每个service需要一个LB，浪费、麻烦，并且需要kubernetes之外设备的支持</li></ul> <p>基于这种现状，kubernetes提供了Ingress资源对象，Ingress只需要一个NodePort或者一个LB就可以满足暴露多个Service的需求。工作机制大致如下图表示：</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521213214025.png" alt="image-20220521213214025"></p> <p>实际上，Ingress相当于一个7层的负载均衡器，是kubernetes对反向代理的一个抽象，它的工作原理类似于Nginx，可以理解成在<strong>Ingress里建立诸多映射规则，Ingress Controller通过监听这些配置规则并转化成Nginx的反向代理配置 , 然后对外部提供服务</strong>。在这里有两个核心概念：</p> <ul><li>ingress：kubernetes中的一个对象，作用是定义请求如何转发到service的规则</li> <li>ingress controller：具体实现反向代理及负载均衡的程序，对ingress定义的规则进行解析，根据配置的规则来实现请求转发，实现方式有很多，比如Nginx, Contour, Haproxy等等</li></ul> <p>Ingress（以Nginx为例）的工作原理如下：</p> <ol><li>用户编写Ingress规则，说明哪个域名对应kubernetes集群中的哪个Service</li> <li>Ingress控制器动态感知Ingress服务规则的变化，然后生成一段对应的Nginx反向代理配置</li> <li>Ingress控制器会将生成的Nginx配置写入到一个运行着的Nginx服务中，并动态更新</li> <li>到此为止，其实真正在工作的就是一个Nginx了，内部配置了用户定义的请求转发规则<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521213318449.png" alt="image-20220521213318449"></li></ol> <p><strong>环境准备 搭建ingress环境</strong></p> <div class="language-SH line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建文件夹</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># mkdir ingress-controller</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># cd ingress-controller/</span>
+
+<span class="token comment"># 获取ingress-nginx，本次案例使用的是0.30版本</span>
+<span class="token punctuation">[</span>root@k8s-master01 ingress-controller<span class="token punctuation">]</span><span class="token comment"># wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/mandatory.yaml</span>
+<span class="token punctuation">[</span>root@k8s-master01 ingress-controller<span class="token punctuation">]</span><span class="token comment"># wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.30.0/deploy/static/provider/baremetal/service-nodeport.yaml</span>
+
+<span class="token comment"># 创建ingress-nginx</span>
+<span class="token punctuation">[</span>root@k8s-master01 ingress-controller<span class="token punctuation">]</span><span class="token comment"># kubectl apply -f ./</span>
+
+<span class="token comment"># 查看ingress-nginx</span>
+<span class="token punctuation">[</span>root@k8s-master01 ingress-controller<span class="token punctuation">]</span><span class="token comment"># kubectl get pod -n ingress-nginx</span>
+NAME                                           READY   STATUS    RESTARTS   AGE
+pod/nginx-ingress-controller-fbf967dd5-4qpbp   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          12h
+
+<span class="token comment"># 查看service</span>
+<span class="token punctuation">[</span>root@k8s-master01 ingress-controller<span class="token punctuation">]</span><span class="token comment"># kubectl get svc -n ingress-nginx</span>
+NAME            TYPE       CLUSTER-IP     EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>                      AGE
+ingress-nginx   NodePort   <span class="token number">10.98</span>.75.163   <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>:32240/TCP,443:31335/TCP   11h
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>准备service和pod</strong></p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20220521215008673.png" alt="image-20220521215008673"></p> <p>创建tomcat-nginx.yaml</p> <div class="language-YAML line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>deployment
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">3</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>pod
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>pod
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>1.17.1
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+
+<span class="token punctuation">---</span>
+
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>deployment
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">3</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>pod
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>pod
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> tomcat
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">:</span>8.5<span class="token punctuation">-</span>jre10<span class="token punctuation">-</span>slim
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+
+<span class="token punctuation">---</span>
+
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>service
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>pod
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> None
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+
+<span class="token punctuation">---</span>
+
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>service
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>pod
+  <span class="token key atrule">clusterIP</span><span class="token punctuation">:</span> None
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ClusterIP
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br></div></div><div class="language-SH line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f tomcat-nginx.yaml</span>
+
+<span class="token comment"># 查看</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get svc -n dev</span>
+NAME             TYPE        CLUSTER-IP   EXTERNAL-IP   PORT<span class="token punctuation">(</span>S<span class="token punctuation">)</span>    AGE
+nginx-service    ClusterIP   None         <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">80</span>/TCP     48s
+tomcat-service   ClusterIP   None         <span class="token operator">&lt;</span>none<span class="token operator">&gt;</span>        <span class="token number">8080</span>/TCP   48s
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p><strong>Http代理</strong></p> <p>创建ingress-http.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>http
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> nginx.itheima.com
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>service
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> tomcat.itheima.com
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>service
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 输入host+path，会自动转发到下面service中</span>
+<span class="token comment"># 创建</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f ingress-http.yaml</span>
+ingress.extensions/ingress-http created
+
+<span class="token comment"># 查看</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get ing ingress-http -n dev</span>
+NAME           HOSTS                                  ADDRESS   PORTS   AGE
+ingress-http   nginx.itheima.com,tomcat.itheima.com             <span class="token number">80</span>      22s
+
+<span class="token comment"># 查看详情</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe ing ingress-http  -n dev</span>
+<span class="token punctuation">..</span>.
+Rules:
+Host                Path  Backends
+----                ----  --------
+nginx.itheima.com   / nginx-service:80 <span class="token punctuation">(</span><span class="token number">10.244</span>.1.96:80,10.244.1.97:80,10.244.2.112:80<span class="token punctuation">)</span>
+tomcat.itheima.com  / tomcat-service:8080<span class="token punctuation">(</span><span class="token number">10.244</span>.1.94:8080,10.244.1.95:8080,10.244.2.111:8080<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.
+
+<span class="token comment"># 接下来,在本地电脑上配置host文件（C:\Windows\System32\drivers\etc\host）,解析上面的两个域名到192.168.109.100(master)上</span>
+<span class="token comment"># 然后,就可以分别访问tomcat.itheima.com:32240  和  nginx.itheima.com:32240 查看效果了</span>
+<span class="token comment"># 端口号为ingress-service的http端口号(80对应的那个)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p><strong>Https代理</strong></p> <p>创建证书</p> <div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 生成证书</span>
+openssl req <span class="token parameter variable">-x509</span> <span class="token parameter variable">-sha256</span> <span class="token parameter variable">-nodes</span> <span class="token parameter variable">-days</span> <span class="token number">365</span> <span class="token parameter variable">-newkey</span> rsa:2048 <span class="token parameter variable">-keyout</span> tls.key <span class="token parameter variable">-out</span> tls.crt <span class="token parameter variable">-subj</span> <span class="token string">&quot;/C=CN/ST=BJ/L=BJ/O=nginx/CN=itheima.com&quot;</span>
+
+<span class="token comment"># 创建密钥</span>
+kubectl create secret tls tls-secret <span class="token parameter variable">--key</span> tls.key <span class="token parameter variable">--cert</span> tls.crt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>创建ingress-https.yaml</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> ingress<span class="token punctuation">-</span>https
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> dev
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">tls</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">hosts</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> nginx.itheima.com
+      <span class="token punctuation">-</span> tomcat.itheima.com
+      <span class="token key atrule">secretName</span><span class="token punctuation">:</span> tls<span class="token punctuation">-</span>secret <span class="token comment"># 指定秘钥</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> nginx.itheima.com
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> nginx<span class="token punctuation">-</span>service
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> tomcat.itheima.com
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> tomcat<span class="token punctuation">-</span>service
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><div class="language-sh line-numbers-mode"><pre class="language-sh"><code><span class="token comment"># 创建</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl create -f ingress-https.yaml</span>
+ingress.extensions/ingress-https created
+
+<span class="token comment"># 查看</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl get ing ingress-https -n dev</span>
+NAME            HOSTS                                  ADDRESS         PORTS     AGE
+ingress-https   nginx.itheima.com,tomcat.itheima.com   <span class="token number">10.104</span>.184.38   <span class="token number">80</span>, <span class="token number">443</span>   2m42s
+
+<span class="token comment"># 查看详情</span>
+<span class="token punctuation">[</span>root@k8s-master01 ~<span class="token punctuation">]</span><span class="token comment"># kubectl describe ing ingress-https -n dev</span>
+<span class="token punctuation">..</span>.
+TLS:
+  tls-secret terminates nginx.itheima.com,tomcat.itheima.com
+Rules:
+Host              Path Backends
+----              ---- --------
+nginx.itheima.com  /  nginx-service:80 <span class="token punctuation">(</span><span class="token number">10.244</span>.1.97:80,10.244.1.98:80,10.244.2.119:80<span class="token punctuation">)</span>
+tomcat.itheima.com /  tomcat-service:8080<span class="token punctuation">(</span><span class="token number">10.244</span>.1.99:8080,10.244.2.117:8080,10.244.2.120:8080<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.
+<span class="token comment"># 下面可以通过浏览器访问https://nginx.itheima.com:31335 和 https://tomcat.itheima.com:31335来查看了</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">10/12/2024, 2:55:25 PM</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-ac050c62><li class="level-3" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch16_Service.html#service类型" class="sidebar-link reco-side-service类型" data-v-ac050c62>Service类型</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch16_Service.html#service使用" class="sidebar-link reco-side-service使用" data-v-ac050c62>Service使用</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch16_Service.html#clusterip类型的service" class="sidebar-link reco-side-clusterip类型的service" data-v-ac050c62>ClusterIP类型的Service</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch16_Service.html#headless类型的service" class="sidebar-link reco-side-headless类型的service" data-v-ac050c62>HeadLess类型的Service!image-20241011194247293</a></li><li class="level-3" data-v-ac050c62><a href="/blogs/2022/Kubernetes/Ch16_Service.html#ingress介绍" class="sidebar-link reco-side-ingress介绍" data-v-ac050c62>Ingress介绍</a></li></ul></main></div> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div></div></div>
+    <script src="/assets/js/app.0d75b3ae.js" defer></script><script src="/assets/js/3.5fe2d7cb.js" defer></script><script src="/assets/js/1.571bc783.js" defer></script><script src="/assets/js/197.e936d914.js" defer></script>
+  </body>
+</html>

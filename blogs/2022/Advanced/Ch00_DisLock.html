@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ch00 Distributed Lock | Blog of YHR</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/head.ico">
+    <meta name="description" content="Blog of YHR">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.7e0aff35.css" as="style"><link rel="preload" href="/assets/js/app.0d75b3ae.js" as="script"><link rel="preload" href="/assets/js/3.5fe2d7cb.js" as="script"><link rel="preload" href="/assets/js/1.571bc783.js" as="script"><link rel="preload" href="/assets/js/14.1ccc67ee.js" as="script"><link rel="prefetch" href="/assets/js/10.f4157172.js"><link rel="prefetch" href="/assets/js/100.600845a3.js"><link rel="prefetch" href="/assets/js/101.4d329296.js"><link rel="prefetch" href="/assets/js/102.f2e5e344.js"><link rel="prefetch" href="/assets/js/103.f7c81069.js"><link rel="prefetch" href="/assets/js/104.f3484d36.js"><link rel="prefetch" href="/assets/js/105.6fa7a43d.js"><link rel="prefetch" href="/assets/js/106.a4526e44.js"><link rel="prefetch" href="/assets/js/107.6bd4110b.js"><link rel="prefetch" href="/assets/js/108.ed650d05.js"><link rel="prefetch" href="/assets/js/109.d5ef1a12.js"><link rel="prefetch" href="/assets/js/11.e75a940e.js"><link rel="prefetch" href="/assets/js/110.320af159.js"><link rel="prefetch" href="/assets/js/111.745931d6.js"><link rel="prefetch" href="/assets/js/112.364b4a1b.js"><link rel="prefetch" href="/assets/js/113.e1727a6b.js"><link rel="prefetch" href="/assets/js/114.a9eac271.js"><link rel="prefetch" href="/assets/js/115.7cdac123.js"><link rel="prefetch" href="/assets/js/116.6b248114.js"><link rel="prefetch" href="/assets/js/117.dcea7200.js"><link rel="prefetch" href="/assets/js/118.b2f87986.js"><link rel="prefetch" href="/assets/js/119.e9b73e82.js"><link rel="prefetch" href="/assets/js/12.af598d62.js"><link rel="prefetch" href="/assets/js/120.7308514e.js"><link rel="prefetch" href="/assets/js/121.033e559f.js"><link rel="prefetch" href="/assets/js/122.0a23e902.js"><link rel="prefetch" href="/assets/js/123.a0b26f3a.js"><link rel="prefetch" href="/assets/js/124.d0a956ee.js"><link rel="prefetch" href="/assets/js/125.56067c87.js"><link rel="prefetch" href="/assets/js/126.0599407b.js"><link rel="prefetch" href="/assets/js/127.b71de461.js"><link rel="prefetch" href="/assets/js/128.985d4fd2.js"><link rel="prefetch" href="/assets/js/129.68ab690f.js"><link rel="prefetch" href="/assets/js/13.90a1a54e.js"><link rel="prefetch" href="/assets/js/130.5378eea2.js"><link rel="prefetch" href="/assets/js/131.ed59e042.js"><link rel="prefetch" href="/assets/js/132.f87fedea.js"><link rel="prefetch" href="/assets/js/133.5c837044.js"><link rel="prefetch" href="/assets/js/134.12f246c8.js"><link rel="prefetch" href="/assets/js/135.fcd31c6b.js"><link rel="prefetch" href="/assets/js/136.56ba26f0.js"><link rel="prefetch" href="/assets/js/137.9a86a61c.js"><link rel="prefetch" href="/assets/js/138.6def26a7.js"><link rel="prefetch" href="/assets/js/139.30bd5349.js"><link rel="prefetch" href="/assets/js/140.f1b65e8c.js"><link rel="prefetch" href="/assets/js/141.dc9cb476.js"><link rel="prefetch" href="/assets/js/142.c92f7bd0.js"><link rel="prefetch" href="/assets/js/143.443f8757.js"><link rel="prefetch" href="/assets/js/144.222a326f.js"><link rel="prefetch" href="/assets/js/145.74b2011c.js"><link rel="prefetch" href="/assets/js/146.dddac3ad.js"><link rel="prefetch" href="/assets/js/147.e19ce114.js"><link rel="prefetch" href="/assets/js/148.a5845780.js"><link rel="prefetch" href="/assets/js/149.aa54ea62.js"><link rel="prefetch" href="/assets/js/15.dfede46b.js"><link rel="prefetch" href="/assets/js/150.9a66537d.js"><link rel="prefetch" href="/assets/js/151.988a228c.js"><link rel="prefetch" href="/assets/js/152.19a2ed1b.js"><link rel="prefetch" href="/assets/js/153.f5224996.js"><link rel="prefetch" href="/assets/js/154.3a357718.js"><link rel="prefetch" href="/assets/js/155.687e7886.js"><link rel="prefetch" href="/assets/js/156.f53ab431.js"><link rel="prefetch" href="/assets/js/157.6f08da80.js"><link rel="prefetch" href="/assets/js/158.00cd5ce0.js"><link rel="prefetch" href="/assets/js/159.62567f7d.js"><link rel="prefetch" href="/assets/js/16.a84ac3ad.js"><link rel="prefetch" href="/assets/js/160.0d2c5b31.js"><link rel="prefetch" href="/assets/js/161.17bc7f01.js"><link rel="prefetch" href="/assets/js/162.f20a9778.js"><link rel="prefetch" href="/assets/js/163.dcb49eda.js"><link rel="prefetch" href="/assets/js/164.cf9a89a5.js"><link rel="prefetch" href="/assets/js/165.af27b85e.js"><link rel="prefetch" href="/assets/js/166.a0eca64c.js"><link rel="prefetch" href="/assets/js/167.48c35bf3.js"><link rel="prefetch" href="/assets/js/168.cc470428.js"><link rel="prefetch" href="/assets/js/169.75d05775.js"><link rel="prefetch" href="/assets/js/17.538a5c5d.js"><link rel="prefetch" href="/assets/js/170.72057365.js"><link rel="prefetch" href="/assets/js/171.2fde742f.js"><link rel="prefetch" href="/assets/js/172.a1d7322d.js"><link rel="prefetch" href="/assets/js/173.f6ab8bc3.js"><link rel="prefetch" href="/assets/js/174.1d19f66c.js"><link rel="prefetch" href="/assets/js/175.696172b3.js"><link rel="prefetch" href="/assets/js/176.f8e48a27.js"><link rel="prefetch" href="/assets/js/177.ccdc985d.js"><link rel="prefetch" href="/assets/js/178.fc3ac249.js"><link rel="prefetch" href="/assets/js/179.2535813d.js"><link rel="prefetch" href="/assets/js/18.c3b5ea8d.js"><link rel="prefetch" href="/assets/js/180.89299fdc.js"><link rel="prefetch" href="/assets/js/181.7eb206e9.js"><link rel="prefetch" href="/assets/js/182.86aca462.js"><link rel="prefetch" href="/assets/js/183.25b35999.js"><link rel="prefetch" href="/assets/js/184.d8890995.js"><link rel="prefetch" href="/assets/js/185.dd269408.js"><link rel="prefetch" href="/assets/js/186.5b49179c.js"><link rel="prefetch" href="/assets/js/187.1c14510e.js"><link rel="prefetch" href="/assets/js/188.d945b173.js"><link rel="prefetch" href="/assets/js/189.fc875aba.js"><link rel="prefetch" href="/assets/js/19.95babed9.js"><link rel="prefetch" href="/assets/js/190.3b7b9931.js"><link rel="prefetch" href="/assets/js/191.c947890d.js"><link rel="prefetch" href="/assets/js/192.c035e97c.js"><link rel="prefetch" href="/assets/js/193.84d63913.js"><link rel="prefetch" href="/assets/js/194.4a6f20ad.js"><link rel="prefetch" href="/assets/js/195.e712fd63.js"><link rel="prefetch" href="/assets/js/196.a270ad0b.js"><link rel="prefetch" href="/assets/js/197.e936d914.js"><link rel="prefetch" href="/assets/js/198.1305745e.js"><link rel="prefetch" href="/assets/js/199.e1d247c9.js"><link rel="prefetch" href="/assets/js/20.611fe6d3.js"><link rel="prefetch" href="/assets/js/200.8c8932ad.js"><link rel="prefetch" href="/assets/js/201.71466513.js"><link rel="prefetch" href="/assets/js/202.5bf12a9b.js"><link rel="prefetch" href="/assets/js/203.0b1d1691.js"><link rel="prefetch" href="/assets/js/204.30ee65a9.js"><link rel="prefetch" href="/assets/js/205.dd05a120.js"><link rel="prefetch" href="/assets/js/206.25c34bdb.js"><link rel="prefetch" href="/assets/js/207.13198c5e.js"><link rel="prefetch" href="/assets/js/208.968a3fb5.js"><link rel="prefetch" href="/assets/js/209.4d071672.js"><link rel="prefetch" href="/assets/js/21.15b1c5ae.js"><link rel="prefetch" href="/assets/js/210.0b41fca9.js"><link rel="prefetch" href="/assets/js/211.8b36b90a.js"><link rel="prefetch" href="/assets/js/212.51c11db7.js"><link rel="prefetch" href="/assets/js/213.83a681b5.js"><link rel="prefetch" href="/assets/js/214.93e699e7.js"><link rel="prefetch" href="/assets/js/215.061feef2.js"><link rel="prefetch" href="/assets/js/216.97a11e55.js"><link rel="prefetch" href="/assets/js/217.817822fb.js"><link rel="prefetch" href="/assets/js/218.ff991719.js"><link rel="prefetch" href="/assets/js/219.51151182.js"><link rel="prefetch" href="/assets/js/22.dd13e052.js"><link rel="prefetch" href="/assets/js/220.4aec2024.js"><link rel="prefetch" href="/assets/js/221.8c242d92.js"><link rel="prefetch" href="/assets/js/222.34d6cff9.js"><link rel="prefetch" href="/assets/js/223.f0709977.js"><link rel="prefetch" href="/assets/js/224.918d366e.js"><link rel="prefetch" href="/assets/js/225.14e9c841.js"><link rel="prefetch" href="/assets/js/226.4daf091e.js"><link rel="prefetch" href="/assets/js/227.221ea8a2.js"><link rel="prefetch" href="/assets/js/228.6959bfd6.js"><link rel="prefetch" href="/assets/js/229.d497d308.js"><link rel="prefetch" href="/assets/js/23.1f8240a9.js"><link rel="prefetch" href="/assets/js/230.7a7afcaf.js"><link rel="prefetch" href="/assets/js/231.07f546f0.js"><link rel="prefetch" href="/assets/js/232.6b0eff22.js"><link rel="prefetch" href="/assets/js/233.1c0187e8.js"><link rel="prefetch" href="/assets/js/234.590a950d.js"><link rel="prefetch" href="/assets/js/235.0151c604.js"><link rel="prefetch" href="/assets/js/236.54c1a2a5.js"><link rel="prefetch" href="/assets/js/237.f2ca9292.js"><link rel="prefetch" href="/assets/js/238.7ce7751d.js"><link rel="prefetch" href="/assets/js/239.0842f0fa.js"><link rel="prefetch" href="/assets/js/24.426fc5a2.js"><link rel="prefetch" href="/assets/js/240.0988c1ed.js"><link rel="prefetch" href="/assets/js/241.17132366.js"><link rel="prefetch" href="/assets/js/242.823a6e31.js"><link rel="prefetch" href="/assets/js/243.6168b218.js"><link rel="prefetch" href="/assets/js/244.40ab3ddf.js"><link rel="prefetch" href="/assets/js/245.6be5950e.js"><link rel="prefetch" href="/assets/js/246.92f9d36d.js"><link rel="prefetch" href="/assets/js/247.d77a3bc7.js"><link rel="prefetch" href="/assets/js/248.dfe97a29.js"><link rel="prefetch" href="/assets/js/249.89e4e040.js"><link rel="prefetch" href="/assets/js/25.db0990da.js"><link rel="prefetch" href="/assets/js/250.1ca125ba.js"><link rel="prefetch" href="/assets/js/251.46ea1618.js"><link rel="prefetch" href="/assets/js/252.d90cf6e4.js"><link rel="prefetch" href="/assets/js/253.49cabac7.js"><link rel="prefetch" href="/assets/js/254.4759e867.js"><link rel="prefetch" href="/assets/js/255.35bc653f.js"><link rel="prefetch" href="/assets/js/256.81b60506.js"><link rel="prefetch" href="/assets/js/257.c7b69b27.js"><link rel="prefetch" href="/assets/js/258.2afed5f5.js"><link rel="prefetch" href="/assets/js/259.241b08a1.js"><link rel="prefetch" href="/assets/js/26.3fbbba13.js"><link rel="prefetch" href="/assets/js/260.938be499.js"><link rel="prefetch" href="/assets/js/261.8c757d33.js"><link rel="prefetch" href="/assets/js/262.f9921018.js"><link rel="prefetch" href="/assets/js/263.e713267f.js"><link rel="prefetch" href="/assets/js/264.89ba59c8.js"><link rel="prefetch" href="/assets/js/265.e03ba261.js"><link rel="prefetch" href="/assets/js/266.39d75b93.js"><link rel="prefetch" href="/assets/js/267.8077768a.js"><link rel="prefetch" href="/assets/js/268.6534128e.js"><link rel="prefetch" href="/assets/js/269.939d4cbb.js"><link rel="prefetch" href="/assets/js/27.496d7e3f.js"><link rel="prefetch" href="/assets/js/270.b81feace.js"><link rel="prefetch" href="/assets/js/271.b47bec35.js"><link rel="prefetch" href="/assets/js/272.950c0df4.js"><link rel="prefetch" href="/assets/js/273.c7b9bb56.js"><link rel="prefetch" href="/assets/js/274.dcd6973f.js"><link rel="prefetch" href="/assets/js/275.cb8f1083.js"><link rel="prefetch" href="/assets/js/276.4dbf6dfc.js"><link rel="prefetch" href="/assets/js/277.6165e4bb.js"><link rel="prefetch" href="/assets/js/278.d051bcbd.js"><link rel="prefetch" href="/assets/js/279.8bf5e837.js"><link rel="prefetch" href="/assets/js/28.6325346b.js"><link rel="prefetch" href="/assets/js/280.52e465e1.js"><link rel="prefetch" href="/assets/js/281.39bcc6b8.js"><link rel="prefetch" href="/assets/js/282.8e98af46.js"><link rel="prefetch" href="/assets/js/283.56e2cf95.js"><link rel="prefetch" href="/assets/js/284.8cae1a8c.js"><link rel="prefetch" href="/assets/js/285.ce78ebf9.js"><link rel="prefetch" href="/assets/js/286.5cc92e94.js"><link rel="prefetch" href="/assets/js/287.f05762e8.js"><link rel="prefetch" href="/assets/js/288.a91a9532.js"><link rel="prefetch" href="/assets/js/289.8634ec0b.js"><link rel="prefetch" href="/assets/js/29.0795d3db.js"><link rel="prefetch" href="/assets/js/290.8725abff.js"><link rel="prefetch" href="/assets/js/291.ef384147.js"><link rel="prefetch" href="/assets/js/292.d5e771b7.js"><link rel="prefetch" href="/assets/js/293.7e306f30.js"><link rel="prefetch" href="/assets/js/294.28042fc0.js"><link rel="prefetch" href="/assets/js/295.1ccb312a.js"><link rel="prefetch" href="/assets/js/296.7368ec88.js"><link rel="prefetch" href="/assets/js/297.5c1c6286.js"><link rel="prefetch" href="/assets/js/298.072e0af6.js"><link rel="prefetch" href="/assets/js/299.f24c8a0c.js"><link rel="prefetch" href="/assets/js/30.ef96deda.js"><link rel="prefetch" href="/assets/js/300.222184dc.js"><link rel="prefetch" href="/assets/js/301.97c7d86e.js"><link rel="prefetch" href="/assets/js/302.85eb8139.js"><link rel="prefetch" href="/assets/js/303.b29f057f.js"><link rel="prefetch" href="/assets/js/304.99223f65.js"><link rel="prefetch" href="/assets/js/305.45c9331c.js"><link rel="prefetch" href="/assets/js/306.8a6752c5.js"><link rel="prefetch" href="/assets/js/307.212468b2.js"><link rel="prefetch" href="/assets/js/308.4b0b39cb.js"><link rel="prefetch" href="/assets/js/309.4bb19c35.js"><link rel="prefetch" href="/assets/js/31.eb9e6bea.js"><link rel="prefetch" href="/assets/js/310.519d4a4e.js"><link rel="prefetch" href="/assets/js/311.0024b8bb.js"><link rel="prefetch" href="/assets/js/312.cc3c5004.js"><link rel="prefetch" href="/assets/js/313.8581766b.js"><link rel="prefetch" href="/assets/js/314.dbc81f26.js"><link rel="prefetch" href="/assets/js/315.44912838.js"><link rel="prefetch" href="/assets/js/316.6e6ff020.js"><link rel="prefetch" href="/assets/js/317.65a0a865.js"><link rel="prefetch" href="/assets/js/318.4eb05019.js"><link rel="prefetch" href="/assets/js/319.306631cc.js"><link rel="prefetch" href="/assets/js/32.f514f36e.js"><link rel="prefetch" href="/assets/js/320.2b7b8e0a.js"><link rel="prefetch" href="/assets/js/321.e1b6cfe2.js"><link rel="prefetch" href="/assets/js/322.9f6a9107.js"><link rel="prefetch" href="/assets/js/323.e89052b0.js"><link rel="prefetch" href="/assets/js/324.d217125b.js"><link rel="prefetch" href="/assets/js/325.dea605d0.js"><link rel="prefetch" href="/assets/js/326.ae11d353.js"><link rel="prefetch" href="/assets/js/327.c3381fe3.js"><link rel="prefetch" href="/assets/js/328.58a4f174.js"><link rel="prefetch" href="/assets/js/329.a1ae0ba3.js"><link rel="prefetch" href="/assets/js/33.3f479a60.js"><link rel="prefetch" href="/assets/js/330.65d1a4c4.js"><link rel="prefetch" href="/assets/js/331.07757e62.js"><link rel="prefetch" href="/assets/js/332.6bc01a65.js"><link rel="prefetch" href="/assets/js/333.2dd59e88.js"><link rel="prefetch" href="/assets/js/334.0401a840.js"><link rel="prefetch" href="/assets/js/335.da7bfdf0.js"><link rel="prefetch" href="/assets/js/336.3756c1ce.js"><link rel="prefetch" href="/assets/js/337.0022f80b.js"><link rel="prefetch" href="/assets/js/338.1b6c141a.js"><link rel="prefetch" href="/assets/js/339.ee1932eb.js"><link rel="prefetch" href="/assets/js/34.f6cf0ff9.js"><link rel="prefetch" href="/assets/js/340.439b90cf.js"><link rel="prefetch" href="/assets/js/341.ed530afe.js"><link rel="prefetch" href="/assets/js/342.0594363a.js"><link rel="prefetch" href="/assets/js/343.ce347f62.js"><link rel="prefetch" href="/assets/js/344.0f721307.js"><link rel="prefetch" href="/assets/js/345.e6bccf97.js"><link rel="prefetch" href="/assets/js/346.8d8fb28e.js"><link rel="prefetch" href="/assets/js/347.01dbd6c0.js"><link rel="prefetch" href="/assets/js/348.f2708d30.js"><link rel="prefetch" href="/assets/js/349.e73bedd1.js"><link rel="prefetch" href="/assets/js/35.ef3d267e.js"><link rel="prefetch" href="/assets/js/350.1a527edb.js"><link rel="prefetch" href="/assets/js/351.56986ae6.js"><link rel="prefetch" href="/assets/js/352.c3f538c5.js"><link rel="prefetch" href="/assets/js/353.a399ccd0.js"><link rel="prefetch" href="/assets/js/354.50f3b83a.js"><link rel="prefetch" href="/assets/js/355.ac601682.js"><link rel="prefetch" href="/assets/js/356.4dc73d82.js"><link rel="prefetch" href="/assets/js/357.1885013f.js"><link rel="prefetch" href="/assets/js/358.3e76fc9d.js"><link rel="prefetch" href="/assets/js/359.b30209a5.js"><link rel="prefetch" href="/assets/js/36.50911f27.js"><link rel="prefetch" href="/assets/js/360.ff9e1709.js"><link rel="prefetch" href="/assets/js/361.aa7292e4.js"><link rel="prefetch" href="/assets/js/362.c833851c.js"><link rel="prefetch" href="/assets/js/363.40cebbe9.js"><link rel="prefetch" href="/assets/js/364.cf5a7168.js"><link rel="prefetch" href="/assets/js/365.99297c58.js"><link rel="prefetch" href="/assets/js/366.571fc241.js"><link rel="prefetch" href="/assets/js/367.057d4059.js"><link rel="prefetch" href="/assets/js/368.05e2944f.js"><link rel="prefetch" href="/assets/js/369.2b3d472c.js"><link rel="prefetch" href="/assets/js/37.fa1564e7.js"><link rel="prefetch" href="/assets/js/370.e3199f39.js"><link rel="prefetch" href="/assets/js/371.dbc2038d.js"><link rel="prefetch" href="/assets/js/372.623bfad5.js"><link rel="prefetch" href="/assets/js/373.417ba36d.js"><link rel="prefetch" href="/assets/js/374.bc9f40b9.js"><link rel="prefetch" href="/assets/js/375.98a71593.js"><link rel="prefetch" href="/assets/js/376.c45edf9c.js"><link rel="prefetch" href="/assets/js/377.b514bb78.js"><link rel="prefetch" href="/assets/js/378.85ef2c85.js"><link rel="prefetch" href="/assets/js/379.b36b8fd4.js"><link rel="prefetch" href="/assets/js/38.27a4e72f.js"><link rel="prefetch" href="/assets/js/380.92087cae.js"><link rel="prefetch" href="/assets/js/381.bb0b1aff.js"><link rel="prefetch" href="/assets/js/382.ce8f279b.js"><link rel="prefetch" href="/assets/js/383.38e4f4f9.js"><link rel="prefetch" href="/assets/js/384.aad42d42.js"><link rel="prefetch" href="/assets/js/385.ff60588a.js"><link rel="prefetch" href="/assets/js/386.064aa0f8.js"><link rel="prefetch" href="/assets/js/387.a0414d55.js"><link rel="prefetch" href="/assets/js/388.9ed5a876.js"><link rel="prefetch" href="/assets/js/389.4b07ab29.js"><link rel="prefetch" href="/assets/js/39.6f12f3c4.js"><link rel="prefetch" href="/assets/js/390.b6c577bd.js"><link rel="prefetch" href="/assets/js/391.a943936c.js"><link rel="prefetch" href="/assets/js/392.c4d47c78.js"><link rel="prefetch" href="/assets/js/393.65f1b390.js"><link rel="prefetch" href="/assets/js/394.1c4eb326.js"><link rel="prefetch" href="/assets/js/4.d82b85a8.js"><link rel="prefetch" href="/assets/js/40.1c0ec968.js"><link rel="prefetch" href="/assets/js/41.a2261115.js"><link rel="prefetch" href="/assets/js/42.39358252.js"><link rel="prefetch" href="/assets/js/43.4bcd6c91.js"><link rel="prefetch" href="/assets/js/44.d0cd77ff.js"><link rel="prefetch" href="/assets/js/45.8422bc56.js"><link rel="prefetch" href="/assets/js/46.6e56acdf.js"><link rel="prefetch" href="/assets/js/47.6d349074.js"><link rel="prefetch" href="/assets/js/48.b4d5fdf2.js"><link rel="prefetch" href="/assets/js/49.da0693a6.js"><link rel="prefetch" href="/assets/js/5.1bfe4518.js"><link rel="prefetch" href="/assets/js/50.5848c685.js"><link rel="prefetch" href="/assets/js/51.9e96d370.js"><link rel="prefetch" href="/assets/js/52.2b398e18.js"><link rel="prefetch" href="/assets/js/53.7c1ccac6.js"><link rel="prefetch" href="/assets/js/54.da3b83e5.js"><link rel="prefetch" href="/assets/js/55.f91ef7d8.js"><link rel="prefetch" href="/assets/js/56.5b6ce68d.js"><link rel="prefetch" href="/assets/js/57.fb0b6b98.js"><link rel="prefetch" href="/assets/js/58.c424530d.js"><link rel="prefetch" href="/assets/js/59.25ee2811.js"><link rel="prefetch" href="/assets/js/6.701e992c.js"><link rel="prefetch" href="/assets/js/60.a3a91188.js"><link rel="prefetch" href="/assets/js/61.66d21b41.js"><link rel="prefetch" href="/assets/js/62.3251d278.js"><link rel="prefetch" href="/assets/js/63.40e92fb1.js"><link rel="prefetch" href="/assets/js/64.36d5d1bb.js"><link rel="prefetch" href="/assets/js/65.d495e493.js"><link rel="prefetch" href="/assets/js/66.8e2f5c1a.js"><link rel="prefetch" href="/assets/js/67.62bb4e09.js"><link rel="prefetch" href="/assets/js/68.41206555.js"><link rel="prefetch" href="/assets/js/69.8e5206c9.js"><link rel="prefetch" href="/assets/js/7.f086b79a.js"><link rel="prefetch" href="/assets/js/70.64426c39.js"><link rel="prefetch" href="/assets/js/71.4ef597fd.js"><link rel="prefetch" href="/assets/js/72.39ef4f67.js"><link rel="prefetch" href="/assets/js/73.8664cdd1.js"><link rel="prefetch" href="/assets/js/74.4b89a60a.js"><link rel="prefetch" href="/assets/js/75.af9b86de.js"><link rel="prefetch" href="/assets/js/76.67d30446.js"><link rel="prefetch" href="/assets/js/77.3f05de0a.js"><link rel="prefetch" href="/assets/js/78.68ce2655.js"><link rel="prefetch" href="/assets/js/79.a736a84a.js"><link rel="prefetch" href="/assets/js/8.bd90a9cf.js"><link rel="prefetch" href="/assets/js/80.f0f28d30.js"><link rel="prefetch" href="/assets/js/81.09a029b6.js"><link rel="prefetch" href="/assets/js/82.5df2fd6d.js"><link rel="prefetch" href="/assets/js/83.f8191cf9.js"><link rel="prefetch" href="/assets/js/84.fed1a13d.js"><link rel="prefetch" href="/assets/js/85.aa1dae38.js"><link rel="prefetch" href="/assets/js/86.a99a2375.js"><link rel="prefetch" href="/assets/js/87.37e13ccb.js"><link rel="prefetch" href="/assets/js/88.4cec61dc.js"><link rel="prefetch" href="/assets/js/89.e657aea3.js"><link rel="prefetch" href="/assets/js/9.ab05b51e.js"><link rel="prefetch" href="/assets/js/90.0ac98413.js"><link rel="prefetch" href="/assets/js/91.2ddd383e.js"><link rel="prefetch" href="/assets/js/92.c5d152f5.js"><link rel="prefetch" href="/assets/js/93.c46e7b57.js"><link rel="prefetch" href="/assets/js/94.02456fe8.js"><link rel="prefetch" href="/assets/js/95.d9c58e5d.js"><link rel="prefetch" href="/assets/js/96.717a20b7.js"><link rel="prefetch" href="/assets/js/97.18a3f309.js"><link rel="prefetch" href="/assets/js/98.109e9edc.js"><link rel="prefetch" href="/assets/js/99.ae7a2b4c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7e0aff35.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-5bb33761><div data-v-5bb33761><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-5bb33761 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Blog of YHR</h3> <p class="description" data-v-59e6cb88>Blog of YHR</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2024
+      </a></span></div></div> <div class="hide" data-v-5bb33761><header class="navbar" data-v-5bb33761><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.jpg" alt="Blog of YHR" class="logo"> <span class="site-name">Blog of YHR</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/AIDistributedTraining/" class="nav-link"><i class="undefined"></i>
+  AIDistributedTraining
+</a></li><li class="dropdown-item"><!----> <a href="/categories/AIGC/" class="nav-link"><i class="undefined"></i>
+  AIGC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Lock/" class="nav-link"><i class="undefined"></i>
+  Distributed Lock
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Transaction/" class="nav-link"><i class="undefined"></i>
+  Distributed Transaction
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Algorithm/" class="nav-link"><i class="undefined"></i>
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Architecture/" class="nav-link"><i class="undefined"></i>
+  Architecture
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data structure/" class="nav-link"><i class="undefined"></i>
+  Data structure
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed System/" class="nav-link"><i class="undefined"></i>
+  Distributed System
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Go/" class="nav-link"><i class="undefined"></i>
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Haskell/" class="nav-link"><i class="undefined"></i>
+  Haskell
+</a></li><li class="dropdown-item"><!----> <a href="/categories/HuaweiCloud/" class="nav-link"><i class="undefined"></i>
+  HuaweiCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/NLP/" class="nav-link"><i class="undefined"></i>
+  NLP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaWeb/" class="nav-link"><i class="undefined"></i>
+  JavaWeb
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/LLMs/" class="nav-link"><i class="undefined"></i>
+  LLMs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Leetcode/" class="nav-link"><i class="undefined"></i>
+  Leetcode
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DB/" class="nav-link"><i class="undefined"></i>
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Notes/" class="nav-link"><i class="undefined"></i>
+  Notes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OpenStack/" class="nav-link"><i class="undefined"></i>
+  OpenStack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Prometheus/" class="nav-link"><i class="undefined"></i>
+  Prometheus
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RealTimeSE/" class="nav-link"><i class="undefined"></i>
+  RealTimeSE
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Springboot/" class="nav-link"><i class="undefined"></i>
+  Springboot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringMVC/" class="nav-link"><i class="undefined"></i>
+  SpringMVC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Security/" class="nav-link"><i class="undefined"></i>
+  Spring Security
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Zookeeper/" class="nav-link"><i class="undefined"></i>
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/K8s/" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-5bb33761></div> <aside class="sidebar" data-v-5bb33761><div class="personal-info-wrapper" data-v-1fad0c41 data-v-5bb33761><img src="/head.jpg" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    Yang Haoran
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>384</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>111</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/AIDistributedTraining/" class="nav-link"><i class="undefined"></i>
+  AIDistributedTraining
+</a></li><li class="dropdown-item"><!----> <a href="/categories/AIGC/" class="nav-link"><i class="undefined"></i>
+  AIGC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Lock/" class="nav-link"><i class="undefined"></i>
+  Distributed Lock
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed Transaction/" class="nav-link"><i class="undefined"></i>
+  Distributed Transaction
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Algorithm/" class="nav-link"><i class="undefined"></i>
+  Algorithm
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Cloud/" class="nav-link"><i class="undefined"></i>
+  Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DevOps/" class="nav-link"><i class="undefined"></i>
+  DevOps
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Architecture/" class="nav-link"><i class="undefined"></i>
+  Architecture
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Computer_network/" class="nav-link"><i class="undefined"></i>
+  Computer_network
+</a></li><li class="dropdown-item"><!----> <a href="/categories/VHDL/" class="nav-link"><i class="undefined"></i>
+  VHDL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data structure/" class="nav-link"><i class="undefined"></i>
+  Data structure
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Data warehouse/" class="nav-link"><i class="undefined"></i>
+  Data warehouse
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DL/" class="nav-link"><i class="undefined"></i>
+  DL
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Distributed System/" class="nav-link"><i class="undefined"></i>
+  Distributed System
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ElasticSearch/" class="nav-link"><i class="undefined"></i>
+  ElasticSearch
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Flink/" class="nav-link"><i class="undefined"></i>
+  Flink
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Go/" class="nav-link"><i class="undefined"></i>
+  Go
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Git/" class="nav-link"><i class="undefined"></i>
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Haskell/" class="nav-link"><i class="undefined"></i>
+  Haskell
+</a></li><li class="dropdown-item"><!----> <a href="/categories/HuaweiCloud/" class="nav-link"><i class="undefined"></i>
+  HuaweiCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/NLP/" class="nav-link"><i class="undefined"></i>
+  NLP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JS/" class="nav-link"><i class="undefined"></i>
+  JS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JavaWeb/" class="nav-link"><i class="undefined"></i>
+  JavaWeb
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Jenkins/" class="nav-link"><i class="undefined"></i>
+  Jenkins
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kafka/" class="nav-link"><i class="undefined"></i>
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Kubernetes/" class="nav-link"><i class="undefined"></i>
+  Kubernetes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/LLMs/" class="nav-link"><i class="undefined"></i>
+  LLMs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Leetcode/" class="nav-link"><i class="undefined"></i>
+  Leetcode
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MDSD/" class="nav-link"><i class="undefined"></i>
+  MDSD
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/MongoDB/" class="nav-link"><i class="undefined"></i>
+  MongoDB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/DB/" class="nav-link"><i class="undefined"></i>
+  DB
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nodejs/" class="nav-link"><i class="undefined"></i>
+  Nodejs
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OS/" class="nav-link"><i class="undefined"></i>
+  OS
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Nginx/" class="nav-link"><i class="undefined"></i>
+  Nginx
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Notes/" class="nav-link"><i class="undefined"></i>
+  Notes
+</a></li><li class="dropdown-item"><!----> <a href="/categories/OpenStack/" class="nav-link"><i class="undefined"></i>
+  OpenStack
+</a></li><li class="dropdown-item"><!----> <a href="/categories/PHP/" class="nav-link"><i class="undefined"></i>
+  PHP
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Prometheus/" class="nav-link"><i class="undefined"></i>
+  Prometheus
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RabbitMQ/" class="nav-link"><i class="undefined"></i>
+  RabbitMQ
+</a></li><li class="dropdown-item"><!----> <a href="/categories/React/" class="nav-link"><i class="undefined"></i>
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/categories/RealTimeSE/" class="nav-link"><i class="undefined"></i>
+  RealTimeSE
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Redis/" class="nav-link"><i class="undefined"></i>
+  Redis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Cloud/" class="nav-link"><i class="undefined"></i>
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Service Computing/" class="nav-link"><i class="undefined"></i>
+  Service Computing
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring/" class="nav-link"><i class="undefined"></i>
+  Spring
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Springboot/" class="nav-link"><i class="undefined"></i>
+  Springboot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringMVC/" class="nav-link"><i class="undefined"></i>
+  SpringMVC
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Swagger/" class="nav-link"><i class="undefined"></i>
+  Swagger
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SuperSet/" class="nav-link"><i class="undefined"></i>
+  SuperSet
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Spring Security/" class="nav-link"><i class="undefined"></i>
+  Spring Security
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tensorflow/" class="nav-link"><i class="undefined"></i>
+  Tensorflow
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Vuepress/" class="nav-link"><i class="undefined"></i>
+  Vuepress
+</a></li><li class="dropdown-item"><!----> <a href="/categories/XML/" class="nav-link"><i class="undefined"></i>
+  XML
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Zookeeper/" class="nav-link"><i class="undefined"></i>
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Markdown/" class="nav-link"><i class="undefined"></i>
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/categories/K8s/" class="nav-link"><i class="undefined"></i>
+  K8s
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mybatis/" class="nav-link"><i class="undefined"></i>
+  Mybatis
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Solr/" class="nav-link"><i class="undefined"></i>
+  Solr
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Contact
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/0YHR0" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-5bb33761><h3 class="title" data-v-59e6cb88>Ch00 Distributed Lock</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>Yang Haoran</span>
+          
+        <span data-v-59e6cb88>2019 - </span>
+        2024
+      </a></span></div></div> <div data-v-5bb33761><div data-v-5bb33761><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Ch00 Distributed Lock</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>Yang Haoran</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2/1/2023</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>Distributed Lock</span></i></div></div> <div class="theme-reco-content content__default"><h1 id=""><a href="#" class="header-anchor">#</a></h1> <h1 id="分布式锁"><a href="#分布式锁" class="header-anchor">#</a> 分布式锁</h1> <h2 id="_1-1-使用背景"><a href="#_1-1-使用背景" class="header-anchor">#</a> 1.1 使用背景</h2> <p>在并发场景中，为了保证临界资源的数据一致性，我们会经常使用到“锁”这个工具对临界资源进行保护，让混乱的并发访问行为退化为秩序的串行访问行为.</p> <p>在本地环境中，由于多线程之间能够共享进程的数据，因此可以比较简单地实现进程内的互斥锁；然而在分布式场景中，有时我们需要跨域多个物理节点执行加锁操作，因此我们就需要依赖到类似于 redis、mysql 这样的状态存储组件，在此基础之上实现所谓的“分布式锁”技术.</p> <h2 id="_1-2-核心性质"><a href="#_1-2-核心性质" class="header-anchor">#</a> 1.2 核心性质</h2> <p>分布式锁应当具备如下几项核心性质：</p> <ul><li>独占性：对于同一把锁，在同一时刻只能被一个取锁方占有，这是作为“锁”工具最基础的一项性质</li> <li>健壮性：即不能产生死锁（dead lock）. 假如某个占有锁的使用方因为宕机而无法主动执行解锁动作，锁也应该能够被正常传承下去，被其他使用方所延续使用</li> <li>对称性：加锁和解锁的使用方必须为同一身份. 不允许非法释放他人持有的分布式锁</li> <li>高可用：当提供分布式锁服务的基础组件中存在少量节点发生故障时，不应该影响到分布式锁服务的稳定性</li></ul> <h2 id="_1-3-实现类型"><a href="#_1-3-实现类型" class="header-anchor">#</a> 1.3 实现类型</h2> <img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102095840133.png" alt="image-20231102095840133" style="zoom:33%;"> <p>分布式锁根据其实现模型，可以被划分为两大类：</p> <ul><li>主动轮询型：该模型类似于单机锁中的主动轮询 + cas 乐观锁模型，取锁方会持续对分布式锁发出尝试获取动作，如果锁已被占用则会不断发起重试，直到取锁成功为止</li> <li>watch 回调型：在取锁方发现锁已被他人占用时，会创建 watcher 监视器订阅锁的释放事件，随后不再发起主动取锁的尝试；当锁被释放后，取锁方能通过之前创建的 watcher 感知到这一变化，然后再重新发起取锁的尝试动作</li></ul> <h2 id="_1-4-一些个人理解"><a href="#_1-4-一些个人理解" class="header-anchor">#</a> 1.4 一些个人理解</h2> <p>在单机环境中，主动轮询和 watch 回调两种锁模型各有优劣，所谓的”优“和”劣“也是相对而言，需要对 cpu 空转以及阻塞协程两种行为的损耗做出权衡.</p> <p>然而，在分布式场景中，我个人觉得优势的天平在略微朝着 watch 回调型的实现策略倾斜. 这是因为分布式场景中”轮询“这一动作的成本相比于单机锁而言要高很多，背后存在的行为可能是一次甚至多次网络 IO 请求. 这种情况下，取锁方基于 watch 回调的方式，在确保锁被释放、自身有机会取锁的情况下，才会重新发出尝试取锁的请求，这样能在很大程度上避免无意义的轮询损耗.</p> <p>当然，主动轮询型的分布式锁能够保证使用方始终占据流程的主动权，整个流程可以更加轻便灵活；此外，watch 机制在实现过程中需要建立长连接完成 watch 监听动作，也会存在一定的资源损耗. 因此这个问题没有标准答案，应该结合实际的需求背景采取不同的应对策略：</p> <ul><li><code>**在并发激烈程度较高时倾向于 watch 回调型分布式锁；反之，主动轮询型分布式锁可能会是更好的选择.**</code></li></ul> <p>除此之外，基于 watch 回调模型实现的分布式锁背后可能还存在其他的问题，比如：<code>**当有多个尝试取锁的使用方 watch 监听同一把锁时，一次锁的释放事件可能会引发“惊群效应”.**</code> 这个问题以及对应的解决方案将会在本文第 4 章中进行探讨.</p> <h1 id="_2-主动轮询型"><a href="#_2-主动轮询型" class="header-anchor">#</a> 2 主动轮询型</h1> <h2 id="_2-1-实现思路"><a href="#_2-1-实现思路" class="header-anchor">#</a> 2.1 实现思路</h2> <img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102100125954.png" alt="image-20231102100125954" style="zoom:33%;"> <p>主动轮询型分布式锁的实现思路为：</p> <ul><li>针对于同一把分布式锁，使用同一条数据进行标识（以 redis 为例，则为同一个 key 对应的 kv 数据记录）</li> <li>假如在存储介质成功插入了该条数据（要求之前该 key 对应的数据不存在），则被认定为加锁成功</li> <li>把从存储介质中删除该条数据这一行为理解为释放锁操作</li> <li>倘若在插入该条数据时，发现数据已经存在（锁已被他人持有），则持续轮询，直到数据被他人删除（他人释放锁），并由自身完成数据插入动作为止（取锁成功）</li> <li>由于是并发场景，需要保证【 （1）检查数据是否已被插入（2）数据不存在则插入数据 】这两个步骤之间是原子化不可拆分的<code>**（在 redis 中是 set only if not exist —— SETNX 操作）**</code></li></ul> <h2 id="_2-2-技术选型"><a href="#_2-2-技术选型" class="header-anchor">#</a> 2.2 技术选型</h2> <p>实现主动轮询型分布式锁时，我们常用的组件包括 redis 和 mysql.</p> <p><strong>（1）redis</strong></p> <ul><li><p>在实现主动轮询型分布式锁时，redis 算得上是大家最常用的组件. 在第 3 章中，本文会以 redis 为例，进行主动轮询型分布式锁的实践介绍.  redis 官方文档：<a href="https://link.zhihu.com/?target=https%3A//redis.io/" target="_blank" rel="noopener noreferrer">https://redis.io/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p>redis 基于内存实现数据的存储，因此足够高轻便高效. 此外，redis 基于单线程模型完成数据处理工作，支持 SETNX 原子指令（set only if not exist），能够很方便地支持分布式锁的加锁操作.</p> <ul><li>setnx 使用文档：<a href="https://link.zhihu.com/?target=https%3A//redis.io/commands/setnx/" target="_blank" rel="noopener noreferrer">https://redis.io/commands/setnx/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> （事实上，在 redis 2.6.12 版本之后，setnx 操作已经被弃置，官方推荐大家使用 set 指令并附加 nx 参数来实现与 setnx 指令相同的效果）</li></ul></li> <li><p>此外，redis 还支持使用 lua 脚本自定义组装同一个 redis 节点下的多笔操作形成一个具备原子性的事务. redis lua 脚本使用文档：<a href="https://link.zhihu.com/?target=https%3A//redis.io/docs/manual/programmability/eval-intro/" target="_blank" rel="noopener noreferrer">https://redis.io/docs/manual/pr<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ul> <p><code>在通过 redis 实现分布式锁时，我们可以通过将 key 对应的 value 设置为使用方的身份标识. 在解锁流程中，通过 lua 脚本组装步骤：【（1）检查释放锁动作执行者的身份；（2）身份合法时才进行解锁】. 如此一来，分布式锁的对称性也就得以保证了.</code></p> <p><strong>（2）mysql</strong></p> <p>mysql 官方文档：<a href="https://link.zhihu.com/?target=https%3A//www.mysql.com/" target="_blank" rel="noopener noreferrer">https://www.mysql.com/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>通过经典的关系型数据库 mysql 关也能实现和 redis 类似的效果.</p> <ul><li>建立一张用于存储分布式锁记录的数据表</li> <li>以分布式锁的标识键作为表中的唯一键（类比于 redis 中的 key）</li> <li>基于唯一键的特性，同一把锁只能被插入一条数据，因此也就只能由一个使用方持有锁</li> <li>当锁被占有时，其他取锁方尝试插入数据时，会被 mysql 表的唯一键所拦截报错，进而感知到锁已被占用这一情报</li> <li>在表中可以新增一个字段标识使用方的身份. 完整的解锁动作可以基于 mysql 事务（使用 innodb 引擎）保证原子性：【（1）检查释放锁动作执行者的身份；（2）身份合法时才进行解锁】. 基于此，分布式锁的对称性性质能够得到保证.</li></ul> <h2 id="_2-3-死锁问题"><a href="#_2-3-死锁问题" class="header-anchor">#</a> 2.3 死锁问题</h2> <p>下一个问题是，我们在设计主动轮询型分布式锁时，如何避免出现死锁问题而导致分布式锁不可能用呢？</p> <p>这项能力在 mysql 中显得捉襟见肘，不过在使用 redis 时，我们可以通过过期时间 expire time 机制得以保证. 我们通常会在插入分布式锁对应的 kv 数据时设置一个过期时间 expire time，这样即便使用方因为异常原因导致无法正常解锁，锁对应的数据项也会在达到过期时间阈值后被自动删除，实现释放分布式锁的效果.</p> <p>值得一提的是，这种过期机制的引入也带来了新的问题：因为锁的持有者并不能精确预判到自己持锁后处理业务逻辑的实际耗时，因此此处设置的过期时间只能是一个偏向于保守的经验值，假如因为一些异常情况导致占有锁的使用方在业务处理流程中的耗时超过了设置的过期时间阈值，就会导致锁被提前释放，其他取锁方可能取锁成功，最终引起数据不一致的并发问题.</p> <p>针对于这个问题，在分布式锁工具 redisson 中给出了解决方案——看门狗策略（watch dog strategy）：在锁的持有方未完成业务逻辑的处理时，会持续对分布式锁的过期阈值进行延期操作.</p> <p><img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102101315315.png" alt="image-20231102101315315"></p> <h2 id="_2-4-弱一致性问题"><a href="#_2-4-弱一致性问题" class="header-anchor">#</a> 2.4 弱一致性问题</h2> <ul><li><p>回顾 redis 的设计思路，为避免单点故障问题，redis 会基于主从复制的方式实现数据备份. （以哨兵机制为例，哨兵会持续监听 master 节点的健康状况，倘若 master 节点发生故障，哨兵会负责扶持 slave 节点上位，以保证整个集群能够正常对外提供服务）. 此外，在 CAP 体系中，redis 走的是 AP 路线，为保证服务的吞吐性能，主从节点之间的数据同步是异步延迟进行的.</p> <p>到这里问题就来了，试想一种场景：倘若 使用方 A 在 redis master 节点加锁成功，但是对应的 kv 记录在同步到 slave 之前，master 节点就宕机了. 此时未同步到这项数据的 slave 节点升为 master，这样分布式锁被 A 持有的“凭证” 就这样凭空消失了. 于是不知情的使用方 B C D 都可能加锁成功，于是就出现了一把锁被多方同时持有的问题，导致分布式锁最基本的独占性遭到破坏.</p></li> <li><p>red lock解决了这个问题：</p> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code>简介
+
+Redis中针对此种情况，引入了红锁的概念。红锁采用主节点过半机制，即获取锁或者释放锁成功的标志为：在过半的节点上操作成功。
+
+原理
+
+在Redis的分布式环境中，我们假设有N个Redis master。这些节点完全互相独立，不存在主从复制或者其他集群协调机制。之前我们已经描述了在Redis单实例下怎么安全地获取和释放锁。我们确保将在每（N）个实例上使用此方法获取和释放锁。在这个样例中，我们假设有5个Redis master节点，这是一个比较合理的设置，所以我们需要在5台机器上面或者5台虚拟机上面运行这些实例，这样保证他们不会同时都宕掉。
+
+为了取到锁，客户端应该执行以下操作：
+
+获取当前Unix时间，以毫秒为单位。
+依次尝试从N个实例，使用相同的key和随机值获取锁。
+向Redis设置锁时，客户端应该设置一个网络连接和响应超时时间，这个超时时间应该小于锁的失效时间。
+例如你的锁自动失效时间为10秒，则超时时间应该在5-50毫秒之间。这样可以避免服务器端Redis已经挂掉的情况下，客户端还在死死地等待响应结果。如果服务器端没有在规定时间内响应，客户端应该尽快尝试另外一个Redis实例。
+客户端使用当前时间减去开始获取锁时间（步骤1记录的时间）得到获取锁使用的时间。
+仅当从大多数（这里是3个节点）的Redis节点都取到锁，且使用的时间小于锁失效时间时，锁才算获取成功。
+如果取到了锁，key的真正有效时间等于有效时间减去获取锁所使用的时间（步骤3计算的结果）。
+如果因为某些原因，获取锁失败（没有在至少N/2+1个Redis实例取到锁或者取锁时间已经超过了有效时间），客户端应该在所有的Redis实例上进行解锁（即便某些Redis实例根本就没有加锁成功）。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div></li> <li><p>redis 分布式锁的实现</p> <ul><li>定义了 redis 分布式锁的类型：RedisLock</li> <li>锁 RedisLock 中需要内置一个 redis 客户端 Client，用于后续的请求交互</li> <li>锁实例被创建时，需要显式指定锁的标识键 key</li> <li>锁被创建时，会取创建者的进程 id + 协程 id，拼接生成 token，作为使用方的身份标识</li> <li>用户可以使用 option 配置项，声明创建的锁是否是阻塞模式，锁对应的过期时间阈值以及等锁超时阈值等配置</li> <li>解锁动作基于 lua 脚本执行</li> <li>lua 脚本执行内容分为两部分：【（1）校验当前操作者是否拥有锁的所有权（2）倘若是，则释放锁】</li></ul></li></ul> <h1 id="_4-watch-回调型"><a href="#_4-watch-回调型" class="header-anchor">#</a> 4 watch 回调型</h1> <h2 id="_4-1-实现思路"><a href="#_4-1-实现思路" class="header-anchor">#</a> 4.1 实现思路</h2> <img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102105114582.png" alt="image-20231102105114582" style="zoom:33%;"> <img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102105124683.png" alt="image-20231102105124683" style="zoom:33%;"> <p>对于实现 watch 回调型分布式锁，一些基本要点和 2.1 小节中聊到的主动轮询型分布式锁类似：</p> <ul><li>针对于同一把分布式锁，使用一条相同的数据进行标识（唯一、明确的 key）</li> <li>倘若在存储介质内成功插入该条数据（要求 key 对应的数据不存在），则这一行为被认定为加锁成功</li> <li>把从存储介质中删除该条数据这行为理解为解锁操作</li></ul> <p>与主动轮询型分布式锁不同的是，在取锁失败时，watch 回调型分布式锁不会持续轮询，而是会 watch 监听锁的删除事件：</p> <ul><li>倘若在插入数据时，发现该条记录已经存在，说明锁已被他人持有，此时选择监听这条数据记录的删除事件，当对应事件发生时说明锁被释放了，此时才继续尝试取锁</li></ul> <h2 id="_4-2-技术选型"><a href="#_4-2-技术选型" class="header-anchor">#</a> 4.2 技术选型</h2> <p>在实现上，我们需要依赖于提供了 watch 机制的状态存储组件，不仅能支持数据的存储和去重，还需要利用到其中的 watch 监听回调功能进行锁释放事件的订阅感知.</p> <p>为满足上述诉求，我们常用的技术组件包括 etcd 和 zookeeper.</p> <p><strong>（1）etcd</strong></p> <ul><li><p>etcd 是一款适合用于共享配置和服务发现的分布式 kv 存储组件，底层基于分布式共识算法 raft 协议保证了存储服务的强一致和高可用.</p></li> <li><p>在 etcd 中提供了watch 监听器的功能，即针对于指定范围的数据，通过与 etcd 服务端节点创建 grpc 长连接的方式持续监听变更事件.</p></li> <li><p>此外，etcd 中写入数据时，还支持通过版本 revision 机制进行取锁秩序的统筹协调，是一款很适合用于实现分布式锁的组件.</p></li></ul> <p><strong>（2）zookeeper</strong></p> <ul><li><p>ZooKeeper是一款开源的分布式应用协调服务，底层基于分布式共识算法 zab 协议保证了数据的强一致性和高可用性.</p> <p>zookeeper 中提供了临时顺序节点（EPHEMERAL_SEQUENTIAL）类型以及 watch 监听器机制，能够满足实现 watch 回调型分布式锁所需要具备的一切核心能力.</p></li></ul> <img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102105801209.png" alt="image-20231102105801209" style="zoom:33%;"> <p>为避免死锁问题的产生，etcd 中提供了租约 lease 机制. 租约，顾名思义，是一份具有时效性的协议，一旦达到租约上规定的截止时间，租约就会失去效力. 同时，etcd 中还提供了续约机制（keepAlive），用户可以通过续约操作来延迟租约的过期时间.</p> <p>那么，我们如何来利用租约 lease 机制解决分布式锁中可能存在的死锁问题呢？实现思路如下：</p> <ul><li>用户可以先申请一份租约，设定好租约的截止时间</li> <li>异步启动一个续约协程，负责在业务逻辑处理完成前，按照一定的时间节奏持续进行续约操作</li> <li>在执行取锁动作，将对应于锁的 kv 数据和租约进行关联绑定，使得锁数据和租约拥有相同的过期时间属性</li></ul> <p>在这样的设定之下，倘若分布式锁的持有者出现异常状况导致无法正常解锁，则可以通过租约的过期机制完成对分布式锁的释放，死锁问题因此得以规避. 此外，锁的使用方可以将租约的初始过期时间设定为一个偏小的值，并通过续约机制来对租约的生效周期进行动态延长. 可以看到，此处 etcd 中的租约及续约机制，实现了与 redisson 中 watch dog 机制类似的效果.</p> <h2 id="_4-4-惊群效应"><a href="#_4-4-惊群效应" class="header-anchor">#</a> 4.4 惊群效应</h2> <p>在 watch 回调型分布式锁的实现过程中，可能也会存在类似于惊群效应的问题. 这里指的是：倘若一把分布式锁的竞争比较激烈，那么锁的释放事件可能同时被多个的取锁方所监听，一旦锁真的被释放了，所有的取锁方都会一拥而上尝试取锁，然而我们知道，一个轮次中真正能够取锁成功的只会有一名角色，因此这个过程中会存在大量无意义的性能损耗，且释放锁时刻瞬间激增的请求流量也可能会对系统稳定性产生负面效应.</p> <p>为规避惊群效应，etcd 中提供了前缀 prefix 机制以及版本 revision 机制，和 zookeeper 的临时顺序节点功能有些类似：</p> <ul><li>对于同一把分布式锁，锁记录数据的 key 拥有共同的前缀 prefix，作为锁的标识</li> <li>每个取锁方取锁时，会以锁前缀 prefix 拼接上自身的身份标识（租约 id），生成完整的 lock key. 因此各取锁方完整的 lock key 都是互不相同的（只是有着相同的前缀），理论上所有取锁方都能成功把锁记录数据插入到 etcd 中</li> <li>每个取锁方插入锁记录数据时，会获得自身 lock key 处在锁前缀 prefix 范围下唯一且递增的版本号 revision</li> <li>取锁方插入加锁记录数据不意味着加锁成功，而是需要在插入数据后查询一次锁前缀 prefix 下的记录列表，判定自身 lock key 对应的 revision 是不是其中最小的，如果是的话，才表示加锁成功</li> <li>如果锁被他人占用，取锁方会 watch 监听 revision 小于自己但最接近自己的那个 lock key 的删除事件.</li></ul> <p>这样所有的取锁方就会在 revision 机制的协调下，根据取锁序号（revision）的先后顺序排成一条队列，每当锁被释放，只会惊动到下一顺位的取锁方，惊群问题得以避免.<img src="https://markdown-1301334775.cos.eu-frankfurt.myqcloud.com/image-20231102111033331.png" alt="image-20231102111033331" style="zoom:33%;"></p> <p>ref：https://zhuanlan.zhihu.com/p/626924850</p></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">10/12/2024, 2:55:25 PM</span></div></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-ac050c62><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_1-1-使用背景" class="sidebar-link reco-side-_1-1-使用背景" data-v-ac050c62>1.1 使用背景</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_1-2-核心性质" class="sidebar-link reco-side-_1-2-核心性质" data-v-ac050c62>1.2 核心性质</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_1-3-实现类型" class="sidebar-link reco-side-_1-3-实现类型" data-v-ac050c62>1.3 实现类型</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_1-4-一些个人理解" class="sidebar-link reco-side-_1-4-一些个人理解" data-v-ac050c62>1.4 一些个人理解</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_2-1-实现思路" class="sidebar-link reco-side-_2-1-实现思路" data-v-ac050c62>2.1 实现思路</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_2-2-技术选型" class="sidebar-link reco-side-_2-2-技术选型" data-v-ac050c62>2.2 技术选型</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_2-3-死锁问题" class="sidebar-link reco-side-_2-3-死锁问题" data-v-ac050c62>2.3 死锁问题</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_2-4-弱一致性问题" class="sidebar-link reco-side-_2-4-弱一致性问题" data-v-ac050c62>2.4 弱一致性问题</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_4-1-实现思路" class="sidebar-link reco-side-_4-1-实现思路" data-v-ac050c62>4.1 实现思路</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_4-2-技术选型" class="sidebar-link reco-side-_4-2-技术选型" data-v-ac050c62>4.2 技术选型</a></li><li class="level-2" data-v-ac050c62><a href="/blogs/2022/Advanced/Ch00_DisLock.html#_4-4-惊群效应" class="sidebar-link reco-side-_4-4-惊群效应" data-v-ac050c62>4.4 惊群效应</a></li></ul></main></div> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div></div></div>
+    <script src="/assets/js/app.0d75b3ae.js" defer></script><script src="/assets/js/3.5fe2d7cb.js" defer></script><script src="/assets/js/1.571bc783.js" defer></script><script src="/assets/js/14.1ccc67ee.js" defer></script>
+  </body>
+</html>

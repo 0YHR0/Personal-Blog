@@ -1,4 +1,4 @@
-name: Deploy to Docker Hub
+name: Deploy to git page and uploaded to Docker Hub
 
 on:
   push:
@@ -23,6 +23,21 @@ jobs:
           cd Blog  # 切换到Blog目录
           npm install
           npm run build
+      - name: Clone target repository
+        run: |
+          git clone https://github.com/0YHR0/0yhr0.github.io.git blog-deployment
+        continue-on-error: false
+  
+      - name: Copy public folder to target repository
+        run: |
+          cp -r Blog/public blog-deployment/
+
+      - name: Commit and push to target repo
+        run: |
+          cd target-repo
+          git add .
+          git commit -m "Update notes"
+          git push origin main
 
       - name: Archive build output
         run: |
@@ -64,8 +79,8 @@ jobs:
           draft: false
           prerelease: false
           files: Blog/public.tar.gz  # 指定压缩文件的正确路径
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: Blog/public
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: Blog/public

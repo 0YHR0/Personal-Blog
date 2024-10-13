@@ -34,7 +34,7 @@ jobs:
 
       - name: Commit and push to target repo
         run: |
-          cd target-repo
+          cd blog-deployment
           git add .
           git commit -m "Update notes"
           git push origin main

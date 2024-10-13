@@ -13,7 +13,7 @@ categories:
 
 # k8s中的nv插件相关概念
 
-
+以下转载自xiaoyu的文章：
 
 ## k8s device plugin是什么，用来解决什么问题，是什么机制实现的
 

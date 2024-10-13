@@ -23,21 +23,32 @@ jobs:
           cd Blog  # 切换到Blog目录
           npm install
           npm run build
-      - name: Clone target repository
-        run: |
-          git clone https://github.com/0YHR0/0yhr0.github.io.git blog-deployment
-        continue-on-error: false
-  
-      - name: Copy public folder to target repository
-        run: |
-          cp -r Blog/public blog-deployment/
 
-      - name: Commit and push to target repo
-        run: |
-          cd blog-deployment
-          git add .
-          git commit -m "Update notes"
-          git push origin main
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with: 
+          personal_token: ${{ secrets.API_TOKEN_GITHUB }} # 令牌
+          publish_dir: ./Blog/public # 构建后的文件目录
+          external_repository: 0YHR0/0yhr0.github.io # 仓库B，格式为：user/repo
+          publish_branch: main # 仓库B的分支
+      
+      # - name: Clone target repository
+      #   run: |
+      #     git clone https://0yhr0:${{ secrets.API_TOKEN_GITHUB }}@github.com/0YHR0/0yhr0.github.io.git blog-deployment
+      #   continue-on-error: false
+  
+      # - name: Copy public folder to target repository
+      #   run: |
+      #     cp -r Blog/public blog-deployment/
+
+      # - name: Commit and push to target repo
+      #   run: |
+      #     cd blog-deployment
+      #     git config --local user.email ${{ secrets.EMAIL_GITHUB }}
+      #     git config --local user.name "0yhr0"
+      #     git add .
+      #     git commit -m "Update notes"
+      #     git push origin main
 
       - name: Archive build output
         run: |

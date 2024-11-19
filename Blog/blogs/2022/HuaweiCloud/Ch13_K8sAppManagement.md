@@ -1,12 +1,10 @@
 ---
 title: Ch13 K8s Application Management
-date: 2024-10-24
+date: 2024-11-07
 tags:
  - HuaweiCloud
 categories:
  - HuaweiCloud
-
-
 
 ---
 
